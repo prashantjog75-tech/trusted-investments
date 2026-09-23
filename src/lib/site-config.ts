@@ -1,7 +1,4 @@
-/**
- * Central place for brand details and placeholders.
- * Replace the bracketed values when real details are available.
- */
+/** Central place for brand and contact details. */
 export const site = {
   // TODO: replace with the distributor's real name
   name: "[Your Name]",
@@ -13,12 +10,11 @@ export const site = {
   familiesServed: "500+",
   coverage: "Across India",
 
-  // TODO: replace placeholders below with real contact details
-  phoneDisplay: "+91 XXXXX XXXXX",
-  phoneHref: "tel:+91XXXXXXXXXX",
-  whatsappNumber: "91XXXXXXXXXX", // digits only, with country code
-  email: "hello@yourdomain.in",
-  address: "[Office address to be added], India",
+  phoneDisplay: "+91 9822223949",
+  phoneHref: "tel:+919822223949",
+  whatsappNumber: "919822223949",
+  email: "prashant_jog@hotmail.com",
+  address: "Plot No. 5-A, Chitale Marg, Dhantoli, Nagpur - 440012, India",
   hours: "Mon – Sat, 10:00 AM – 6:00 PM IST",
 
   disclaimerShort: "Mutual fund investments are subject to market risks, read all scheme related documents carefully.",
