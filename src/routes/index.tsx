@@ -82,7 +82,7 @@ function Index() {
       </section>
 
       {/* Trust stats */}
-      <div className="container-site -mt-10 relative z-20 md:-mt-12">
+      <div className="container-site relative z-20 mt-12 lg:-mt-12">
         <TrustStats className="shadow-elevated" />
       </div>
 
