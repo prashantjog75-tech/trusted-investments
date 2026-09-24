@@ -1,4 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Calculator } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { CtaBand } from "@/components/site/CtaBand";
@@ -38,8 +40,9 @@ function ServicesPage() {
           title="Review scheme information and documents in one place"
           lead="Explore the source-ready layout for expense ratios, holdings, distributor disclosures, fact sheets, KIM, SID and SAI. All unavailable data is clearly marked."
         />
-        <div className="mt-8">
-          <Link to="/funds" className="inline-flex items-center rounded-md border border-border bg-card px-5 py-3 text-sm font-medium shadow-soft transition-colors hover:bg-muted">Explore fund information</Link>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button asChild variant="outline"><Link to="/funds">Explore fund information</Link></Button>
+          <Button asChild variant="outline"><Link to="/sip-calculator"><Calculator className="h-4 w-4" /> Try the SIP calculator</Link></Button>
         </div>
       </Section>
       <Section tone="ivory">
