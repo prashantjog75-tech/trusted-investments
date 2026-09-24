@@ -20,7 +20,7 @@ export const Route = createFileRoute("/about")({
 });
 
 const values = [
-  ["Suitability first", "Every recommendation begins with your goals, horizon and risk comfort — never with what is popular this quarter."],
+  ["Suitability first", "Every mutual fund discussion begins with your goals, horizon and risk comfort — never with what is popular this quarter."],
   ["Patience", "Wealth is built over decades, not weeks. We help families stay invested through the noise."],
   ["Plain language", "If you cannot explain it to your family at dinner, we have not explained it well enough."],
   ["Continuity", "The person who onboards you is the person who reviews with you years later."],

@@ -46,7 +46,7 @@ function FundsPage() {
           <div className="rounded-lg border border-border bg-card p-7 shadow-soft">
             <ShieldCheck className="h-7 w-7 text-gold" />
             <h2 className="mt-5 text-2xl font-medium">A note on our role</h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Prashant Jog is an AMFI Registered Mutual Fund Distributor ({site.arn}), not an investment adviser. Information is general and does not constitute personalised investment advice. {site.disclaimerShort}</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Prashant Jog operates only as an AMFI Registered Mutual Fund Distributor ({site.arn}). Information is general and provided in connection with mutual fund distribution. {site.disclaimerShort}</p>
           </div>
         </div>
         <div className="mt-10 text-center">

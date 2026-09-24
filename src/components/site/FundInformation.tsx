@@ -172,11 +172,11 @@ export function FundInformation({ fund }: { fund: FundRecord }) {
           <h2 className="mt-3 text-3xl font-medium md:text-4xl">Tools for informed conversations</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             <ToolCard icon={Calculator} title="SIP illustration" body="Illustrative contribution scenarios will be available after assumptions and disclosures are approved." />
-            <ToolCard icon={Gauge} title="Risk questionnaire" body="A structured questionnaire will be connected here; it will not provide personalised investment advice." />
+            <ToolCard icon={Gauge} title="Risk questionnaire" body="A structured, informational questionnaire will be connected here after its assumptions and disclosures are approved." />
             <ToolCard icon={FileText} title="Document checklist" body="A scheme-document comparison checklist will appear here when verified sources are connected." />
           </div>
           <div className="mt-8 rounded-lg border border-gold/30 bg-gold-soft/40 p-5 text-sm leading-relaxed text-muted-foreground">
-            <strong className="text-foreground">Information only.</strong> This page does not constitute an offer, recommendation, or personalised investment advice. Prashant Jog is an AMFI Registered Mutual Fund Distributor ({site.arn}). {site.disclaimerShort}
+            <strong className="text-foreground">Information only.</strong> This page does not constitute an offer or solicitation. Prashant Jog operates only as an AMFI Registered Mutual Fund Distributor ({site.arn}). {site.disclaimerShort}
           </div>
         </div>
       </section>

@@ -12,7 +12,7 @@ export const Route = createFileRoute("/learn")({
     pageMeta({
       title: "Learn the Basics",
       description:
-        "Simple explanations of mutual funds, SIPs, risk profiling, asset allocation, compounding and long-term investing — general education, not personalised advice.",
+        "Simple explanations of mutual funds, SIPs, risk profiling, asset allocation, compounding and long-term investing for general education.",
       path: "/learn",
     }),
   component: LearnPage,
@@ -24,7 +24,7 @@ function LearnPage() {
       <PageHero
         eyebrow="Learn"
         title="Investing, explained simply."
-        lead="Short, jargon-free notes on the ideas behind disciplined investing. For general education only — not personalised investment advice."
+        lead="Short, jargon-free notes on the ideas behind disciplined investing, provided for general education only."
       />
       <Section>
         <div className="grid gap-5 md:grid-cols-2">

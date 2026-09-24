@@ -66,7 +66,7 @@ export const processSteps = [
     icon: ClipboardList,
     step: "02",
     title: "Assess",
-    body: "We assess your risk comfort and time horizon for each goal, then recommend suitable mutual fund categories and a sensible asset allocation.",
+    body: "We understand your risk comfort and time horizon for each goal, then help you explore relevant mutual fund categories and asset-allocation options.",
   },
   {
     icon: Wallet,
@@ -188,14 +188,14 @@ export const faqs = [
   },
   {
     q: "Can you review my existing mutual fund portfolio?",
-    a: "Yes. We review existing holdings for alignment with your goals, asset allocation and risk comfort, and suggest changes where they may be useful.",
+    a: "Yes. We can help you organise and review existing mutual fund holdings against your stated goals, time horizon and risk comfort.",
   },
   {
     q: "How often will we review my mutual fund portfolio?",
     a: "Typically once or twice a year, and whenever a significant life event occurs — a new child, a job change, an inheritance or a new goal.",
   },
   {
-    q: "Are you an investment adviser?",
-    a: "No. Prashant Jog operates only as an AMFI Registered Mutual Fund Distributor under ARN-83625. The information shared is general or incidental to mutual fund distribution and does not constitute personalised investment advice.",
+    q: "What is your professional role?",
+    a: "Prashant Jog operates only as an AMFI Registered Mutual Fund Distributor under ARN-83625. Information shared is general or incidental to mutual fund distribution.",
   },
 ];

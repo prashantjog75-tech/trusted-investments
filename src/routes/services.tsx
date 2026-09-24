@@ -28,9 +28,8 @@ function ServicesPage() {
       <Section>
         <FeatureGrid items={services} />
         <div className="mt-12 rounded-2xl border border-gold/30 bg-gold-soft/40 p-6 text-sm leading-relaxed text-muted-foreground">
-          <strong className="text-foreground">A note on our role.</strong> We operate as an AMFI Registered Mutual
-          Fund Distributor ({site.arn}), not an investment adviser. Information shared is general or incidental to
-          mutual fund distribution and does not constitute personalised investment advice. {site.disclaimerShort}
+          <strong className="text-foreground">A note on our role.</strong> We operate only as an AMFI Registered Mutual
+          Fund Distributor ({site.arn}). Information shared is general or incidental to mutual fund distribution. {site.disclaimerShort}
         </div>
       </Section>
       <Section>

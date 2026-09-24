@@ -18,7 +18,7 @@ export const site = {
 
   disclaimerShort: "Mutual fund investments are subject to market risks, read all scheme related documents carefully.",
   disclaimerLong:
-    "Mutual fund investments are subject to market risks, read all scheme related documents carefully. Past performance is not indicative of future returns. The information on this website is for general educational purposes only and does not constitute personalised investment advice, an offer or a solicitation. We act as an AMFI Registered Mutual Fund Distributor (ARN-83625) and may receive commission from Asset Management Companies on investments made through us. Please consider your goals, risk appetite and time horizon, and consult a qualified professional where appropriate, before investing.",
+    "Mutual fund investments are subject to market risks, read all scheme related documents carefully. Past performance is not indicative of future returns. The information on this website is for general educational purposes only and does not constitute an offer or a solicitation. We act only as an AMFI Registered Mutual Fund Distributor (ARN-83625) and may receive commission from Asset Management Companies on investments made through us. Please consider your goals, risk appetite and time horizon before investing.",
 } as const;
 
 export const whatsappLink = (message = "Hello, I would like to discuss mutual fund investing.") =>
