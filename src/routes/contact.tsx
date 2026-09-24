@@ -14,9 +14,9 @@ import { pageMeta } from "@/lib/seo";
 export const Route = createFileRoute("/contact")({
   head: () =>
     pageMeta({
-      title: "Book a Consultation",
+      title: "Book a Meeting",
       description:
-        "Book a complimentary, no-obligation consultation with an AMFI Registered Mutual Fund Distributor (ARN-83625). Serving families across India.",
+        "Request a complimentary, no-obligation meeting with Prashant Jog, AMFI Registered Mutual Fund Distributor, ARN 83625. Serving families across India.",
       path: "/contact",
     }),
   component: ContactPage,
@@ -40,7 +40,7 @@ function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Book a consultation"
+        eyebrow="Book a meeting"
         title="Let's talk about your goals."
         lead="Share a few details and we'll get back to you within one working day to arrange a convenient time — in person, on a call, or over video."
       />
@@ -140,7 +140,7 @@ function ContactPage() {
                 </label>
                 <div className="sm:col-span-2">
                   <Button type="submit" variant="gold" size="xl" disabled={!consent} className="w-full sm:w-auto">
-                    Request a Consultation
+                    Request a Meeting
                   </Button>
                   <p className="mt-3 text-xs text-muted-foreground">
                     Complimentary and without obligation. We never share your details.
@@ -186,8 +186,8 @@ function ContactPage() {
               <p className="font-display text-lg font-medium text-foreground">What happens next</p>
               <ol className="mt-3 list-decimal space-y-2 pl-4">
                 <li>We call or message to fix a convenient time.</li>
-                <li>A relaxed 45-minute conversation about your goals.</li>
-                <li>If it feels right, we outline a suitable plan — no pressure.</li>
+                <li>A relaxed 45-minute conversation about your goals and mutual fund investing.</li>
+                <li>If it feels right, we discuss suitable mutual fund categories — no pressure.</li>
               </ol>
             </div>
             <p className="text-xs text-muted-foreground">

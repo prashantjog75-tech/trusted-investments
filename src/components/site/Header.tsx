@@ -51,7 +51,7 @@ export function Header() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <Button asChild variant="gold" size="lg">
-            <Link to="/contact">Book a Consultation</Link>
+            <Link to="/contact">Book a Meeting</Link>
           </Button>
         </div>
 
@@ -82,7 +82,7 @@ export function Header() {
             ))}
             <Button asChild variant="gold" size="lg" className="mt-3">
               <Link to="/contact" onClick={() => setOpen(false)}>
-                Book a Consultation
+                Book a Meeting
               </Link>
             </Button>
           </nav>

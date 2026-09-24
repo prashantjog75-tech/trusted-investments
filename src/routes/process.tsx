@@ -9,7 +9,7 @@ export const Route = createFileRoute("/process")({
     pageMeta({
       title: "Our Process",
       description:
-        "Discover, Plan, Invest, Review — a simple four-step, goal-based approach to mutual fund investing followed with families across India for 15+ years.",
+        "Discover, Assess, Invest, Review — a simple four-step approach to mutual fund distribution followed with families across India for 15+ years.",
       path: "/process",
     }),
   component: ProcessPage,
@@ -20,8 +20,8 @@ function ProcessPage() {
     <>
       <PageHero
         eyebrow="Process"
-        title="Discover. Plan. Invest. Review."
-        lead="A calm, repeatable way of working that turns life goals into a suitable investment plan — and keeps it on track for years."
+        title="Discover. Assess. Invest. Review."
+        lead="A calm, repeatable mutual fund distribution process that connects life goals, risk comfort and time horizon with suitable scheme categories and periodic reviews."
       />
       <Section>
         <ProcessSteps />

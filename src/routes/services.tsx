@@ -11,7 +11,7 @@ export const Route = createFileRoute("/services")({
     pageMeta({
       title: "Services",
       description:
-        "Goal-based investment planning, mutual fund distribution, SIP planning, retirement planning, portfolio review and family wealth planning from an AMFI Registered MFD (ARN-83625).",
+        "Mutual fund distribution, goal-based investing, SIP assistance, retirement-focused investing and portfolio review from Prashant Jog, AMFI Registered Mutual Fund Distributor, ARN 83625.",
       path: "/services",
     }),
   component: ServicesPage,
@@ -29,8 +29,18 @@ function ServicesPage() {
         <FeatureGrid items={services} />
         <div className="mt-12 rounded-2xl border border-gold/30 bg-gold-soft/40 p-6 text-sm leading-relaxed text-muted-foreground">
           <strong className="text-foreground">A note on our role.</strong> We operate as an AMFI Registered Mutual
-          Fund Distributor ({site.arn}). The guidance we provide is incidental to the distribution of mutual fund
-          schemes and is not SEBI-registered investment advisory. {site.disclaimerShort}
+          Fund Distributor ({site.arn}), not an investment adviser. Information shared is general or incidental to
+          mutual fund distribution and does not constitute personalised investment advice. {site.disclaimerShort}
+        </div>
+      </Section>
+      <Section>
+        <SectionHeading
+          eyebrow="Fund information"
+          title="Review scheme information and documents in one place"
+          lead="Explore the source-ready layout for expense ratios, holdings, distributor disclosures, fact sheets, KIM, SID and SAI. All unavailable data is clearly marked."
+        />
+        <div className="mt-8">
+          <a href="/funds" className="inline-flex items-center rounded-md border border-border bg-card px-5 py-3 text-sm font-medium shadow-soft transition-colors hover:bg-muted">Explore fund information</a>
         </div>
       </Section>
       <Section tone="ivory">

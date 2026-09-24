@@ -36,11 +36,11 @@ function Index() {
             </h1>
             <p className="animate-fade-up delay-200 mt-6 max-w-xl text-lg leading-relaxed text-navy-foreground/75">
               For over 15 years, we have helped 500+ families across India work toward their dreams — comfortably,
-              through disciplined investing and goal-based planning.
+              through disciplined, goal-based mutual fund investing.
             </p>
             <div className="animate-fade-up delay-300 mt-9 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="gold" size="xl">
-                <Link to="/contact">Book a Consultation</Link>
+                <Link to="/contact">Book a Meeting</Link>
               </Button>
               <Button asChild variant="outlineLight" size="xl">
                 <Link to="/services">
@@ -125,15 +125,18 @@ function Index() {
         <SectionHeading
           eyebrow="What we do"
           title="Services built around your family's goals"
-          lead="Mutual fund distribution and goal-based planning support — offered with clarity, discipline and long-term commitment."
+          lead="Mutual fund distribution and goal-based investing support — offered with clarity, discipline and long-term commitment."
           align="center"
         />
         <FeatureGrid items={services} className="mt-14" />
-        <div className="mt-10 text-center">
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button asChild variant="outline" size="lg">
             <Link to="/services">
               View all services <ArrowRight className="h-4 w-4" />
             </Link>
+          </Button>
+          <Button asChild variant="link" size="lg">
+            <Link to="/funds">Explore fund information <ArrowRight className="h-4 w-4" /></Link>
           </Button>
         </div>
       </Section>

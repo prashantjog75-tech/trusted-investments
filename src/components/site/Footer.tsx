@@ -28,7 +28,7 @@ export function Footer() {
             ))}
             <li>
               <Link to="/contact" className="text-navy-foreground/80 transition-colors hover:text-gold">
-                Book a Consultation
+                Book a Meeting
               </Link>
             </li>
           </ul>

@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { PageHero, Section } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/CtaBand";
 import { learnTopics } from "@/lib/content";
@@ -35,6 +37,9 @@ function LearnPage() {
           ))}
         </div>
         <p className="mt-10 text-sm text-muted-foreground">{site.disclaimerShort}</p>
+        <Button asChild variant="outline" size="lg" className="mt-6">
+          <Link to="/funds">Explore fund information <ArrowRight className="h-4 w-4" /></Link>
+        </Button>
       </Section>
       <CtaBand title="Have a question about any of this?" lead="We're happy to explain further in a relaxed conversation." />
     </>
