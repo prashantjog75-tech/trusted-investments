@@ -1,9 +1,8 @@
 /** Central place for brand and contact details. */
 export const site = {
-  // TODO: replace with the distributor's real name
-  name: "[Your Name]",
-  tagline: "Mutual Fund Distributor",
-  brand: "[Your Name] | Mutual Fund Distributor",
+  name: "Prashant Jog",
+  tagline: "AMFI Registered Mutual Fund Distributor",
+  brand: "Prashant Jog | AMFI Registered Mutual Fund Distributor",
   arn: "ARN-83625",
   arnNumber: "83625",
   yearsExperience: "15+",
@@ -22,7 +21,7 @@ export const site = {
     "Mutual fund investments are subject to market risks, read all scheme related documents carefully. Past performance is not indicative of future returns. The information on this website is for general educational purposes only and does not constitute personalised investment advice, an offer or a solicitation. We act as an AMFI Registered Mutual Fund Distributor (ARN-83625) and may receive commission from Asset Management Companies on investments made through us. Please consider your goals, risk appetite and time horizon, and consult a qualified professional where appropriate, before investing.",
 } as const;
 
-export const whatsappLink = (message = "Hello, I would like to book a consultation about mutual fund investing.") =>
+export const whatsappLink = (message = "Hello, I would like to discuss mutual fund investing.") =>
   `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 export const nav = [
