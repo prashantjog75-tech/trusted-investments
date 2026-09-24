@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Calculator } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHero, Section } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/CtaBand";
@@ -37,9 +37,14 @@ function LearnPage() {
           ))}
         </div>
         <p className="mt-10 text-sm text-muted-foreground">{site.disclaimerShort}</p>
-        <Button asChild variant="outline" size="lg" className="mt-6">
-          <Link to="/funds">Explore fund information <ArrowRight className="h-4 w-4" /></Link>
-        </Button>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Button asChild variant="outline" size="lg">
+            <Link to="/funds">Explore fund information <ArrowRight className="h-4 w-4" /></Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/sip-calculator"><Calculator className="h-4 w-4" /> Try the SIP calculator</Link>
+          </Button>
+        </div>
       </Section>
       <CtaBand title="Have a question about any of this?" lead="We're happy to explain further in a relaxed conversation." />
     </>

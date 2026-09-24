@@ -171,7 +171,7 @@ export function FundInformation({ fund }: { fund: FundRecord }) {
           <p className="eyebrow">Investment tools</p>
           <h2 className="mt-3 text-3xl font-medium md:text-4xl">Tools for informed conversations</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-3">
-            <ToolCard icon={Calculator} title="SIP illustration" body="Illustrative contribution scenarios will be available after assumptions and disclosures are approved." />
+            <ToolCard icon={Calculator} title="SIP illustration" body="Explore assumption-based SIP and goal projections with clearly labelled estimated values." to="/sip-calculator" />
             <ToolCard icon={Gauge} title="Risk questionnaire" body="A structured, informational questionnaire will be connected here after its assumptions and disclosures are approved." />
             <ToolCard icon={FileText} title="Document checklist" body="A scheme-document comparison checklist will appear here when verified sources are connected." />
           </div>
@@ -192,6 +192,6 @@ function EmptyState({ icon: Icon, title, body }: { icon: typeof BriefcaseBusines
   return <div className="mt-8 rounded-lg border border-dashed border-border bg-card p-8 text-center"><Icon className="mx-auto h-7 w-7 text-gold" /><h3 className="mt-4 text-xl font-medium">{title}</h3><p className="mx-auto mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">{body}</p></div>;
 }
 
-function ToolCard({ icon: Icon, title, body }: { icon: typeof Calculator; title: string; body: string }) {
-  return <article className="rounded-lg border border-border bg-card p-6 shadow-soft"><Icon className="h-6 w-6 text-gold" /><div className="mt-5 flex items-center justify-between gap-3"><h3 className="text-xl font-medium">{title}</h3><Badge variant="secondary">Coming soon</Badge></div><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p></article>;
+function ToolCard({ icon: Icon, title, body, to }: { icon: typeof Calculator; title: string; body: string; to?: "/sip-calculator" }) {
+  return <article className="rounded-lg border border-border bg-card p-6 shadow-soft"><Icon className="h-6 w-6 text-gold" /><div className="mt-5 flex items-center justify-between gap-3"><h3 className="text-xl font-medium">{title}</h3><Badge variant="secondary">{to ? "Available" : "Coming soon"}</Badge></div><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>{to && <Button asChild variant="outline" className="mt-5 w-full"><Link to={to}>Open calculator <ArrowRight className="h-4 w-4" /></Link></Button>}</article>;
 }
