@@ -25,7 +25,7 @@ export type Item = { icon: LucideIcon; title: string; body: string };
 export const services: Item[] = [
   {
     icon: Compass,
-    title: "Goal-based investment planning",
+    title: "Goal-based mutual fund investing",
     body: "We start with what matters to your family — a home, education, retirement — and map suitable mutual fund solutions to each goal and its timeline.",
   },
   {
@@ -35,12 +35,12 @@ export const services: Item[] = [
   },
   {
     icon: Repeat,
-    title: "SIP planning",
+    title: "SIP investing assistance",
     body: "Systematic Investment Plans make investing a monthly habit. We help you size SIPs to your goals and income, and step them up as life moves forward.",
   },
   {
     icon: PiggyBank,
-    title: "Retirement & financial goal planning",
+    title: "Retirement & goal-based investing",
     body: "A clear picture of what retirement could cost, how much to set aside, and which fund categories may suit your horizon — reviewed as circumstances change.",
   },
   {
@@ -50,8 +50,8 @@ export const services: Item[] = [
   },
   {
     icon: Users,
-    title: "Family wealth planning",
-    body: "Bringing the whole family's investments into one coherent plan — nominations, joint goals, and a simple structure the next generation can understand.",
+    title: "Family mutual fund services",
+    body: "Bringing the whole family's mutual fund investments into one coherent view — nominations, joint goals, and a simple structure the next generation can understand.",
   },
 ];
 
@@ -60,13 +60,13 @@ export const processSteps = [
     icon: Search,
     step: "01",
     title: "Discover",
-    body: "We listen. Your family, your dreams, your worries, your current investments and commitments — everything that shapes a plan that truly fits.",
+    body: "We listen. Your family, your dreams, your worries, your current investments and commitments — everything that shapes a suitable mutual fund approach.",
   },
   {
     icon: ClipboardList,
     step: "02",
-    title: "Plan",
-    body: "We assess your risk comfort and time horizon for each goal, then recommend suitable mutual fund categories and a sensible asset allocation.",
+    title: "Assess",
+    body: "We understand your risk comfort and time horizon for each goal, then help you explore relevant mutual fund categories and asset-allocation options.",
   },
   {
     icon: Wallet,
@@ -78,7 +78,7 @@ export const processSteps = [
     icon: RefreshCw,
     step: "04",
     title: "Review",
-    body: "Life changes, markets move. We review periodically, keep you informed in plain language, and adjust the plan as your goals evolve.",
+    body: "Life changes, markets move. We review periodically, keep you informed in plain language, and discuss suitable portfolio changes as your goals evolve.",
   },
 ];
 
@@ -114,7 +114,7 @@ export const goals: Item[] = [
   {
     icon: PiggyBank,
     title: "Retirement",
-    body: "Build a corpus that can support the lifestyle you want after work, with a plan that respects inflation and your time horizon.",
+    body: "Build a corpus that can support the lifestyle you want after work, with an investing approach that respects inflation and your time horizon.",
   },
   {
     icon: GraduationCap,
@@ -129,7 +129,7 @@ export const goals: Item[] = [
   {
     icon: Home,
     title: "Home & other life goals",
-    body: "A down payment, a wedding, a sabbatical, a family trip — medium-term goals deserve their own suitable plan.",
+    body: "A down payment, a wedding, a sabbatical, a family trip — medium-term goals deserve their own suitable investment approach.",
   },
   {
     icon: ShieldCheck,
@@ -171,8 +171,8 @@ export const faqs = [
     a: "An AMFI Registered Mutual Fund Distributor helps investors understand, select and invest in mutual fund schemes, and supports them with transactions, documentation and ongoing service. We are registered under ARN-83625.",
   },
   {
-    q: "Is there a fee for the consultation?",
-    a: "The initial consultation is complimentary. As a distributor, we may receive commission from Asset Management Companies on investments made through us; we are happy to explain this transparently.",
+    q: "Is there a fee for the initial meeting?",
+    a: "The initial meeting is complimentary. As a distributor, we may receive commission from Asset Management Companies on investments made through us; we are happy to explain this transparently.",
   },
   {
     q: "How much do I need to start investing?",
@@ -188,14 +188,14 @@ export const faqs = [
   },
   {
     q: "Can you review my existing mutual fund portfolio?",
-    a: "Yes. We review existing holdings for alignment with your goals, asset allocation and risk comfort, and suggest changes where they may be useful.",
+    a: "Yes. We can help you organise and review existing mutual fund holdings against your stated goals, time horizon and risk comfort.",
   },
   {
-    q: "How often will we review my plan?",
+    q: "How often will we review my mutual fund portfolio?",
     a: "Typically once or twice a year, and whenever a significant life event occurs — a new child, a job change, an inheritance or a new goal.",
   },
   {
-    q: "Do you offer regulated investment advisory services?",
-    a: "We operate as a Mutual Fund Distributor under AMFI registration. Our guidance is incidental to distribution and does not constitute SEBI-registered investment advisory services.",
+    q: "What is your professional role?",
+    a: "Prashant Jog operates only as an AMFI Registered Mutual Fund Distributor under ARN-83625. Information shared is general or incidental to mutual fund distribution.",
   },
 ];

@@ -1,4 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { PageHero, Section } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/CtaBand";
 import { learnTopics } from "@/lib/content";
@@ -10,7 +12,7 @@ export const Route = createFileRoute("/learn")({
     pageMeta({
       title: "Learn the Basics",
       description:
-        "Simple explanations of mutual funds, SIPs, risk profiling, asset allocation, compounding and long-term investing — general education, not personalised advice.",
+        "Simple explanations of mutual funds, SIPs, risk profiling, asset allocation, compounding and long-term investing for general education.",
       path: "/learn",
     }),
   component: LearnPage,
@@ -22,7 +24,7 @@ function LearnPage() {
       <PageHero
         eyebrow="Learn"
         title="Investing, explained simply."
-        lead="Short, jargon-free notes on the ideas behind disciplined investing. For general education only — not personalised investment advice."
+        lead="Short, jargon-free notes on the ideas behind disciplined investing, provided for general education only."
       />
       <Section>
         <div className="grid gap-5 md:grid-cols-2">
@@ -35,6 +37,9 @@ function LearnPage() {
           ))}
         </div>
         <p className="mt-10 text-sm text-muted-foreground">{site.disclaimerShort}</p>
+        <Button asChild variant="outline" size="lg" className="mt-6">
+          <Link to="/funds">Explore fund information <ArrowRight className="h-4 w-4" /></Link>
+        </Button>
       </Section>
       <CtaBand title="Have a question about any of this?" lead="We're happy to explain further in a relaxed conversation." />
     </>

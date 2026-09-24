@@ -20,7 +20,7 @@ export const Route = createFileRoute("/about")({
 });
 
 const values = [
-  ["Suitability first", "Every recommendation begins with your goals, horizon and risk comfort — never with what is popular this quarter."],
+  ["Suitability first", "Every mutual fund discussion begins with your goals, horizon and risk comfort — never with what is popular this quarter."],
   ["Patience", "Wealth is built over decades, not weeks. We help families stay invested through the noise."],
   ["Plain language", "If you cannot explain it to your family at dinner, we have not explained it well enough."],
   ["Continuity", "The person who onboards you is the person who reviews with you years later."],
@@ -32,7 +32,7 @@ function AboutPage() {
       <PageHero
         eyebrow="About"
         title="A practice built on relationships, one family at a time."
-        lead="For more than 15 years, we have helped families across India plan, invest and stay the course — as an AMFI Registered Mutual Fund Distributor, ARN-83625."
+        lead="For more than 15 years, Prashant Jog has helped families across India invest, track and stay the course — as an AMFI Registered Mutual Fund Distributor, ARN-83625."
       />
 
       <Section>
@@ -50,12 +50,12 @@ function AboutPage() {
             <div className="mt-6 space-y-5 text-base leading-relaxed text-muted-foreground md:text-lg">
               <p>
                 {site.name} began this practice with a simple observation: most families do not lack ambition — they
-                lack a calm, trusted guide who will sit with them, understand what they are really working toward, and
-                help them invest in a way that fits.
+                value a consistent mutual fund distributor who will sit with them, understand what they are working
+                toward, and help them invest with discipline.
               </p>
               <p>
-                Over 15+ years and more than 500 families, that conviction has only deepened. Retirements have been
-                planned, children have gone on to study, homes have been bought — not through luck or timing, but
+                Over 15+ years and more than 500 families, that conviction has only deepened. Families have invested
+                toward retirement, education and homes — not through luck or timing, but
                 through disciplined, goal-based investing, reviewed patiently year after year.
               </p>
               <p>

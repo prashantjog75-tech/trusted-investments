@@ -13,12 +13,15 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FundsRouteImport } from './routes/funds'
 import { Route as GoalsRouteImport } from './routes/goals'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProcessRouteImport } from './routes/process'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as FundsIndexRouteImport } from './routes/funds.index'
+import { Route as FundsFundSlugRouteImport } from './routes/funds.$fundSlug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -38,6 +41,11 @@ const ContactRoute = ContactRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FundsRoute = FundsRouteImport.update({
+  id: '/funds',
+  path: '/funds',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GoalsRoute = GoalsRouteImport.update({
@@ -70,18 +78,31 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FundsIndexRoute = FundsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FundsRoute,
+} as any)
+const FundsFundSlugRoute = FundsFundSlugRouteImport.update({
+  id: '/$fundSlug',
+  path: '/$fundSlug',
+  getParentRoute: () => FundsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/funds': typeof FundsRouteWithChildren
   '/goals': typeof GoalsRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/funds/$fundSlug': typeof FundsFundSlugRoute
+  '/funds/': typeof FundsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -94,6 +115,8 @@ export interface FileRoutesByTo {
   '/process': typeof ProcessRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/funds/$fundSlug': typeof FundsFundSlugRoute
+  '/funds': typeof FundsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -101,12 +124,15 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/faq': typeof FaqRoute
+  '/funds': typeof FundsRouteWithChildren
   '/goals': typeof GoalsRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/funds/$fundSlug': typeof FundsFundSlugRoute
+  '/funds/': typeof FundsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -115,12 +141,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/faq'
+    | '/funds'
     | '/goals'
     | '/learn'
     | '/privacy'
     | '/process'
     | '/services'
     | '/terms'
+    | '/funds/$fundSlug'
+    | '/funds/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,18 +162,23 @@ export interface FileRouteTypes {
     | '/process'
     | '/services'
     | '/terms'
+    | '/funds/$fundSlug'
+    | '/funds'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
     | '/faq'
+    | '/funds'
     | '/goals'
     | '/learn'
     | '/privacy'
     | '/process'
     | '/services'
     | '/terms'
+    | '/funds/$fundSlug'
+    | '/funds/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -152,6 +186,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   FaqRoute: typeof FaqRoute
+  FundsRoute: typeof FundsRouteWithChildren
   GoalsRoute: typeof GoalsRoute
   LearnRoute: typeof LearnRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -188,6 +223,13 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/funds': {
+      id: '/funds'
+      path: '/funds'
+      fullPath: '/funds'
+      preLoaderRoute: typeof FundsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/goals': {
@@ -232,14 +274,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/funds/': {
+      id: '/funds/'
+      path: '/'
+      fullPath: '/funds/'
+      preLoaderRoute: typeof FundsIndexRouteImport
+      parentRoute: typeof FundsRoute
+    }
+    '/funds/$fundSlug': {
+      id: '/funds/$fundSlug'
+      path: '/$fundSlug'
+      fullPath: '/funds/$fundSlug'
+      preLoaderRoute: typeof FundsFundSlugRouteImport
+      parentRoute: typeof FundsRoute
+    }
   }
 }
+
+interface FundsRouteChildren {
+  FundsFundSlugRoute: typeof FundsFundSlugRoute
+  FundsIndexRoute: typeof FundsIndexRoute
+}
+
+const FundsRouteChildren: FundsRouteChildren = {
+  FundsFundSlugRoute: FundsFundSlugRoute,
+  FundsIndexRoute: FundsIndexRoute,
+}
+
+const FundsRouteWithChildren = FundsRoute._addFileChildren(FundsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   FaqRoute: FaqRoute,
+  FundsRoute: FundsRouteWithChildren,
   GoalsRoute: GoalsRoute,
   LearnRoute: LearnRoute,
   PrivacyRoute: PrivacyRoute,

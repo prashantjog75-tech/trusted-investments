@@ -11,7 +11,7 @@ export const Route = createFileRoute("/goals")({
     pageMeta({
       title: "Life Goals",
       description:
-        "Plan for retirement, your child's education, wealth creation, a home and financial resilience with goal-based mutual fund investing guided by an AMFI Registered MFD.",
+        "Explore goal-based mutual fund investing for retirement, education, wealth creation, a home and financial resilience with an AMFI Registered Mutual Fund Distributor.",
       path: "/goals",
     }),
   component: GoalsPage,
@@ -22,7 +22,7 @@ function GoalsPage() {
     <>
       <PageHero
         eyebrow="Life goals"
-        title="Every dream deserves its own plan."
+        title="Every dream deserves a considered investing approach."
         lead="Different goals have different timelines and different needs. We help you give each one a suitable place in your portfolio."
       />
       <Section>

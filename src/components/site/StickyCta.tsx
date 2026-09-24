@@ -18,7 +18,7 @@ export function StickyCta() {
             </a>
           </Button>
           <Button asChild variant="gold" size="lg" className="flex-[1.4]">
-            <Link to="/contact">Book a Consultation</Link>
+            <Link to="/contact">Book a Meeting</Link>
           </Button>
         </div>
       </div>
