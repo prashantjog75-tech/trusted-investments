@@ -7,7 +7,7 @@ import { funds } from "@/lib/funds";
 import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site-config";
 
-export const Route = createFileRoute("/funds")({
+export const Route = createFileRoute("/funds/")({
   head: () =>
     pageMeta({
       title: "Fund Information & Investment Tools",
