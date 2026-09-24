@@ -19,6 +19,7 @@ import { Route as LearnRouteImport } from './routes/learn'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProcessRouteImport } from './routes/process'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SipCalculatorRouteImport } from './routes/sip-calculator'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as FundsIndexRouteImport } from './routes/funds.index'
 import { Route as FundsFundSlugRouteImport } from './routes/funds.$fundSlug'
@@ -73,6 +74,11 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SipCalculatorRoute = SipCalculatorRouteImport.update({
+  id: '/sip-calculator',
+  path: '/sip-calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/services': typeof ServicesRoute
+  '/sip-calculator': typeof SipCalculatorRoute
   '/terms': typeof TermsRoute
   '/funds/$fundSlug': typeof FundsFundSlugRoute
   '/funds/': typeof FundsIndexRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/services': typeof ServicesRoute
+  '/sip-calculator': typeof SipCalculatorRoute
   '/terms': typeof TermsRoute
   '/funds/$fundSlug': typeof FundsFundSlugRoute
   '/funds': typeof FundsIndexRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/services': typeof ServicesRoute
+  '/sip-calculator': typeof SipCalculatorRoute
   '/terms': typeof TermsRoute
   '/funds/$fundSlug': typeof FundsFundSlugRoute
   '/funds/': typeof FundsIndexRoute
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/process'
     | '/services'
+    | '/sip-calculator'
     | '/terms'
     | '/funds/$fundSlug'
     | '/funds/'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/process'
     | '/services'
+    | '/sip-calculator'
     | '/terms'
     | '/funds/$fundSlug'
     | '/funds'
@@ -176,6 +187,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/process'
     | '/services'
+    | '/sip-calculator'
     | '/terms'
     | '/funds/$fundSlug'
     | '/funds/'
@@ -192,6 +204,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProcessRoute: typeof ProcessRoute
   ServicesRoute: typeof ServicesRoute
+  SipCalculatorRoute: typeof SipCalculatorRoute
   TermsRoute: typeof TermsRoute
 }
 
@@ -267,6 +280,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sip-calculator': {
+      id: '/sip-calculator'
+      path: '/sip-calculator'
+      fullPath: '/sip-calculator'
+      preLoaderRoute: typeof SipCalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -314,6 +334,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProcessRoute: ProcessRoute,
   ServicesRoute: ServicesRoute,
+  SipCalculatorRoute: SipCalculatorRoute,
   TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
