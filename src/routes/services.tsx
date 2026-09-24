@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { CtaBand } from "@/components/site/CtaBand";
@@ -40,7 +40,7 @@ function ServicesPage() {
           lead="Explore the source-ready layout for expense ratios, holdings, distributor disclosures, fact sheets, KIM, SID and SAI. All unavailable data is clearly marked."
         />
         <div className="mt-8">
-          <a href="/funds" className="inline-flex items-center rounded-md border border-border bg-card px-5 py-3 text-sm font-medium shadow-soft transition-colors hover:bg-muted">Explore fund information</a>
+          <Link to="/funds" className="inline-flex items-center rounded-md border border-border bg-card px-5 py-3 text-sm font-medium shadow-soft transition-colors hover:bg-muted">Explore fund information</Link>
         </div>
       </Section>
       <Section tone="ivory">

@@ -30,7 +30,7 @@ function FundPage() {
     <>
       <section className="bg-navy-gradient grain text-navy-foreground">
         <div className="container-site relative z-10 py-16 md:py-24">
-          <Button asChild variant="ghostLight" size="sm"><Link to="/funds"><ArrowLeft className="h-4 w-4" /> All fund information</Link></Button>
+          <Button asChild variant="outlineLight" size="sm"><Link to="/funds"><ArrowLeft className="h-4 w-4" /> All fund information</Link></Button>
           <div className="mt-8 flex flex-wrap items-center gap-3 text-xs font-semibold uppercase text-gold">
             <span>{fund.label}</span><span aria-hidden="true">·</span><span>{site.arn}</span>
           </div>

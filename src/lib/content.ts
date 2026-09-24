@@ -51,7 +51,7 @@ export const services: Item[] = [
   {
     icon: Users,
     title: "Family mutual fund services",
-    body: "Bringing the whole family's investments into one coherent plan — nominations, joint goals, and a simple structure the next generation can understand.",
+    body: "Bringing the whole family's mutual fund investments into one coherent view — nominations, joint goals, and a simple structure the next generation can understand.",
   },
 ];
 
@@ -60,7 +60,7 @@ export const processSteps = [
     icon: Search,
     step: "01",
     title: "Discover",
-    body: "We listen. Your family, your dreams, your worries, your current investments and commitments — everything that shapes a plan that truly fits.",
+    body: "We listen. Your family, your dreams, your worries, your current investments and commitments — everything that shapes a suitable mutual fund approach.",
   },
   {
     icon: ClipboardList,
@@ -114,7 +114,7 @@ export const goals: Item[] = [
   {
     icon: PiggyBank,
     title: "Retirement",
-    body: "Build a corpus that can support the lifestyle you want after work, with a plan that respects inflation and your time horizon.",
+    body: "Build a corpus that can support the lifestyle you want after work, with an investing approach that respects inflation and your time horizon.",
   },
   {
     icon: GraduationCap,
