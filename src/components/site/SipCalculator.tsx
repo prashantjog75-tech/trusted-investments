@@ -81,7 +81,9 @@ export function SipCalculator() {
     [mode, numericValues],
   );
 
-  const requiredSip = "requiredMonthlySip" in result ? result.requiredMonthlySip : null;
+  const requiredSip = "requiredMonthlySip" in result && typeof result.requiredMonthlySip === "number"
+    ? result.requiredMonthlySip
+    : null;
   const initialMeetsGoal = "initialInvestmentMeetsTarget" in result && result.initialInvestmentMeetsTarget;
   const errorMessages = validation.success
     ? []
