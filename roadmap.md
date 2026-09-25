@@ -9,6 +9,6 @@
 - [x] Add the SIP calculator and goal projection calculation engine.
 - [x] Add the responsive calculator page, chart, outputs, and disclosures.
 - [x] Add contextual calculator links without changing primary navigation.
-- [ ] Test calculator formulas and verify desktop/mobile behaviour.
+- [x] Test calculator formulas and verify desktop/mobile behaviour.
 - [ ] Connect verified live fund data and official document URLs (blocked: verified data source not supplied).
 - [ ] Replace privacy and terms placeholders with approved legal text (blocked: approved legal copy not supplied).
