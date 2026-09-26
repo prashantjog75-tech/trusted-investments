@@ -18,6 +18,7 @@ import { Route as GoalsRouteImport } from './routes/goals'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProcessRouteImport } from './routes/process'
+import { Route as RiskProfileRouteImport } from './routes/risk-profile'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SipCalculatorRouteImport } from './routes/sip-calculator'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -69,6 +70,11 @@ const ProcessRoute = ProcessRouteImport.update({
   path: '/process',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RiskProfileRoute = RiskProfileRouteImport.update({
+  id: '/risk-profile',
+  path: '/risk-profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
+  '/risk-profile': typeof RiskProfileRoute
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
   '/terms': typeof TermsRoute
@@ -120,6 +127,7 @@ export interface FileRoutesByTo {
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
+  '/risk-profile': typeof RiskProfileRoute
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
   '/terms': typeof TermsRoute
@@ -137,6 +145,7 @@ export interface FileRoutesById {
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
+  '/risk-profile': typeof RiskProfileRoute
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
   '/terms': typeof TermsRoute
@@ -155,6 +164,7 @@ export interface FileRouteTypes {
     | '/learn'
     | '/privacy'
     | '/process'
+    | '/risk-profile'
     | '/services'
     | '/sip-calculator'
     | '/terms'
@@ -170,6 +180,7 @@ export interface FileRouteTypes {
     | '/learn'
     | '/privacy'
     | '/process'
+    | '/risk-profile'
     | '/services'
     | '/sip-calculator'
     | '/terms'
@@ -186,6 +197,7 @@ export interface FileRouteTypes {
     | '/learn'
     | '/privacy'
     | '/process'
+    | '/risk-profile'
     | '/services'
     | '/sip-calculator'
     | '/terms'
@@ -203,6 +215,7 @@ export interface RootRouteChildren {
   LearnRoute: typeof LearnRoute
   PrivacyRoute: typeof PrivacyRoute
   ProcessRoute: typeof ProcessRoute
+  RiskProfileRoute: typeof RiskProfileRoute
   ServicesRoute: typeof ServicesRoute
   SipCalculatorRoute: typeof SipCalculatorRoute
   TermsRoute: typeof TermsRoute
@@ -273,6 +286,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProcessRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/risk-profile': {
+      id: '/risk-profile'
+      path: '/risk-profile'
+      fullPath: '/risk-profile'
+      preLoaderRoute: typeof RiskProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -333,6 +353,7 @@ const rootRouteChildren: RootRouteChildren = {
   LearnRoute: LearnRoute,
   PrivacyRoute: PrivacyRoute,
   ProcessRoute: ProcessRoute,
+  RiskProfileRoute: RiskProfileRoute,
   ServicesRoute: ServicesRoute,
   SipCalculatorRoute: SipCalculatorRoute,
   TermsRoute: TermsRoute,
