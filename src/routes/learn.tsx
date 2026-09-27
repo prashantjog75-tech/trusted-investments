@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Calculator } from "lucide-react";
+import { ArrowRight, Calculator, Gauge } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHero, Section } from "@/components/site/Section";
 import { CtaBand } from "@/components/site/CtaBand";
@@ -43,6 +43,9 @@ function LearnPage() {
           </Button>
           <Button asChild variant="outline" size="lg">
             <Link to="/sip-calculator"><Calculator className="h-4 w-4" /> Try the SIP calculator</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <Link to="/risk-profile"><Gauge className="h-4 w-4" /> Explore your risk profile</Link>
           </Button>
         </div>
       </Section>

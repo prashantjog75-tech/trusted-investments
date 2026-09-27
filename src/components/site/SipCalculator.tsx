@@ -1,6 +1,9 @@
 import { useMemo, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import { ArrowRight, Gauge } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   ChartContainer,
   ChartLegend,
@@ -260,6 +263,10 @@ export function SipCalculator() {
 
       <div className="lg:col-span-2 rounded-lg border border-gold/30 bg-gold-soft/40 p-5 text-sm leading-relaxed text-muted-foreground">
         <strong className="text-foreground">Illustration only.</strong> Projected values are based solely on the assumptions entered and are not a promise or forecast of actual fund performance. Mutual fund returns are market-linked and not guaranteed. Prashant Jog operates only as an AMFI Registered Mutual Fund Distributor ({site.arn}). {site.disclaimerShort}
+      </div>
+      <div className="lg:col-span-2 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
+        <p className="max-w-2xl text-sm text-muted-foreground">Explore how your time horizon and comfort with market movement shape an educational risk profile.</p>
+        <Button asChild variant="outline"><Link to="/risk-profile"><Gauge className="h-4 w-4" /> Start risk questionnaire <ArrowRight className="h-4 w-4" /></Link></Button>
       </div>
     </div>
   );
