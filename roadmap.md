@@ -12,7 +12,7 @@
 - [x] Test calculator formulas and verify desktop/mobile behaviour.
 - [ ] Connect verified live fund data and official document URLs (blocked: verified data source not supplied).
 - [ ] Replace privacy and terms placeholders with approved legal text (blocked: approved legal copy not supplied).
-- [ ] Add typed risk questionnaire, scoring bands, and disabled product-mapping configuration.
-- [ ] Build the risk profile, personalized projection, and report flow.
-- [ ] Add contextual entry points without changing primary navigation.
-- [ ] Add unit tests and verify desktop/mobile, accessibility, links, and build.
+- [x] Add typed risk questionnaire, scoring bands, and disabled product-mapping configuration.
+- [x] Build the risk profile, personalized projection, and report flow.
+- [x] Add contextual entry points without changing primary navigation.
+- [x] Add unit tests and verify desktop/mobile, accessibility, links, and build.

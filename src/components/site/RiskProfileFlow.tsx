@@ -70,6 +70,7 @@ export function RiskProfileFlow() {
 
   function nextQuestion() {
     const question = riskQuestions[questionIndex];
+    if (!question) return;
     if (!answers[question.id]) {
       setShowQuestionError(true);
       return;
@@ -92,6 +93,7 @@ export function RiskProfileFlow() {
 
   if (stage === "questions") {
     const question = riskQuestions[questionIndex];
+    if (!question) return null;
     const progress = ((questionIndex + 1) / riskQuestions.length) * 100;
     return (
       <div className="mx-auto max-w-4xl">

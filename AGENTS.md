@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep risk questionnaire definitions, scoring, projection enrichment, and report formatting in separate typed modules so the UI remains reusable and product mapping stays disabled.

@@ -4,11 +4,19 @@ import { buildProjectionReport } from "./report";
 import { riskQuestions, scoreRiskProfile, type RiskAnswers } from "./questionnaire";
 
 function answersAt(points: 1 | 2 | 3): RiskAnswers {
-  return Object.fromEntries(riskQuestions.map((question) => [question.id, question.options[points - 1].id]));
+  return Object.fromEntries(riskQuestions.map((question) => {
+    const option = question.options[points - 1];
+    if (!option) throw new Error("Missing test answer option");
+    return [question.id, option.id];
+  }));
 }
 
 function mixed(points: number[]): RiskAnswers {
-  return Object.fromEntries(riskQuestions.map((question, index) => [question.id, question.options[(points[index] ?? 1) - 1].id]));
+  return Object.fromEntries(riskQuestions.map((question, index) => {
+    const option = question.options[(points[index] ?? 1) - 1];
+    if (!option) throw new Error("Missing test answer option");
+    return [question.id, option.id];
+  }));
 }
 
 describe("risk scoring", () => {

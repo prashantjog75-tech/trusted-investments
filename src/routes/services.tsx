@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Calculator } from "lucide-react";
+import { Calculator, Gauge } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
@@ -43,6 +43,7 @@ function ServicesPage() {
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild variant="outline"><Link to="/funds">Explore fund information</Link></Button>
           <Button asChild variant="outline"><Link to="/sip-calculator"><Calculator className="h-4 w-4" /> Try the SIP calculator</Link></Button>
+          <Button asChild variant="outline"><Link to="/risk-profile"><Gauge className="h-4 w-4" /> Explore your risk profile</Link></Button>
         </div>
       </Section>
       <Section tone="ivory">
