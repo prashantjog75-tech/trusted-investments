@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DataStatusRouteImport } from './routes/data-status'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FundsRouteImport } from './routes/funds'
 import { Route as GoalsRouteImport } from './routes/goals'
@@ -24,6 +25,7 @@ import { Route as SipCalculatorRouteImport } from './routes/sip-calculator'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as FundsIndexRouteImport } from './routes/funds.index'
 import { Route as FundsFundSlugRouteImport } from './routes/funds.$fundSlug'
+import { Route as ApiPublicFundSyncRouteImport } from './routes/api/public/fund-sync'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -38,6 +40,11 @@ const AboutRoute = AboutRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DataStatusRoute = DataStatusRouteImport.update({
+  id: '/data-status',
+  path: '/data-status',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -100,11 +107,17 @@ const FundsFundSlugRoute = FundsFundSlugRouteImport.update({
   path: '/$fundSlug',
   getParentRoute: () => FundsRoute,
 } as any)
+const ApiPublicFundSyncRoute = ApiPublicFundSyncRouteImport.update({
+  id: '/api/public/fund-sync',
+  path: '/api/public/fund-sync',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/data-status': typeof DataStatusRoute
   '/faq': typeof FaqRoute
   '/funds': typeof FundsRouteWithChildren
   '/goals': typeof GoalsRoute
@@ -117,11 +130,13 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/funds/$fundSlug': typeof FundsFundSlugRoute
   '/funds/': typeof FundsIndexRoute
+  '/api/public/fund-sync': typeof ApiPublicFundSyncRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/data-status': typeof DataStatusRoute
   '/faq': typeof FaqRoute
   '/goals': typeof GoalsRoute
   '/learn': typeof LearnRoute
@@ -133,12 +148,14 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/funds/$fundSlug': typeof FundsFundSlugRoute
   '/funds': typeof FundsIndexRoute
+  '/api/public/fund-sync': typeof ApiPublicFundSyncRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/data-status': typeof DataStatusRoute
   '/faq': typeof FaqRoute
   '/funds': typeof FundsRouteWithChildren
   '/goals': typeof GoalsRoute
@@ -151,6 +168,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/funds/$fundSlug': typeof FundsFundSlugRoute
   '/funds/': typeof FundsIndexRoute
+  '/api/public/fund-sync': typeof ApiPublicFundSyncRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -158,6 +176,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/data-status'
     | '/faq'
     | '/funds'
     | '/goals'
@@ -170,11 +189,13 @@ export interface FileRouteTypes {
     | '/terms'
     | '/funds/$fundSlug'
     | '/funds/'
+    | '/api/public/fund-sync'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/contact'
+    | '/data-status'
     | '/faq'
     | '/goals'
     | '/learn'
@@ -186,11 +207,13 @@ export interface FileRouteTypes {
     | '/terms'
     | '/funds/$fundSlug'
     | '/funds'
+    | '/api/public/fund-sync'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
+    | '/data-status'
     | '/faq'
     | '/funds'
     | '/goals'
@@ -203,12 +226,14 @@ export interface FileRouteTypes {
     | '/terms'
     | '/funds/$fundSlug'
     | '/funds/'
+    | '/api/public/fund-sync'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  DataStatusRoute: typeof DataStatusRoute
   FaqRoute: typeof FaqRoute
   FundsRoute: typeof FundsRouteWithChildren
   GoalsRoute: typeof GoalsRoute
@@ -219,6 +244,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   SipCalculatorRoute: typeof SipCalculatorRoute
   TermsRoute: typeof TermsRoute
+  ApiPublicFundSyncRoute: typeof ApiPublicFundSyncRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -242,6 +268,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/data-status': {
+      id: '/data-status'
+      path: '/data-status'
+      fullPath: '/data-status'
+      preLoaderRoute: typeof DataStatusRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -328,6 +361,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FundsFundSlugRouteImport
       parentRoute: typeof FundsRoute
     }
+    '/api/public/fund-sync': {
+      id: '/api/public/fund-sync'
+      path: '/api/public/fund-sync'
+      fullPath: '/api/public/fund-sync'
+      preLoaderRoute: typeof ApiPublicFundSyncRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -347,6 +387,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  DataStatusRoute: DataStatusRoute,
   FaqRoute: FaqRoute,
   FundsRoute: FundsRouteWithChildren,
   GoalsRoute: GoalsRoute,
@@ -357,6 +398,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   SipCalculatorRoute: SipCalculatorRoute,
   TermsRoute: TermsRoute,
+  ApiPublicFundSyncRoute: ApiPublicFundSyncRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

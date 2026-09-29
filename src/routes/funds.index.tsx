@@ -3,11 +3,12 @@ import { FileSearch, ShieldCheck } from "lucide-react";
 import { FundDirectoryCard } from "@/components/site/FundInformation";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { Button } from "@/components/ui/button";
-import { funds } from "@/lib/funds";
+import { listFunds } from "@/lib/fund-data/functions";
 import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site-config";
 
 export const Route = createFileRoute("/funds/")({
+  loader: () => listFunds(),
   head: () =>
     pageMeta({
       title: "Fund Information & Investment Tools",
@@ -19,18 +20,19 @@ export const Route = createFileRoute("/funds/")({
 });
 
 function FundsPage() {
+  const funds = Route.useLoaderData();
   return (
     <>
       <PageHero
         eyebrow={`Fund information · ${site.arn}`}
         title="Scheme information, organised for careful review."
-        lead="Find costs, portfolio information, distributor disclosures and official scheme documents in one clear place. Verified source data will replace the labelled placeholders as integrations are connected."
+        lead="Find costs, portfolio information, distributor disclosures and official scheme documents in one clear place, with source and freshness states shown clearly."
       />
       <Section>
         <SectionHeading
           eyebrow="Fund directory"
-          title="Explore the information-page structure"
-          lead="These demonstration pages contain no invented schemes, performance figures or documents. They show exactly where verified fund data will appear."
+          title="Explore scheme information"
+          lead="Official AMFI data appears after a successful refresh. Demonstration pages remain explicitly labelled and contain no invented figures or documents."
         />
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {funds.map((fund) => <FundDirectoryCard key={fund.slug} fund={fund} />)}

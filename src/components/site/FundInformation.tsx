@@ -30,7 +30,7 @@ export function FundDirectoryCard({ fund }: { fund: FundRecord }) {
     <article className="card-premium flex h-full flex-col p-6 md:p-7">
       <div className="flex flex-wrap items-center gap-2">
         <Badge variant="secondary">{fund.label}</Badge>
-        <span className="text-xs text-muted-foreground">Placeholder data</span>
+        <span className="text-xs text-muted-foreground">{fund.isDemonstration ? "Placeholder data" : fund.sourceName}</span>
       </div>
       <h2 className="mt-5 text-2xl font-medium">{fund.name}</h2>
       <p className="mt-2 text-sm font-medium text-gold">{fund.category}</p>
@@ -74,6 +74,7 @@ export function FundInformation({ fund }: { fund: FundRecord }) {
             <p className="eyebrow">Fund overview</p>
             <h2 className="mt-3 text-3xl font-medium md:text-4xl">About this scheme page</h2>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">{fund.overview}</p>
+            <div className="mt-5 flex flex-wrap gap-2 text-xs text-muted-foreground"><Badge variant="outline">{fund.label}</Badge><span>Source: {fund.sourceName}</span><span aria-hidden="true">·</span><span>Last updated: {fund.lastUpdated ? new Intl.DateTimeFormat("en-IN", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Kolkata" }).format(new Date(fund.lastUpdated)) : "Not yet available"}</span>{fund.sourceUrl && <a className="font-semibold text-gold underline underline-offset-4" href={fund.sourceUrl} target="_blank" rel="noreferrer">Official source</a>}</div>
           </div>
           <dl className="grid gap-4 rounded-lg border border-border bg-card p-6 shadow-soft">
             <InfoRow label="Investment objective" value={fund.objective} />
@@ -92,7 +93,7 @@ export function FundInformation({ fund }: { fund: FundRecord }) {
               <div key={label} className="rounded-lg border border-border bg-card p-5 shadow-soft">
                 <p className="text-xs font-semibold uppercase text-muted-foreground">{label}</p>
                 <p className="mt-3 font-display text-xl font-medium">{value}</p>
-                <p className="mt-2 text-xs text-muted-foreground">Verified source pending</p>
+                <p className="mt-2 text-xs text-muted-foreground">{fund.dataStatus === "live" ? "Verified official source" : fund.dataStatus === "stale" ? "Source data is stale" : "Verified source pending"}</p>
               </div>
             ))}
           </div>
@@ -156,8 +157,8 @@ export function FundInformation({ fund }: { fund: FundRecord }) {
                 <AccordionContent className="pb-5">
                   <p className="max-w-2xl leading-relaxed text-muted-foreground">{document.description}</p>
                   <div className="mt-4 flex flex-wrap items-center gap-3">
-                    <Button type="button" variant="outline" size="sm" disabled><LockKeyhole className="h-4 w-4" /> Document unavailable</Button>
-                    <span className="text-xs text-muted-foreground">Official URL and issue date pending verification.</span>
+                    {document.status === "available" && document.url ? <Button asChild variant="outline" size="sm"><a href={document.url} target="_blank" rel="noreferrer"><FileText className="h-4 w-4"/> View official document</a></Button> : <Button type="button" variant="outline" size="sm" disabled><LockKeyhole className="h-4 w-4" /> Document unavailable</Button>}
+                    <span className="text-xs text-muted-foreground">{document.status === "available" ? `Official source${document.asOf ? ` · Effective ${document.asOf}` : ""}` : "Official URL and issue date pending verification."}</span>
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -176,7 +177,7 @@ export function FundInformation({ fund }: { fund: FundRecord }) {
             <ToolCard icon={FileText} title="Document checklist" body="A scheme-document comparison checklist will appear here when verified sources are connected." />
           </div>
           <div className="mt-8 rounded-lg border border-gold/30 bg-gold-soft/40 p-5 text-sm leading-relaxed text-muted-foreground">
-            <strong className="text-foreground">Information only.</strong> This page does not constitute an offer or solicitation. Prashant Jog operates only as an AMFI Registered Mutual Fund Distributor ({site.arn}). {site.disclaimerShort}
+            <strong className="text-foreground">Information only.</strong> Information is sourced from official/public sources where available. Verify current scheme documents and official AMC, SEBI and AMFI disclosures before investing. This page does not constitute an offer or solicitation. Prashant Jog operates only as an AMFI Registered Mutual Fund Distributor ({site.arn}). {site.disclaimerShort}
           </div>
         </div>
       </section>

@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep risk questionnaire definitions, scoring, projection enrichment, and report formatting in separate typed modules so the UI remains reusable and product mapping stays disabled.
+- Keep mutual-fund providers, normalization, persistence, domain mapping, and UI reads separate so source adapters remain replaceable and failed refreshes preserve verified values.

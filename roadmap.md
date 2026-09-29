@@ -10,7 +10,10 @@
 - [x] Add the responsive calculator page, chart, outputs, and disclosures.
 - [x] Add contextual calculator links without changing primary navigation.
 - [x] Test calculator formulas and verify desktop/mobile behaviour.
-- [ ] Connect verified live fund data and official document URLs (blocked: verified data source not supplied).
+- [x] Add the official AMFI NAV provider, normalized fund-data schema, provenance, safe ingestion, and database-backed fund reads.
+- [x] Add a secret-protected refresh endpoint and public read-only data-status page.
+- [ ] Configure SEBI filing and AMC document sources (blocked: stable verified source-specific URLs are not available).
+- [ ] Activate automatic scheduling (blocked: Cloud Job configuration is not active).
 - [ ] Replace privacy and terms placeholders with approved legal text (blocked: approved legal copy not supplied).
 - [x] Add typed risk questionnaire, scoring bands, and disabled product-mapping configuration.
 - [x] Build the risk profile, personalized projection, and report flow.
