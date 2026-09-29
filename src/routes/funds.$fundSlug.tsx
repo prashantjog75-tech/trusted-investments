@@ -2,13 +2,13 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { FundInformation } from "@/components/site/FundInformation";
 import { Button } from "@/components/ui/button";
-import { getFund } from "@/lib/funds";
+import { getFundBySlug } from "@/lib/fund-data/functions";
 import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site-config";
 
 export const Route = createFileRoute("/funds/$fundSlug")({
-  loader: ({ params }) => {
-    const fund = getFund(params.fundSlug);
+  loader: async ({ params }) => {
+    const fund = await getFundBySlug({ data: { slug: params.fundSlug } });
     if (!fund) throw notFound();
     return fund;
   },
@@ -35,7 +35,7 @@ function FundPage() {
             <span>{fund.label}</span><span aria-hidden="true">·</span><span>{site.arn}</span>
           </div>
           <h1 className="mt-4 max-w-4xl text-4xl font-medium sm:text-5xl md:text-6xl">{fund.name}</h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-navy-foreground/75">{fund.category}. All values and documents marked pending are placeholders awaiting a verified official source.</p>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-navy-foreground/75">{fund.category}. {fund.isDemonstration ? "This page remains a clearly labelled demonstration until verified source data is available." : "Source and freshness details are shown with each available value."}</p>
         </div>
       </section>
       <FundInformation fund={fund} />
