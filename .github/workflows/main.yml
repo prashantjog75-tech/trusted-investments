@@ -35,6 +35,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      -name: Inspect generate files
+      run: |
+        echo "== .output/public ==="
+        find ./.output/public -type f
+      -print
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
