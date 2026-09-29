@@ -12,7 +12,7 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
     prerender: {
-      enable: true,
+      enabled: true,
       crawlLinks: true,
   },
   },
