@@ -11,7 +11,7 @@ describe("AMFI provider", () => {
 });
 describe("safe ingestion",()=>{
  test("creates, updates and is idempotent",()=>{ const row=parseAmfiNav(payload)[0]; if(!row) throw new Error("fixture"); expect(mergeNavRecords([], [row]).stats.created).toBe(1); const stored={...row,id:"1"}; expect(mergeNavRecords([stored],[row]).stats.unchanged).toBe(1); expect(mergeNavRecords([stored],[{...row,nav:43}]).stats.updated).toBe(1); });
- test("preserves omitted valid fields",()=>expect(preserveOmittedFields({nav:10,benchmark:"Index"},{nav:11,benchmark:undefined})).toEqual({nav:11,benchmark:"Index"}));
+ test("preserves omitted valid fields",()=>expect(preserveOmittedFields<{ nav: number; benchmark: string | undefined }>({nav:10,benchmark:"Index"},{nav:11,benchmark:undefined})).toEqual({nav:11,benchmark:"Index"}));
  test("preserves valid records when a source produces none",()=>{ const row=parseAmfiNav(payload)[0]; if(!row) throw new Error("fixture"); expect(mergeNavRecords([{...row,id:"1"}],[]).promoted).toHaveLength(0); });
 });
 describe("status rules",()=>{

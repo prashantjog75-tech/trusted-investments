@@ -8,7 +8,9 @@ function isoDate(value: string) {
   const match = value.trim().match(/^(\d{2})-([A-Za-z]{3})-(\d{4})$/);
   if (!match) return null;
   const months: Record<string, string> = { Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12" };
-  const month = months[match[2]];
+  const monthName = match[2];
+  if (!monthName) return null;
+  const month = months[monthName];
   if (!month) return null;
   const result = `${match[3]}-${month}-${match[1]}`;
   return Number.isFinite(new Date(`${result}T00:00:00Z`).getTime()) ? result : null;
@@ -33,7 +35,7 @@ export function parseAmfiNav(text: string, fetchedAt = new Date().toISOString())
     const nav = Number(navRaw);
     const navDate = isoDate(dateRaw ?? "");
     if (!schemeCode || !schemeName || !fundHouse || !Number.isFinite(nav) || nav < 0 || !navDate) continue;
-    records.push({ schemeCode, isinGrowth: isinGrowth && isinGrowth !== "-" ? isinGrowth : undefined, isinReinvestment: isinReinvestment && isinReinvestment !== "-" ? isinReinvestment : undefined, schemeName, plan: plan || undefined, option: option || undefined, nav, navDate, fundHouse, category, provenance: { providerCode: amfiConfig.code, sourceUrl: AMFI_NAV_URL, fetchedAt, effectiveDate: navDate, status: "live", checksum: createHash("sha256").update(line).digest("hex") } });
+    records.push({ schemeCode, schemeName, nav, navDate, fundHouse, ...(isinGrowth && isinGrowth !== "-" ? { isinGrowth } : {}), ...(isinReinvestment && isinReinvestment !== "-" ? { isinReinvestment } : {}), ...(plan ? { plan } : {}), ...(option ? { option } : {}), ...(category ? { category } : {}), provenance: { providerCode: amfiConfig.code, sourceUrl: AMFI_NAV_URL, fetchedAt, effectiveDate: navDate, status: "live", checksum: createHash("sha256").update(line).digest("hex") } });
   }
   if (records.length === 0) throw new Error("AMFI payload contained no valid NAV records");
   return records;

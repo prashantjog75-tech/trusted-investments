@@ -1,11 +1,12 @@
-export type FundDocumentKind = "Fact Sheet" | "KIM" | "SID" | "SAI";
+export type FundDocumentKind = "Fact Sheet" | "KIM" | "SID" | "SAI" | "Scheme Summary Document" | "Portfolio disclosure";
 
 export type FundDocument = {
   kind: FundDocumentKind;
   description: string;
-  status: "not-connected";
+  status: "not-connected" | "available" | "stale";
   url?: string;
   asOf?: string;
+  lastFetched?: string;
 };
 
 export type FundHolding = {
@@ -18,6 +19,8 @@ export type FundRecord = {
   slug: string;
   name: string;
   label: string;
+  dataStatus: "live" | "stale" | "unavailable" | "not-configured" | "demonstration";
+  isDemonstration: boolean;
   category: string;
   overview: string;
   objective: string;
@@ -27,12 +30,17 @@ export type FundRecord = {
   expenseRatio: string;
   nav: string;
   navAsOf: string;
+  aum: string;
   minimumInvestment: string;
+  minimumSip: string;
   exitLoad: string;
   holdingsAsOf: string;
   holdings: FundHolding[];
   commissionDisclosure: string;
   documents: FundDocument[];
+  sourceName: string;
+  sourceUrl?: string;
+  lastUpdated?: string;
 };
 
 const placeholderDocuments: FundDocument[] = [
@@ -63,6 +71,8 @@ export const funds: FundRecord[] = [
     slug: "sample-equity-scheme",
     name: "Sample Equity Scheme",
     label: "Demonstration page",
+    dataStatus: "demonstration",
+    isDemonstration: true,
     category: "Category pending verified source",
     overview:
       "This sample page demonstrates how verified scheme information will be organised. It does not represent an actual mutual fund scheme or an investment recommendation.",
@@ -73,18 +83,23 @@ export const funds: FundRecord[] = [
     expenseRatio: "Not yet connected",
     nav: "Not yet connected",
     navAsOf: "Source date pending",
+    aum: "Not yet connected",
     minimumInvestment: "Not yet connected",
+    minimumSip: "Not yet connected",
     exitLoad: "Not yet connected",
     holdingsAsOf: "Official portfolio date pending",
     holdings: [],
     commissionDisclosure:
       "Prashant Jog may receive commission from Asset Management Companies on mutual fund investments made through his distribution services. Scheme-specific commission information is not yet connected and must be verified before publication.",
     documents: placeholderDocuments,
+    sourceName: "Demonstration only",
   },
   {
     slug: "sample-debt-scheme",
     name: "Sample Debt Scheme",
     label: "Demonstration page",
+    dataStatus: "demonstration",
+    isDemonstration: true,
     category: "Category pending verified source",
     overview:
       "This sample page demonstrates the structure for official scheme information and documents. It is not an actual offer, recommendation, or performance representation.",
@@ -95,18 +110,23 @@ export const funds: FundRecord[] = [
     expenseRatio: "Not yet connected",
     nav: "Not yet connected",
     navAsOf: "Source date pending",
+    aum: "Not yet connected",
     minimumInvestment: "Not yet connected",
+    minimumSip: "Not yet connected",
     exitLoad: "Not yet connected",
     holdingsAsOf: "Official portfolio date pending",
     holdings: [],
     commissionDisclosure:
       "Prashant Jog may receive commission from Asset Management Companies on mutual fund investments made through his distribution services. Scheme-specific commission information is not yet connected and must be verified before publication.",
     documents: placeholderDocuments,
+    sourceName: "Demonstration only",
   },
   {
     slug: "sample-hybrid-scheme",
     name: "Sample Hybrid Scheme",
     label: "Demonstration page",
+    dataStatus: "demonstration",
+    isDemonstration: true,
     category: "Category pending verified source",
     overview:
       "This sample page shows where verified portfolio, cost, disclosure and statutory-document data will appear. It is not an actual mutual fund listing.",
@@ -117,13 +137,16 @@ export const funds: FundRecord[] = [
     expenseRatio: "Not yet connected",
     nav: "Not yet connected",
     navAsOf: "Source date pending",
+    aum: "Not yet connected",
     minimumInvestment: "Not yet connected",
+    minimumSip: "Not yet connected",
     exitLoad: "Not yet connected",
     holdingsAsOf: "Official portfolio date pending",
     holdings: [],
     commissionDisclosure:
       "Prashant Jog may receive commission from Asset Management Companies on mutual fund investments made through his distribution services. Scheme-specific commission information is not yet connected and must be verified before publication.",
     documents: placeholderDocuments,
+    sourceName: "Demonstration only",
   },
 ];
 
