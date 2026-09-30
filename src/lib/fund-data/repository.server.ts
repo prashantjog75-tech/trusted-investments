@@ -181,13 +181,15 @@ export type PublicProviderStatus = {
 
 export async function getPublicDataStatus() {
   const client = publicClient();
-  const [providersResult, runsResult, schemesResult, docsResult] = await Promise.all([
+  const [providersResult, runsResult, schemesResult, schemeCountResult, docsResult, availableDocsResult] = await Promise.all([
     client.from("data_providers").select("*").order("name"),
     client.from("sync_runs").select("provider_id,status,started_at,finished_at,records_created,records_updated,records_unchanged,records_failed").order("started_at", { ascending: false }).limit(30),
     client.from("schemes").select("id,last_successful_fetched_at,is_demonstration,source_provider_id"),
+    client.from("schemes").select("id", { count: "exact", head: true }).eq("is_demonstration", false),
     client.from("scheme_documents").select("id,status,official_url"),
+    client.from("scheme_documents").select("id", { count: "exact", head: true }).eq("status", "available").not("official_url", "is", null),
   ]);
-  const queryError = providersResult.error ?? runsResult.error ?? schemesResult.error ?? docsResult.error;
+  const queryError = providersResult.error ?? runsResult.error ?? schemesResult.error ?? schemeCountResult.error ?? docsResult.error ?? availableDocsResult.error;
   if (queryError) throw new Error(`Unable to load data status: ${queryError.message}`);
   const runs = runsResult.data ?? [];
   const providers: PublicProviderStatus[] = (providersResult.data ?? []).map((provider) => {
@@ -215,9 +217,9 @@ export async function getPublicDataStatus() {
   }).length;
   return {
     providers,
-    schemeCount: schemes.filter((scheme) => !scheme.is_demonstration).length,
+    schemeCount: schemeCountResult.count ?? schemes.filter((scheme) => !scheme.is_demonstration).length,
     staleSchemes,
-    missingDocuments: (docsResult.data ?? []).filter((doc) => doc.status !== "available" || !doc.official_url).length,
+    missingDocuments: Math.max(0, (schemeCountResult.count ?? 0) * 6 - (availableDocsResult.count ?? 0)),
     schedulerActive: providers.some((provider) => Boolean(provider.nextScheduledSyncAt)),
   };
 }
