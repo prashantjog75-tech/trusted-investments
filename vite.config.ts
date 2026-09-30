@@ -14,7 +14,7 @@ export default defineConfig({
     prerender: {
       enabled: true,
       crawlLinks: true,
-      filter: ({ path }) => path !== '/data-status' && !path.startsWith('/funds'),
+      filter: ({ path }: { path: string }) => path !== '/data-status' && !path.startsWith('/funds'),
   },
   },
 });
