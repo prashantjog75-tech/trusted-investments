@@ -16,7 +16,7 @@ export async function runAmfiSync(triggerType: "manual" | "scheduled" | "retry" 
   const { data: provider, error: providerError } = await supabaseAdmin.from("data_providers").select("*").eq("code", "amfi-nav").single();
   if (providerError || !provider) throw new Error(providerError?.message ?? "AMFI provider is not registered");
   if (!provider.enabled || !provider.configured) return { ok: false, status: "skipped", message: "AMFI provider is disabled or not configured" } as const;
-  const { data: run, error: runError } = await supabaseAdmin.from("sync_runs").insert({ provider_id: provider.id, trigger_type: triggerType, status: "running", source_url: providerAdapter.config.sourceUrl }).select("id").single();
+  const { data: run, error: runError } = await supabaseAdmin.from("sync_runs").insert({ provider_id: provider.id, trigger_type: triggerType, status: "running", source_url: providerAdapter.config.sourceUrl ?? null }).select("id").single();
   if (runError || !run) throw new Error(runError?.message ?? "Unable to start sync run");
 
   const fail = async (category: string, message: string, sourceUrl?: string) => {
@@ -74,11 +74,11 @@ export async function runAmfiSync(triggerType: "manual" | "scheduled" | "retry" 
     }
     const navValues = result.records.flatMap((record) => {
       const schemeId = schemeIds.get(record.schemeCode);
-      return schemeId ? [{ scheme_id: schemeId, field_name: "nav", value_json: record.nav, display_value: `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 4 }).format(record.nav)}`, provider_id: provider.id, source_url: result.sourceUrl, fetched_at: fetchedAt, last_successful_fetched_at: fetchedAt, source_effective_date: record.navDate, sync_run_id: run.id, status: "verified", checksum: record.provenance.checksum }] : [];
+      return schemeId ? [{ scheme_id: schemeId, field_name: "nav", value_json: record.nav, display_value: `₹${new Intl.NumberFormat("en-IN", { maximumFractionDigits: 4 }).format(record.nav)}`, provider_id: provider.id, source_url: result.sourceUrl, fetched_at: fetchedAt, last_successful_fetched_at: fetchedAt, source_effective_date: record.navDate, sync_run_id: run.id, status: "verified", checksum: record.provenance.checksum ?? null }] : [];
     });
     const navHistory = result.records.flatMap((record) => {
       const schemeId = schemeIds.get(record.schemeCode);
-      return schemeId ? [{ scheme_id: schemeId, nav: record.nav, nav_date: record.navDate, provider_id: provider.id, source_url: result.sourceUrl, fetched_at: fetchedAt, sync_run_id: run.id, checksum: record.provenance.checksum }] : [];
+      return schemeId ? [{ scheme_id: schemeId, nav: record.nav, nav_date: record.navDate, provider_id: provider.id, source_url: result.sourceUrl, fetched_at: fetchedAt, sync_run_id: run.id, checksum: record.provenance.checksum ?? null }] : [];
     });
     for (const batch of chunks(navValues)) {
       const { error } = await supabaseAdmin.from("scheme_data_values").upsert(batch, { onConflict: "scheme_id,field_name,provider_id", defaultToNull: false });
