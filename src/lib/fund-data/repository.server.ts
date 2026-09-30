@@ -10,12 +10,12 @@ function publicClient() {
   return createClient<Database>(url, key, {
     auth: { persistSession: false, autoRefreshToken: false, storage: undefined },
     global: {
-      fetch: (input, init) => {
+      fetch: (async (input, init) => {
         const headers = new Headers(init?.headers);
         if (key.startsWith("sb_") && headers.get("Authorization") === `Bearer ${key}`) headers.delete("Authorization");
         headers.set("apikey", key);
         return fetch(input, { ...init, headers });
-      },
+      }) as typeof fetch,
     },
   });
 }
@@ -24,6 +24,9 @@ type SchemeRow = Database["public"]["Tables"]["schemes"]["Row"] & {
   fund_houses: { name: string } | null;
   data_providers: { code: string; name: string; freshness_hours: number } | null;
 };
+type BaseSchemeRow = Database["public"]["Tables"]["schemes"]["Row"];
+type FundHouseRow = Pick<Database["public"]["Tables"]["fund_houses"]["Row"], "id" | "name">;
+type ProviderRow = Pick<Database["public"]["Tables"]["data_providers"]["Row"], "id" | "code" | "name" | "freshness_hours">;
 type ValueRow = Database["public"]["Tables"]["scheme_data_values"]["Row"];
 type HoldingRow = Database["public"]["Tables"]["holdings"]["Row"];
 type DocumentRow = Database["public"]["Tables"]["scheme_documents"]["Row"];
@@ -52,7 +55,7 @@ function mapDocument(row: DocumentRow): FundDocument {
     description: documentDescriptions[row.document_type] ?? "Official scheme disclosure document.",
     status: available ? "available" : row.status === "stale" ? "stale" : "not-connected",
     ...(available && row.official_url ? { url: row.official_url } : {}),
-    ...(row.source_effective_date || row.disclosure_date ? { asOf: row.source_effective_date ?? row.disclosure_date ?? undefined } : {}),
+    ...((row.source_effective_date ?? row.disclosure_date) ? { asOf: row.source_effective_date ?? row.disclosure_date as string } : {}),
     ...(row.last_successful_fetched_at ? { lastFetched: row.last_successful_fetched_at } : {}),
   };
 }
@@ -61,7 +64,7 @@ function defaultDocuments(rows: DocumentRow[]): FundDocument[] {
   const kinds: FundDocument["kind"][] = ["Fact Sheet", "KIM", "SID", "SAI", "Scheme Summary Document", "Portfolio disclosure"];
   return kinds.map((kind) => {
     const row = rows.find((item) => item.document_type === kind);
-    return row ? mapDocument(row) : { kind, description: documentDescriptions[kind], status: "not-connected" };
+    return row ? mapDocument(row) : { kind, description: documentDescriptions[kind] ?? "Official scheme disclosure document.", status: "not-connected" };
   });
 }
 
@@ -103,34 +106,54 @@ function mapScheme(row: SchemeRow, values: ValueRow[], holdings: HoldingRow[], d
     commissionDisclosure: "Prashant Jog may receive commission from Asset Management Companies on mutual fund investments made through his distribution services. Scheme-specific commission information must be verified before investing.",
     documents: defaultDocuments(documents),
     sourceName: row.data_providers?.name ?? "Source not configured",
-    sourceUrl: row.source_url ?? undefined,
-    lastUpdated: row.last_successful_fetched_at ?? undefined,
+    ...(row.source_url ? { sourceUrl: row.source_url } : {}),
+    ...(row.last_successful_fetched_at ? { lastUpdated: row.last_successful_fetched_at } : {}),
   };
+}
+
+async function enrichSchemes(client: ReturnType<typeof publicClient>, rows: BaseSchemeRow[]): Promise<SchemeRow[]> {
+  const houseIds = [...new Set(rows.map((row) => row.fund_house_id))];
+  const providerIds = [...new Set(rows.map((row) => row.source_provider_id).filter((id): id is string => Boolean(id)))];
+  const [housesResult, providersResult] = await Promise.all([
+    houseIds.length ? client.from("fund_houses").select("id,name").in("id", houseIds) : Promise.resolve({ data: [] as FundHouseRow[], error: null }),
+    providerIds.length ? client.from("data_providers").select("id,code,name,freshness_hours").in("id", providerIds) : Promise.resolve({ data: [] as ProviderRow[], error: null }),
+  ]);
+  const lookupError = housesResult.error ?? providersResult.error;
+  if (lookupError) throw new Error(`Unable to load fund sources: ${lookupError.message}`);
+  const houses = new Map((housesResult.data ?? []).map((house) => [house.id, house]));
+  const providers = new Map((providersResult.data ?? []).map((provider) => [provider.id, provider]));
+  return rows.map((row) => ({
+    ...row,
+    fund_houses: houses.get(row.fund_house_id) ?? null,
+    data_providers: row.source_provider_id ? providers.get(row.source_provider_id) ?? null : null,
+  }));
 }
 
 export async function listFundRecords(): Promise<FundRecord[]> {
   const client = publicClient();
   const { data, error } = await client
     .from("schemes")
-    .select("*, fund_houses(name), data_providers!schemes_source_provider_id_fkey(code,name,freshness_hours)")
+    .select("*")
     .eq("status", "active")
     .order("name")
     .limit(120);
   if (error) throw new Error(`Unable to load fund information: ${error.message}`);
   if (!data || data.length === 0) return demonstrationFunds;
-  return (data as SchemeRow[]).map((row) => mapScheme(row, [], [], []));
+  const schemes = await enrichSchemes(client, data);
+  return schemes.map((row) => mapScheme(row, [], [], []));
 }
 
 export async function getFundRecord(slug: string): Promise<FundRecord | undefined> {
   const client = publicClient();
   const { data: scheme, error } = await client
     .from("schemes")
-    .select("*, fund_houses(name), data_providers!schemes_source_provider_id_fkey(code,name,freshness_hours)")
+    .select("*")
     .eq("slug", slug)
     .maybeSingle();
   if (error) throw new Error(`Unable to load fund information: ${error.message}`);
   if (!scheme) return demonstrationFunds.find((item) => item.slug === slug);
-  const row = scheme as SchemeRow;
+  const [row] = await enrichSchemes(client, [scheme]);
+  if (!row) return undefined;
   const [valuesResult, holdingsResult, documentsResult] = await Promise.all([
     client.from("scheme_data_values").select("*").eq("scheme_id", row.id),
     client.from("holdings").select("*").eq("scheme_id", row.id).order("allocation_percent", { ascending: false }),
