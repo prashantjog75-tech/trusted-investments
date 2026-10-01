@@ -19,3 +19,5 @@
 - [x] Build the risk profile, personalized projection, and report flow.
 - [x] Add contextual entry points without changing primary navigation.
 - [x] Add unit tests and verify desktop/mobile, accessibility, links, and build.
+
+- [x] Convert `/funds` to a fully static browser-filtered scheme directory with verified official links only.

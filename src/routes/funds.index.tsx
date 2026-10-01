@@ -1,14 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FileSearch, ShieldCheck } from "lucide-react";
-import { FundDirectoryCard } from "@/components/site/FundInformation";
+import { FundDirectory } from "@/components/site/FundDirectory";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { Button } from "@/components/ui/button";
-import { listFunds } from "@/lib/fund-data/functions";
 import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site-config";
 
 export const Route = createFileRoute("/funds/")({
-  loader: () => listFunds(),
   head: () =>
     pageMeta({
       title: "Fund Information & Investment Tools",
@@ -20,7 +18,6 @@ export const Route = createFileRoute("/funds/")({
 });
 
 function FundsPage() {
-  const funds = Route.useLoaderData();
   return (
     <>
       <PageHero
@@ -32,11 +29,9 @@ function FundsPage() {
         <SectionHeading
           eyebrow="Fund directory"
           title="Explore scheme information"
-          lead="Official AMFI data appears after a successful refresh. Demonstration pages remain explicitly labelled and contain no invented figures or documents."
+          lead="Browse a static snapshot of official AMFI scheme identity data. Filter by fund house, category, scheme, plan and option entirely in your browser."
         />
-        <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {funds.map((fund) => <FundDirectoryCard key={fund.slug} fund={fund} />)}
-        </div>
+        <FundDirectory />
       </Section>
       <Section tone="ivory">
         <div className="grid gap-6 md:grid-cols-2">
