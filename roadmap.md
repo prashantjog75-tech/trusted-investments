@@ -20,4 +20,4 @@
 - [x] Add contextual entry points without changing primary navigation.
 - [x] Add unit tests and verify desktop/mobile, accessibility, links, and build.
 
-- [ ] Convert `/funds` to a fully static browser-filtered scheme directory with verified official links only.
+- [x] Convert `/funds` to a fully static browser-filtered scheme directory with verified official links only.
