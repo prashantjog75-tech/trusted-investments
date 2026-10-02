@@ -13,3 +13,4 @@
 - Keep mutual-fund providers, normalization, persistence, domain mapping, and UI reads separate so source adapters remain replaceable and failed refreshes preserve verified values.
 - Keep `/funds` browser-only using a bundled official AMFI snapshot; never add runtime data fetching or guessed scheme-document URLs because GitHub Pages must serve it statically.
 - Group Regular Plan option variants by fund identity in the directory so each fund has one card and selectable options.
+- Keep official document links in a static, verified registry (AMC → fund → variant scope, most specific wins) separate from the directory UI, so links can be added fund house by fund house without guessed URLs.
