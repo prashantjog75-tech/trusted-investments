@@ -29,7 +29,7 @@ function FundsPage() {
         <SectionHeading
           eyebrow="Fund directory"
           title="Explore scheme information"
-          lead="Browse a static snapshot of official AMFI scheme identity data. Filter by fund house, category, scheme, plan and option entirely in your browser."
+          lead="Browse a static snapshot of official AMFI scheme identity data. Filter by fund house, category, scheme and option entirely in your browser."
         />
         <FundDirectory />
       </Section>
