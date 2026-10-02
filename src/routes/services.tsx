@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { CtaBand } from "@/components/site/CtaBand";

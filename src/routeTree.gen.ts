@@ -13,12 +13,14 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DataStatusRouteImport } from './routes/data-status'
+import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FundsRouteImport } from './routes/funds'
 import { Route as GoalsRouteImport } from './routes/goals'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProcessRouteImport } from './routes/process'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as RiskProfileRouteImport } from './routes/risk-profile'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SipCalculatorRouteImport } from './routes/sip-calculator'
@@ -45,6 +47,11 @@ const ContactRoute = ContactRouteImport.update({
 const DataStatusRoute = DataStatusRouteImport.update({
   id: '/data-status',
   path: '/data-status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExploreRoute = ExploreRouteImport.update({
+  id: '/explore',
+  path: '/explore',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -75,6 +82,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const ProcessRoute = ProcessRouteImport.update({
   id: '/process',
   path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RiskProfileRoute = RiskProfileRouteImport.update({
@@ -118,12 +130,14 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/data-status': typeof DataStatusRoute
+  '/explore': typeof ExploreRoute
   '/faq': typeof FaqRoute
   '/funds': typeof FundsRouteWithChildren
   '/goals': typeof GoalsRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
+  '/resources': typeof ResourcesRoute
   '/risk-profile': typeof RiskProfileRoute
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
@@ -137,11 +151,13 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/data-status': typeof DataStatusRoute
+  '/explore': typeof ExploreRoute
   '/faq': typeof FaqRoute
   '/goals': typeof GoalsRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
+  '/resources': typeof ResourcesRoute
   '/risk-profile': typeof RiskProfileRoute
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
@@ -156,12 +172,14 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/data-status': typeof DataStatusRoute
+  '/explore': typeof ExploreRoute
   '/faq': typeof FaqRoute
   '/funds': typeof FundsRouteWithChildren
   '/goals': typeof GoalsRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
+  '/resources': typeof ResourcesRoute
   '/risk-profile': typeof RiskProfileRoute
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
@@ -177,12 +195,14 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/data-status'
+    | '/explore'
     | '/faq'
     | '/funds'
     | '/goals'
     | '/learn'
     | '/privacy'
     | '/process'
+    | '/resources'
     | '/risk-profile'
     | '/services'
     | '/sip-calculator'
@@ -196,11 +216,13 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/data-status'
+    | '/explore'
     | '/faq'
     | '/goals'
     | '/learn'
     | '/privacy'
     | '/process'
+    | '/resources'
     | '/risk-profile'
     | '/services'
     | '/sip-calculator'
@@ -214,12 +236,14 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/data-status'
+    | '/explore'
     | '/faq'
     | '/funds'
     | '/goals'
     | '/learn'
     | '/privacy'
     | '/process'
+    | '/resources'
     | '/risk-profile'
     | '/services'
     | '/sip-calculator'
@@ -234,12 +258,14 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   DataStatusRoute: typeof DataStatusRoute
+  ExploreRoute: typeof ExploreRoute
   FaqRoute: typeof FaqRoute
   FundsRoute: typeof FundsRouteWithChildren
   GoalsRoute: typeof GoalsRoute
   LearnRoute: typeof LearnRoute
   PrivacyRoute: typeof PrivacyRoute
   ProcessRoute: typeof ProcessRoute
+  ResourcesRoute: typeof ResourcesRoute
   RiskProfileRoute: typeof RiskProfileRoute
   ServicesRoute: typeof ServicesRoute
   SipCalculatorRoute: typeof SipCalculatorRoute
@@ -275,6 +301,13 @@ declare module '@tanstack/react-router' {
       path: '/data-status'
       fullPath: '/data-status'
       preLoaderRoute: typeof DataStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explore': {
+      id: '/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof ExploreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -317,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/process'
       fullPath: '/process'
       preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/risk-profile': {
@@ -388,12 +428,14 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   DataStatusRoute: DataStatusRoute,
+  ExploreRoute: ExploreRoute,
   FaqRoute: FaqRoute,
   FundsRoute: FundsRouteWithChildren,
   GoalsRoute: GoalsRoute,
   LearnRoute: LearnRoute,
   PrivacyRoute: PrivacyRoute,
   ProcessRoute: ProcessRoute,
+  ResourcesRoute: ResourcesRoute,
   RiskProfileRoute: RiskProfileRoute,
   ServicesRoute: ServicesRoute,
   SipCalculatorRoute: SipCalculatorRoute,

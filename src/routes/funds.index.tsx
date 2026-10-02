@@ -23,13 +23,13 @@ function FundsPage() {
       <PageHero
         eyebrow={`Fund information · ${site.arn}`}
         title="Scheme information, organised for careful review."
-        lead="Find costs, portfolio information, distributor disclosures and official scheme documents in one clear place, with source and freshness states shown clearly."
+        lead="Search and compare fund information in one clear place. Each Regular Plan fund appears once, with its available options grouped together."
       />
       <Section>
         <SectionHeading
           eyebrow="Fund directory"
           title="Explore scheme information"
-          lead="Browse a static snapshot of official AMFI scheme identity data. Filter by fund house, category, scheme and option entirely in your browser."
+          lead="Browse a static snapshot of official AMFI scheme identity data. Search by fund or fund house, refine by category and option, and see one card for each unique Regular Plan fund."
         />
         <FundDirectory />
       </Section>

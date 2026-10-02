@@ -19,14 +19,38 @@ type Filters = {
 
 const initialFilters: Filters = { amc: ALL, category: ALL, scheme: "", option: ALL, search: "" };
 
-function unique(field: keyof Pick<StaticSchemeRecord, "amc" | "category" | "option">) {
-  return [...new Set(staticSchemes.map((scheme) => scheme[field]))].sort((a, b) => a.localeCompare(b));
+type FundRecord = {
+  id: string;
+  amc: string;
+  name: string;
+  category: string;
+  options: string[];
+};
+
+const funds: readonly FundRecord[] = (() => {
+  const grouped = new Map<string, FundRecord>();
+  for (const scheme of staticSchemes) {
+    const id = `${scheme.amc}\u0000${scheme.category}\u0000${scheme.name}`;
+    const current = grouped.get(id);
+    if (current) {
+      if (!current.options.includes(scheme.option)) current.options.push(scheme.option);
+      continue;
+    }
+    grouped.set(id, { id, amc: scheme.amc, name: scheme.name, category: scheme.category, options: [scheme.option] });
+  }
+  return [...grouped.values()]
+    .map((fund) => ({ ...fund, options: fund.options.sort((a, b) => a.localeCompare(b)) }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+})();
+
+function unique(field: "amc" | "category") {
+  return [...new Set(funds.map((fund) => fund[field]))].sort((a, b) => a.localeCompare(b));
 }
 
 const options = {
   amcs: unique("amc"),
   categories: unique("category"),
-  options: unique("option"),
+  options: [...new Set(funds.flatMap((fund) => fund.options))].sort((a, b) => a.localeCompare(b)),
 };
 
 export function FundDirectory() {
@@ -35,13 +59,13 @@ export function FundDirectory() {
   const deferredScheme = useDeferredValue(filters.scheme.trim().toLocaleLowerCase("en-IN"));
   const deferredSearch = useDeferredValue(filters.search.trim().toLocaleLowerCase("en-IN"));
 
-  const filtered = useMemo(() => staticSchemes.filter((scheme) => {
-    if (filters.amc !== ALL && scheme.amc !== filters.amc) return false;
-    if (filters.category !== ALL && scheme.category !== filters.category) return false;
-    if (filters.option !== ALL && scheme.option !== filters.option) return false;
-    if (deferredScheme && !scheme.name.toLocaleLowerCase("en-IN").includes(deferredScheme)) return false;
+  const filtered = useMemo(() => funds.filter((fund) => {
+    if (filters.amc !== ALL && fund.amc !== filters.amc) return false;
+    if (filters.category !== ALL && fund.category !== filters.category) return false;
+    if (filters.option !== ALL && !fund.options.includes(filters.option)) return false;
+    if (deferredScheme && !fund.name.toLocaleLowerCase("en-IN").includes(deferredScheme)) return false;
     if (deferredSearch) {
-      const haystack = `${scheme.name} ${scheme.amc}`.toLocaleLowerCase("en-IN");
+      const haystack = `${fund.name} ${fund.amc}`.toLocaleLowerCase("en-IN");
       if (!haystack.includes(deferredSearch)) return false;
     }
     return true;
@@ -75,7 +99,7 @@ export function FundDirectory() {
 
       <div className="mt-9 flex flex-col gap-3 border-b border-border pb-5 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase text-gold" aria-live="polite">Showing {filtered.length.toLocaleString("en-IN")} scheme entries</p>
+           <p className="text-xs font-semibold uppercase text-gold" aria-live="polite">Showing {filtered.length.toLocaleString("en-IN")} unique funds</p>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">Expense ratios are subject to change. Investors should refer to the official AMC website and scheme-related documents for the latest information.</p>
         </div>
         <a className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-primary underline decoration-gold underline-offset-4" href={AMFI_SNAPSHOT_SOURCE} target="_blank" rel="noopener noreferrer">
@@ -85,19 +109,19 @@ export function FundDirectory() {
 
       {filtered.length ? (
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
-          {filtered.slice(0, visible).map((scheme, index) => <SchemeCard key={`${scheme.amc}-${scheme.name}-${scheme.option}-${index}`} scheme={scheme} />)}
+           {filtered.slice(0, visible).map((fund) => <FundCard key={fund.id} fund={fund} selectedOption={filters.option} />)}
         </div>
       ) : (
         <div className="mt-6 border border-dashed border-border bg-card px-6 py-14 text-center">
           <Search className="mx-auto h-7 w-7 text-gold" aria-hidden="true" />
-          <h3 className="mt-4 text-2xl font-medium">No matching scheme entries</h3>
+           <h3 className="mt-4 text-2xl font-medium">No matching funds</h3>
           <p className="mt-2 text-sm text-muted-foreground">Try a broader search or reset the filters.</p>
         </div>
       )}
 
       {visible < filtered.length && (
         <div className="mt-8 text-center">
-          <Button type="button" variant="outline" size="lg" onClick={() => setVisible((current) => current + PAGE_SIZE)}>Show more schemes</Button>
+           <Button type="button" variant="outline" size="lg" onClick={() => setVisible((current) => current + PAGE_SIZE)}>Show more funds</Button>
         </div>
       )}
 
@@ -135,15 +159,26 @@ function DirectoryField({ label, value, placeholder, icon = false, onChange }: {
   );
 }
 
-function SchemeCard({ scheme }: { scheme: StaticSchemeRecord }) {
+function FundCard({ fund, selectedOption }: { fund: FundRecord; selectedOption: string }) {
+  const availableOptions = selectedOption === ALL ? fund.options : fund.options.filter((option) => option === selectedOption);
+  const [option, setOption] = useState(availableOptions[0] ?? fund.options[0] ?? "Not specified");
+  const activeOption = availableOptions.includes(option) ? option : (availableOptions[0] ?? fund.options[0] ?? "Not specified");
   return (
     <article className="flex h-full flex-col border border-border bg-card p-5 shadow-soft md:p-6">
       <dl className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
-        <SchemeDatum label="AMC name" value={scheme.amc} />
-        <SchemeDatum label="Scheme name" value={scheme.name} prominent />
-        <SchemeDatum label="Category" value={scheme.category} />
-        <SchemeDatum label="Option" value={scheme.option} />
+        <SchemeDatum label="Fund house" value={fund.amc} />
+        <SchemeDatum label="Fund name" value={fund.name} prominent />
+        <SchemeDatum label="Category" value={fund.category} />
       </dl>
+      <div className="mt-5 max-w-sm space-y-2">
+        <Label htmlFor={`option-${safeId(fund.id)}`}>Option</Label>
+        {availableOptions.length > 1 ? (
+          <Select value={activeOption} onValueChange={setOption}>
+            <SelectTrigger id={`option-${safeId(fund.id)}`} className="h-11 bg-background"><SelectValue /></SelectTrigger>
+            <SelectContent>{availableOptions.map((item) => <SelectItem key={item} value={item}>{item}</SelectItem>)}</SelectContent>
+          </Select>
+        ) : <p id={`option-${safeId(fund.id)}`} className="text-sm text-foreground">{activeOption}</p>}
+      </div>
       <div className="mt-6 border-t border-border pt-5">
         <div className="flex items-center gap-2 text-xs font-semibold uppercase text-gold"><FileText className="h-4 w-4" aria-hidden="true" /> Official sources &amp; documents</div>
         <div className="mt-4 flex flex-wrap gap-2">
@@ -155,6 +190,12 @@ function SchemeCard({ scheme }: { scheme: StaticSchemeRecord }) {
       </div>
     </article>
   );
+}
+
+function safeId(value: string) {
+  let hash = 0;
+  for (let index = 0; index < value.length; index += 1) hash = Math.imul(31, hash) + value.charCodeAt(index) | 0;
+  return Math.abs(hash).toString(36);
 }
 
 function SchemeDatum({ label, value, prominent = false }: { label: string; value: string; prominent?: boolean }) {
