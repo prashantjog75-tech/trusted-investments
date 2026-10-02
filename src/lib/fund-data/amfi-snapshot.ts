@@ -19,7 +19,7 @@ const rows: readonly (readonly [string, string, string, string, string])[] = [["
 // This website represents a mutual fund distributor: only Regular Plan scheme
 // entries are displayed. Other plan variants are excluded from the snapshot.
 export const staticSchemes: readonly StaticSchemeRecord[] = rows
-  .filter(([, , , plan]) => plan === "Regular Plan")
+  .filter(([, , , plan, option]) => plan === "Regular Plan" && !/direct/i.test(option))
   .map(([amc, name, category, plan, option]) => ({
     amc,
     name,
