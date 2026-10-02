@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, Handshake, Search } from "lucide-react";
 import heroFamily from "@/assets/hero-family.jpg";
 import growth from "@/assets/growth-sapling.jpg";
 import { Button } from "@/components/ui/button";
@@ -86,8 +86,31 @@ function Index() {
         <TrustStats className="shadow-elevated" />
       </div>
 
-      {/* Intro / relationship */}
       <Section>
+        <SectionHeading
+          eyebrow="Start here"
+          title="What would you like to do?"
+          lead="Go directly to fund information, investor education, personal assistance, or a conversation with Prashant Jog."
+        />
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { to: "/funds", title: "Explore Funds", body: "Search and filter Regular Plan mutual funds.", icon: Search },
+            { to: "/resources", title: "Understand Mutual Funds", body: "Find clear education, tools, and disclosures.", icon: BookOpen },
+            { to: "/services", title: "Investment Assistance", body: "See how Prashant Jog can assist your family.", icon: Handshake },
+            { to: "/contact", title: "Book a Meeting", body: "Choose a convenient way to start a conversation.", icon: CalendarDays },
+          ].map((item) => (
+            <Link key={item.to} to={item.to} className="group border-t-2 border-gold bg-card p-6 shadow-soft transition-shadow hover:shadow-elevated focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              <item.icon className="h-6 w-6 text-gold" aria-hidden="true" />
+              <h2 className="mt-5 text-xl font-medium">{item.title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+              <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">Open <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      {/* Intro / relationship */}
+      <Section tone="ivory">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="relative">
             <img
@@ -121,7 +144,7 @@ function Index() {
       </Section>
 
       {/* Services */}
-      <Section tone="ivory">
+      <Section>
         <SectionHeading
           eyebrow="What we do"
           title="Services built around your family's goals"
@@ -157,7 +180,7 @@ function Index() {
       </Section>
 
       {/* Goals */}
-      <Section>
+      <Section tone="ivory">
         <SectionHeading
           eyebrow="Life goals"
           title="What are you investing for?"
@@ -167,7 +190,7 @@ function Index() {
       </Section>
 
       {/* Why us */}
-      <Section tone="ivory">
+      <Section>
         <div className="grid gap-12 lg:grid-cols-[1fr_1.6fr]">
           <SectionHeading
             eyebrow="Why families choose us"

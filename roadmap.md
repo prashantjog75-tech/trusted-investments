@@ -21,3 +21,6 @@
 - [x] Add unit tests and verify desktop/mobile, accessibility, links, and build.
 
 - [x] Convert `/funds` to a fully static browser-filtered scheme directory with verified official links only.
+- [x] Reorganize primary and mobile navigation around visitor intent.
+- [x] Add Explore and Resources hubs and Home quick-access actions.
+- [x] Group Regular Plan option variants into one fund card and report unique fund counts.

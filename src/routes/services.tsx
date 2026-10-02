@@ -1,6 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Calculator, Gauge } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { CtaBand } from "@/components/site/CtaBand";
@@ -32,18 +30,6 @@ function ServicesPage() {
         <div className="mt-12 rounded-2xl border border-gold/30 bg-gold-soft/40 p-6 text-sm leading-relaxed text-muted-foreground">
           <strong className="text-foreground">A note on our role.</strong> We operate only as an AMFI Registered Mutual
           Fund Distributor ({site.arn}). Information shared is general or incidental to mutual fund distribution. {site.disclaimerShort}
-        </div>
-      </Section>
-      <Section>
-        <SectionHeading
-          eyebrow="Fund information"
-          title="Review scheme information and documents in one place"
-          lead="Explore the source-ready layout for expense ratios, holdings, distributor disclosures, fact sheets, KIM, SID and SAI. All unavailable data is clearly marked."
-        />
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild variant="outline"><Link to="/funds">Explore fund information</Link></Button>
-          <Button asChild variant="outline"><Link to="/sip-calculator"><Calculator className="h-4 w-4" /> Try the SIP calculator</Link></Button>
-          <Button asChild variant="outline"><Link to="/risk-profile"><Gauge className="h-4 w-4" /> Explore your risk profile</Link></Button>
         </div>
       </Section>
       <Section tone="ivory">
