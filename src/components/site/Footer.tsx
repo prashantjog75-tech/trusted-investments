@@ -26,11 +26,8 @@ export function Footer() {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link to="/contact" className="text-navy-foreground/80 transition-colors hover:text-gold">
-                Book a Meeting
-              </Link>
-            </li>
+            <li><Link to="/services" className="text-navy-foreground/80 transition-colors hover:text-gold">Investment Assistance</Link></li>
+            <li><Link to="/contact" className="text-navy-foreground/80 transition-colors hover:text-gold">Book a Meeting</Link></li>
           </ul>
         </div>
 

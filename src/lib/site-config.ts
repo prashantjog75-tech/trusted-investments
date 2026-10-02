@@ -25,12 +25,21 @@ export const whatsappLink = (message = "Hello, I would like to discuss mutual fu
   `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 export const nav = [
+  { to: "/", label: "Home" },
+  { to: "/funds", label: "Funds" },
+  { to: "/explore", label: "Explore" },
+  { to: "/resources", label: "Resources" },
   { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/process", label: "Process" },
-  { to: "/goals", label: "Goals" },
-  { to: "/learn", label: "Learn" },
-  { to: "/faq", label: "FAQ" },
+  { to: "/contact", label: "Contact" },
+] as const;
+
+export const mobileNav = [
+  { to: "/", label: "Home" },
+  { to: "/funds", label: "Funds" },
+  { to: "/resources", label: "Resources" },
+  { to: "/contact", label: "Contact" },
+  { to: "/explore", label: "Explore" },
+  { to: "/about", label: "About" },
 ] as const;
 
 export const trustStats = [

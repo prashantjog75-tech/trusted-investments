@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { nav, site } from "@/lib/site-config";
+import { mobileNav, nav, site } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -43,6 +43,7 @@ export function Header() {
               to={item.to}
               className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "text-foreground" }}
+              activeOptions={{ exact: item.to === "/" }}
             >
               {item.label}
             </Link>
@@ -69,13 +70,14 @@ export function Header() {
       {open && (
         <div className="border-t border-border bg-background lg:hidden">
           <nav className="container-site flex flex-col py-3" aria-label="Mobile">
-            {nav.map((item) => (
+            {mobileNav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
                 className="rounded-md px-2 py-3 text-base font-medium text-foreground"
                 activeProps={{ className: "text-gold" }}
+                activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
               </Link>
