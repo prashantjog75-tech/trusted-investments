@@ -13,21 +13,19 @@ type Filters = {
   amc: string;
   category: string;
   scheme: string;
-  plan: string;
   option: string;
   search: string;
 };
 
-const initialFilters: Filters = { amc: ALL, category: ALL, scheme: "", plan: ALL, option: ALL, search: "" };
+const initialFilters: Filters = { amc: ALL, category: ALL, scheme: "", option: ALL, search: "" };
 
-function unique(field: keyof Pick<StaticSchemeRecord, "amc" | "category" | "plan" | "option">) {
+function unique(field: keyof Pick<StaticSchemeRecord, "amc" | "category" | "option">) {
   return [...new Set(staticSchemes.map((scheme) => scheme[field]))].sort((a, b) => a.localeCompare(b));
 }
 
 const options = {
   amcs: unique("amc"),
   categories: unique("category"),
-  plans: unique("plan"),
   options: unique("option"),
 };
 
@@ -42,6 +40,7 @@ export function FundDirectory() {
     if (filters.category !== ALL && scheme.category !== filters.category) return false;
     if (filters.plan !== ALL && scheme.plan !== filters.plan) return false;
     if (filters.option !== ALL && scheme.option !== filters.option) return false;
+    // (plan filter removed: the snapshot contains Regular Plan entries only)
     if (deferredScheme && !scheme.name.toLocaleLowerCase("en-IN").includes(deferredScheme)) return false;
     if (deferredSearch) {
       const haystack = `${scheme.name} ${scheme.amc}`.toLocaleLowerCase("en-IN");
