@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { AMFI_SNAPSHOT_DATE, AMFI_SNAPSHOT_SOURCE, staticSchemes, type StaticSchemeRecord } from "@/lib/fund-data/amfi-snapshot";
+import { AMFI_SNAPSHOT_DATE, AMFI_SNAPSHOT_SOURCE, staticSchemes } from "@/lib/fund-data/amfi-snapshot";
+import { DOCUMENT_LABELS, DOCUMENT_ORDER, resolveDocuments } from "@/lib/fund-data/official-documents";
 
 const ALL = "__all__";
 const PAGE_SIZE = 48;
@@ -179,15 +180,7 @@ function FundCard({ fund, selectedOption }: { fund: FundRecord; selectedOption: 
           </Select>
         ) : <p id={`option-${safeId(fund.id)}`} className="text-sm text-foreground">{activeOption}</p>}
       </div>
-      <div className="mt-6 border-t border-border pt-5">
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase text-gold"><FileText className="h-4 w-4" aria-hidden="true" /> Official sources &amp; documents</div>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <UnavailableDocument label="View Official Expense Ratio" />
-          <UnavailableDocument label="SID / KIM" />
-          <UnavailableDocument label="Statutory Disclosures" />
-        </div>
-        <p className="mt-3 text-xs text-muted-foreground">Verified scheme-specific official URLs are not available in the current AMFI data.</p>
-      </div>
+      <FundDocuments amc={fund.amc} name={fund.name} option={activeOption} />
     </article>
   );
 }
@@ -202,6 +195,27 @@ function SchemeDatum({ label, value, prominent = false }: { label: string; value
   return <div className={prominent ? "sm:col-span-2" : ""}><dt className="text-xs font-semibold uppercase text-muted-foreground">{label}</dt><dd className={`mt-1 leading-snug ${prominent ? "font-display text-xl font-medium" : "text-sm"}`}>{value}</dd></div>;
 }
 
-function UnavailableDocument({ label }: { label: string }) {
-  return <Button type="button" variant="secondary" size="sm" disabled title="Verified official URL not supplied">{label}</Button>;
+function FundDocuments({ amc, name, option }: { amc: string; name: string; option: string }) {
+  const docs = resolveDocuments(amc, name, option);
+  const anyActive = Object.keys(docs).length > 0;
+  return (
+    <div className="mt-6 border-t border-border pt-5">
+      <div className="flex items-center gap-2 text-xs font-semibold uppercase text-gold"><FileText className="h-4 w-4" aria-hidden="true" /> Official sources &amp; documents</div>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {DOCUMENT_ORDER.map((type) => {
+          const doc = docs[type];
+          const label = DOCUMENT_LABELS[type];
+          if (!doc) return <Button key={type} type="button" variant="secondary" size="sm" disabled title="Verified official URL not yet available">{label}</Button>;
+          return (
+            <Button key={type} asChild variant="outline" size="sm">
+              <a href={doc.url} target="_blank" rel="noopener noreferrer" title={`${doc.source}${doc.note ? ` - ${doc.note}` : ""} (verified ${doc.verifiedOn})`}>
+                {label} <ExternalLink aria-hidden="true" /><span className="sr-only"> (opens official site in a new tab)</span>
+              </a>
+            </Button>
+          );
+        })}
+      </div>
+      <p className="mt-3 text-xs text-muted-foreground">{anyActive ? `Links open the official ${amc} website. Some documents are published on common AMC pages covering several schemes.` : "Verified official URLs are not yet available for this fund."}</p>
+    </div>
+  );
 }
