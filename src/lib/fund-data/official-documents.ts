@@ -21,7 +21,7 @@ export type OfficialDocument = {
   source: string;
   verified: true;
   verifiedOn: string;
-  note?: string;
+  note?: string | undefined;
 };
 
 export const DOCUMENT_LABELS: Record<OfficialDocumentType, string> = {
