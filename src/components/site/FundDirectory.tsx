@@ -38,16 +38,14 @@ export function FundDirectory() {
   const filtered = useMemo(() => staticSchemes.filter((scheme) => {
     if (filters.amc !== ALL && scheme.amc !== filters.amc) return false;
     if (filters.category !== ALL && scheme.category !== filters.category) return false;
-    if (filters.plan !== ALL && scheme.plan !== filters.plan) return false;
     if (filters.option !== ALL && scheme.option !== filters.option) return false;
-    // (plan filter removed: the snapshot contains Regular Plan entries only)
     if (deferredScheme && !scheme.name.toLocaleLowerCase("en-IN").includes(deferredScheme)) return false;
     if (deferredSearch) {
       const haystack = `${scheme.name} ${scheme.amc}`.toLocaleLowerCase("en-IN");
       if (!haystack.includes(deferredSearch)) return false;
     }
     return true;
-  }), [deferredScheme, deferredSearch, filters.amc, filters.category, filters.option, filters.plan]);
+  }), [deferredScheme, deferredSearch, filters.amc, filters.category, filters.option]);
 
   const update = <K extends keyof Filters>(key: K, value: Filters[K]) => {
     setFilters((current) => ({ ...current, [key]: value }));
@@ -65,7 +63,6 @@ export function FundDirectory() {
           <DirectorySelect label="AMC / Fund House" value={filters.amc} options={options.amcs} onChange={(value) => update("amc", value)} />
           <DirectorySelect label="Scheme Category" value={filters.category} options={options.categories} onChange={(value) => update("category", value)} />
           <DirectoryField label="Scheme Name" value={filters.scheme} placeholder="Filter by scheme name" onChange={(value) => update("scheme", value)} />
-          <DirectorySelect label="Plan Type" value={filters.plan} options={options.plans} onChange={(value) => update("plan", value)} />
           <DirectorySelect label="Option" value={filters.option} options={options.options} onChange={(value) => update("option", value)} />
           <DirectoryField label="Search scheme or AMC name" value={filters.search} placeholder="Search the directory" icon onChange={(value) => update("search", value)} />
         </div>
@@ -88,7 +85,7 @@ export function FundDirectory() {
 
       {filtered.length ? (
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
-          {filtered.slice(0, visible).map((scheme, index) => <SchemeCard key={`${scheme.amc}-${scheme.name}-${scheme.plan}-${scheme.option}-${index}`} scheme={scheme} />)}
+          {filtered.slice(0, visible).map((scheme, index) => <SchemeCard key={`${scheme.amc}-${scheme.name}-${scheme.option}-${index}`} scheme={scheme} />)}
         </div>
       ) : (
         <div className="mt-6 border border-dashed border-border bg-card px-6 py-14 text-center">
@@ -145,7 +142,6 @@ function SchemeCard({ scheme }: { scheme: StaticSchemeRecord }) {
         <SchemeDatum label="AMC name" value={scheme.amc} />
         <SchemeDatum label="Scheme name" value={scheme.name} prominent />
         <SchemeDatum label="Category" value={scheme.category} />
-        <SchemeDatum label="Plan type" value={scheme.plan} />
         <SchemeDatum label="Option" value={scheme.option} />
       </dl>
       <div className="mt-6 border-t border-border pt-5">
