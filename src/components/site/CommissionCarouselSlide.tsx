@@ -16,7 +16,7 @@ const trailCommissionRanges = [
 
 export function CommissionCarouselSlide() {
   return (
-    <article className="grid h-full grid-rows-[minmax(0,0.72fr)_minmax(0,1.78fr)] bg-ivory sm:grid-cols-[0.92fr_1.08fr] sm:grid-rows-1">
+    <article className="grid h-full grid-rows-[22rem_minmax(0,1fr)] bg-ivory sm:grid-cols-[0.92fr_1.08fr] sm:grid-rows-1">
       <section className="bg-navy-gradient flex min-w-0 flex-col justify-center px-6 pt-16 pb-7 text-navy-foreground sm:px-5 sm:pt-16 sm:pb-7 lg:px-7">
         <div className="mb-7 flex min-w-0 items-center gap-3 sm:mb-5">
           <span className="grid h-10 w-10 shrink-0 place-items-center border border-gold/70 font-display text-xl font-semibold text-gold">
@@ -63,7 +63,7 @@ export function CommissionCarouselSlide() {
           <table className="w-full table-fixed border-collapse text-left" aria-label="Illustrative trail commission ranges">
             <thead className="bg-navy text-navy-foreground">
               <tr>
-                <th scope="col" className="w-[68%] px-2 py-2 text-[8px] font-semibold tracking-[0.08em] uppercase sm:px-1.5 sm:py-1.5 sm:text-[6px] lg:text-[7px]">
+                <th scope="col" className="w-[62%] px-2 py-2 text-[8px] font-semibold tracking-[0.08em] uppercase sm:px-1.5 sm:py-1.5 sm:text-[6px] lg:text-[7px]">
                   Scheme type
                 </th>
                 <th scope="col" className="px-2 py-2 text-right text-[8px] font-semibold tracking-[0.05em] uppercase sm:px-1.5 sm:py-1.5 sm:text-[6px] lg:text-[7px]">
