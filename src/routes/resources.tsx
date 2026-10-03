@@ -23,6 +23,8 @@ const resources = [
   { to: "/faq" as const, title: "Frequently Asked Questions", body: "Read answers about Prashant Jog's role, reviews, risk, and global client service.", icon: CircleHelp },
   { to: "/funds" as const, title: "Fund Documents", body: "Find available official sources and document states alongside each fund in the directory.", icon: FileText },
   { to: "/data-status" as const, title: "Data Information", body: "Review source, freshness, availability, and synchronization information for fund data.", icon: RefreshCw },
+  { to: "/grievance" as const, title: "Grievance Redressal", body: "Raise a complaint or concern and receive a reference number for follow-up.", icon: CircleHelp },
+  { to: "/feedback" as const, title: "Feedback", body: "Rate your experience and tell us what was useful or could be improved.", icon: BookOpen },
 ];
 
 function ResourcesPage() {
