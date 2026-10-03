@@ -18,8 +18,8 @@ describe("riskometer", () => {
       expect(isPublicAmc(e.amc)).toBe(true);
       expect(names.has(`${e.amc}\u0000${e.fund}`)).toBe(true);
       expect(levels.has(e.level)).toBe(true);
-      expect(e.asOf).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-      expect(e.sourceUrl).toMatch(/^https:\/\//);
+      expect(/^\d{4}-\d{2}-\d{2}$/.test(e.asOf)).toBe(true);
+      expect(e.sourceUrl.startsWith("https://")).toBe(true);
     }
   });
 });
