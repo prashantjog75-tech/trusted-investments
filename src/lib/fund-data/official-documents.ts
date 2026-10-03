@@ -39,7 +39,7 @@ export const DOCUMENT_ORDER: readonly OfficialDocumentType[] = ["expenseRatio", 
 const VERIFIED_ON = "2 October 2026";
 const VERIFIED_ON_2026_10_03 = "3 October 2026";
 
-type AmcEntry = { source: string; common: Partial<Record<OfficialDocumentType, { url: string; note?: string }>> };
+type AmcEntry = { source: string; verifiedOn?: string; common: Partial<Record<OfficialDocumentType, { url: string; note?: string }>> };
 
 const DSP_DOWNLOADS = "https://www.dspim.com/downloads";
 
@@ -178,8 +178,9 @@ export function resolveDocuments(amc: string, fundName: string, option: string):
   const result: Partial<Record<OfficialDocumentType, OfficialDocument>> = {};
   const amcEntry = amcDocuments[amc];
   if (amcEntry) {
+    const verifiedOn = amcEntry.verifiedOn ?? VERIFIED_ON;
     for (const [type, doc] of Object.entries(amcEntry.common) as [OfficialDocumentType, { url: string; note?: string }][]) {
-      result[type] = { type, scope: "amc", url: doc.url, note: doc.note, source: amcEntry.source, verified: true, verifiedOn: VERIFIED_ON };
+      result[type] = { type, scope: "amc", url: doc.url, note: doc.note, source: amcEntry.source, verified: true, verifiedOn };
     }
   }
   const source = amcEntry?.source ?? amc;
