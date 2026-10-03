@@ -15,3 +15,4 @@
 - Group Regular Plan option variants by fund identity in the directory so each fund has one card and selectable options.
 - Keep official document links in a static, verified registry (AMC → fund → variant scope, most specific wins) separate from the directory UI, so links can be added fund house by fund house without guessed URLs.
 - Route every public fund read (static snapshot and database scheme pages) through the single allowlist in `src/lib/fund-data/public-scope.ts`, and keep the full AMFI rows in `amfi-snapshot-full.ts` unimported, so excluded fund houses never reach the browser bundle and the scope cannot drift.
+- Riskometer data is generated monthly by scripts/riskometer/refresh.mjs (GitHub Actions) into src/lib/fund-data/riskometer-data.ts from official sources listed in scripts/riskometer/sources.json; exact-name matches only, failures keep prior values, because the site is static and levels must never be inferred.
