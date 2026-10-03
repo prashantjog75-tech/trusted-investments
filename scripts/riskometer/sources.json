@@ -1,0 +1,29 @@
+{
+  "_comment": "Official riskometer disclosure sources only. AMFI first; AMC disclosures as fallback. URL templates: {Mon}=Jan..Dec, {MM}=01..12, {YY}=26, {YYYY}=2026 for the most recent month-end (the script also tries the month before). levelColumn = which risk-level column (0-based) in a table row is the scheme's current level. Never add third-party portals.",
+  "sources": [
+    {
+      "id": "amfi-risk-o-meter",
+      "amc": "*",
+      "enabled": false,
+      "url": "https://www.amfiindia.com/online-center/risk-o-meter",
+      "reason": "AMFI's Risk-o-meter page is an interactive web application without a documented downloadable file; its host also refused connections from the build environment. Enable with a verified machine-readable AMFI file URL when one is confirmed."
+    },
+    {
+      "id": "dsp-annual-fy2026",
+      "amc": "DSP Mutual Fund",
+      "enabled": true,
+      "format": "pdf-table",
+      "levelColumn": 1,
+      "url": "https://www.dspim.com/media/pages/mandatory-disclosures/annual-risk-o-meter-disclosure/4729ddd053-1776243648/annual-disclosure-of-riskometers-dsp-mf-as-at-march-31-2026.pdf"
+    },
+    {
+      "id": "sundaram-monthly",
+      "amc": "Sundaram Mutual Fund",
+      "enabled": true,
+      "format": "pdf-table",
+      "levelColumn": 0,
+      "urlTemplate": "https://www.sundarammutual.com/pdf2/{YYYY}/Risk_Meter/Change_in_Risk_O_Meter_{Mon}_{YY}.pdf",
+      "url": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+    }
+  ]
+}
