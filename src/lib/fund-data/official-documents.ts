@@ -201,6 +201,58 @@ const amcDocuments: Record<string, AmcEntry> = {
       schemePage: { url: "https://bandhanmutual.com/mutual-funds", note: "AMC all-funds directory (fallback)" },
     },
   },
+  "Invesco Mutual Fund": {
+    source: "Invesco Mutual Fund (invescomutualfund.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      factsheet: { url: "https://invescomutualfund.com/literature-forms/factsheets", note: "AMC factsheet library" },
+      sid: { url: "https://invescomutualfund.com/literature-and-form", note: "Literature & forms repository (select SID)" },
+      kim: { url: "https://invescomutualfund.com/literature-and-form", note: "Literature & forms repository (select KIM)" },
+      sai: { url: "https://invescomutualfund.com/literature-and-form", note: "Literature & forms repository (select SAI)" },
+      expenseRatio: { url: "https://invescomutualfund.com/statutory-disclosures", note: "AMC statutory disclosures (Total Expense Ratio section)" },
+      statutoryDisclosures: { url: "https://invescomutualfund.com/statutory-disclosures", note: "AMC statutory disclosures" },
+      schemePage: { url: "https://invescomutualfund.com/our-funds/equity", note: "AMC funds catalogue (fallback)" },
+    },
+  },
+  "Franklin Templeton Mutual Fund": {
+    source: "Franklin Templeton India (franklintempletonindia.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      factsheet: { url: "https://www.franklintempletonindia.com/downloads/fund-literature", note: "Fund literature & factsheets" },
+      sid: { url: "https://www.franklintempletonindia.com/downloads/fund-documents", note: "Fund documents (select SID)" },
+      kim: { url: "https://www.franklintempletonindia.com/downloads/fund-documents", note: "Fund documents (select KIM)" },
+      sai: { url: "https://www.franklintempletonindia.com/downloads/fund-documents", note: "Fund documents (select SAI)" },
+      expenseRatio: { url: "https://www.franklintempletonindia.com/reports?secondFilter=15", note: "AMC Total Expense Ratio reports" },
+      statutoryDisclosures: { url: "https://www.franklintempletonindia.com/downloads/fund-documents", note: "Fund documents & disclosures repository" },
+      schemePage: { url: "https://www.franklintempletonindia.com/funds-and-solutions/funds-explorer/all-mutual-funds", note: "AMC all-funds directory (fallback)" },
+    },
+  },
+  "HSBC Mutual Fund": {
+    source: "HSBC Mutual Fund (assetmanagement.hsbc.co.in)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      factsheet: { url: "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources", note: "Investor resources (select Factsheets)" },
+      sid: { url: "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources", note: "Investor resources (select SID)" },
+      kim: { url: "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources", note: "Investor resources (select KIM)" },
+      sai: { url: "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources", note: "Investor resources (select SAI)" },
+      expenseRatio: { url: "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources", note: "Investor resources (Total Expense Ratio)" },
+      statutoryDisclosures: { url: "https://www.assetmanagement.hsbc.co.in/en/mutual-funds/investor-resources", note: "Investor resources (disclosures)" },
+      schemePage: { url: "https://www.assetmanagement.hsbc.co.in/en/mutual-funds", note: "AMC mutual funds home (fallback)" },
+    },
+  },
+  "Motilal Oswal Mutual Fund": {
+    source: "Motilal Oswal Mutual Fund (motilaloswalmf.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      factsheet: { url: "https://www.motilaloswalmf.com/downloads/factsheets", note: "AMC factsheet downloads" },
+      sid: { url: "https://www.motilaloswalmf.com/downloads/sid", note: "AMC SID downloads" },
+      kim: { url: "https://www.motilaloswalmf.com/downloads", note: "AMC downloads centre (select KIM)" },
+      sai: { url: "https://www.motilaloswalmf.com/downloads", note: "AMC downloads centre (select SAI)" },
+      expenseRatio: { url: "https://www.motilaloswalmf.com/nav-ter", note: "AMC NAV & TER page" },
+      statutoryDisclosures: { url: "https://www.motilaloswalmf.com/downloads", note: "AMC downloads centre (statements & reports)" },
+      schemePage: { url: "https://www.motilaloswalmf.com/mutual-funds", note: "AMC all-funds directory (fallback)" },
+    },
+  },
 };
 
 const DSP_SCHEMES = "https://www.dspim.com/invest/mutual-fund-schemes/";
