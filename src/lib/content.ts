@@ -184,7 +184,7 @@ export const faqs = [
   },
   {
     q: "Do you serve clients outside your city?",
-    a: "Yes. We serve families across India through calls, video meetings and digital onboarding, alongside in-person meetings where possible.",
+    a: "Yes. We serve families across India and globally through calls, video meetings and digital servicing, alongside in-person meetings where possible. Availability remains subject to applicable requirements.",
   },
   {
     q: "Can you review my existing mutual fund portfolio?",

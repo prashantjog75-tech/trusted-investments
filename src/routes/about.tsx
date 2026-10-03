@@ -13,7 +13,7 @@ export const Route = createFileRoute("/about")({
     pageMeta({
       title: "About",
       description:
-        "Meet an AMFI Registered Mutual Fund Distributor (ARN-83625) with 15+ years of experience and a relationship-led approach to helping 500+ Indian families invest with purpose.",
+        "Meet an AMFI Registered Mutual Fund Distributor (ARN-83625) with 15+ years of experience and a relationship-led approach to helping 500+ families across India and globally invest with purpose.",
       path: "/about",
     }),
   component: AboutPage,
@@ -32,7 +32,7 @@ function AboutPage() {
       <PageHero
         eyebrow="About"
         title="A practice built on relationships, one family at a time."
-        lead="For more than 15 years, Prashant Jog has helped families across India invest, track and stay the course — as an AMFI Registered Mutual Fund Distributor, ARN-83625."
+        lead="For more than 15 years, Prashant Jog has helped families across India and globally invest, track and stay the course — as an AMFI Registered Mutual Fund Distributor, ARN-83625."
       />
 
       <Section>
@@ -59,8 +59,9 @@ function AboutPage() {
                 through disciplined, goal-based investing, reviewed patiently year after year.
               </p>
               <p>
-                Today we serve families across India, combining in-person conversations with convenient digital
-                servicing, while keeping the one thing that matters most: a personal relationship you can rely on.
+                Today we serve families across India and globally, combining in-person conversations where possible
+                with convenient digital servicing, while keeping the one thing that matters most: a personal
+                relationship you can rely on.
               </p>
             </div>
           </div>
