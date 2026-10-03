@@ -21,6 +21,7 @@ import { Route as LearnRouteImport } from './routes/learn'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProcessRouteImport } from './routes/process'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as RiskAssessmentRouteImport } from './routes/risk-assessment'
 import { Route as RiskProfileRouteImport } from './routes/risk-profile'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SipCalculatorRouteImport } from './routes/sip-calculator'
@@ -89,6 +90,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
   path: '/resources',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RiskAssessmentRoute = RiskAssessmentRouteImport.update({
+  id: '/risk-assessment',
+  path: '/risk-assessment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RiskProfileRoute = RiskProfileRouteImport.update({
   id: '/risk-profile',
   path: '/risk-profile',
@@ -138,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/resources': typeof ResourcesRoute
+  '/risk-assessment': typeof RiskAssessmentRoute
   '/risk-profile': typeof RiskProfileRoute
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
@@ -158,6 +165,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/resources': typeof ResourcesRoute
+  '/risk-assessment': typeof RiskAssessmentRoute
   '/risk-profile': typeof RiskProfileRoute
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
@@ -180,6 +188,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
   '/resources': typeof ResourcesRoute
+  '/risk-assessment': typeof RiskAssessmentRoute
   '/risk-profile': typeof RiskProfileRoute
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
@@ -203,6 +212,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/process'
     | '/resources'
+    | '/risk-assessment'
     | '/risk-profile'
     | '/services'
     | '/sip-calculator'
@@ -223,6 +233,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/process'
     | '/resources'
+    | '/risk-assessment'
     | '/risk-profile'
     | '/services'
     | '/sip-calculator'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/process'
     | '/resources'
+    | '/risk-assessment'
     | '/risk-profile'
     | '/services'
     | '/sip-calculator'
@@ -266,6 +278,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProcessRoute: typeof ProcessRoute
   ResourcesRoute: typeof ResourcesRoute
+  RiskAssessmentRoute: typeof RiskAssessmentRoute
   RiskProfileRoute: typeof RiskProfileRoute
   ServicesRoute: typeof ServicesRoute
   SipCalculatorRoute: typeof SipCalculatorRoute
@@ -359,6 +372,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/risk-assessment': {
+      id: '/risk-assessment'
+      path: '/risk-assessment'
+      fullPath: '/risk-assessment'
+      preLoaderRoute: typeof RiskAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/risk-profile': {
       id: '/risk-profile'
       path: '/risk-profile'
@@ -436,6 +456,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProcessRoute: ProcessRoute,
   ResourcesRoute: ResourcesRoute,
+  RiskAssessmentRoute: RiskAssessmentRoute,
   RiskProfileRoute: RiskProfileRoute,
   ServicesRoute: ServicesRoute,
   SipCalculatorRoute: SipCalculatorRoute,
