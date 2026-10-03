@@ -54,6 +54,7 @@ const amcDocuments: Record<string, AmcEntry> = {
       sai: { url: DSP_DOWNLOADS, note: "Download centre - SID/SAI section" },
       kim: { url: "https://www.dspim.com/downloads?category=Information%20Documents&sub_category=Key%20Information%20Memorandum%20-%20KIM", note: "Download centre - KIM section" },
       statutoryDisclosures: { url: "https://www.dspim.com/mandatory-disclosures", note: "AMC mandatory disclosures" },
+      schemePage: { url: "https://www.dspim.com/invest/mutual-fund-schemes", note: "AMC all-schemes directory (fallback)" },
     },
   },
   "HDFC Mutual Fund": {
@@ -79,6 +80,7 @@ const amcDocuments: Record<string, AmcEntry> = {
       kim: { url: "https://www.sbimf.com/offer-document-sid-kim", note: "Offer documents - SID/KIM section" },
       sai: { url: "https://www.sbimf.com/docs/default-source/documents/statement-of-additional-information.pdf", note: "Official SAI document" },
       statutoryDisclosures: { url: "https://www.sbimf.com/disclosure", note: "AMC disclosure page" },
+      schemePage: { url: "https://www.sbimf.com/mutual-fund", note: "AMC all-funds directory (fallback)" },
     },
   },
   "Nippon India Mutual Fund": {
@@ -88,6 +90,8 @@ const amcDocuments: Record<string, AmcEntry> = {
       expenseRatio: { url: "https://mf.nipponindiaim.com/Pages/Total-Expense-Ratio-of-Mutual-Fund-Schemes1116-5337.aspx", note: "AMC Total Expense Ratio page" },
       factsheet: { url: "https://mf.nipponindiaim.com/investor-service/downloads/factsheet-portfolio-and-other-disclosures", note: "AMC factsheet & disclosure repository" },
       sid: { url: "https://mf.nipponindiaim.com/investor-service/downloads/scheme-information-document", note: "AMC SID library" },
+      sai: { url: "https://mf.nipponindiaim.com/investor-service/downloads/scheme-information-document", note: "AMC scheme-document library (select SAI)" },
+      kim: { url: "https://mf.nipponindiaim.com/investor-service/downloads/scheme-information-document", note: "AMC scheme-document library (select KIM)" },
       statutoryDisclosures: { url: "https://mf.nipponindiaim.com/investor-service/downloads/factsheet-portfolio-and-other-disclosures", note: "AMC factsheet & disclosure repository" },
     },
   },
@@ -100,6 +104,8 @@ const amcDocuments: Record<string, AmcEntry> = {
       // Aditya Birla Sun Life hosts SID and KIM together on its official forms page.
       sid: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/forms", note: "Forms & downloads - SID/KIM section" },
       kim: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/forms", note: "Forms & downloads - SID/KIM section" },
+      sai: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/forms", note: "Forms & downloads repository (select SAI)" },
+      schemePage: { url: "https://mutualfund.adityabirlacapital.com/fund-listing", note: "AMC all-funds directory (fallback)" },
       statutoryDisclosures: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/disclosures", note: "AMC disclosures page" },
     },
   },
@@ -112,6 +118,8 @@ const amcDocuments: Record<string, AmcEntry> = {
       // Tata hosts SID and SAI together on its official information-documents page.
       sid: { url: "https://www.tatamutualfund.com/information-documents/sai", note: "Information documents - SID/SAI section" },
       sai: { url: "https://www.tatamutualfund.com/information-documents/sai", note: "Information documents - SID/SAI section" },
+      kim: { url: "https://www.tatamutualfund.com/information-documents/sai", note: "Information documents repository (select KIM)" },
+      schemePage: { url: "https://www.tatamutualfund.com/mutual-funds", note: "AMC all-funds directory (fallback)" },
     },
   },
   "UTI Mutual Fund": {
@@ -120,6 +128,77 @@ const amcDocuments: Record<string, AmcEntry> = {
     common: {
       factsheet: { url: "https://www.utimf.com/downloads/fact-sheet", note: "AMC factsheet library" },
       sid: { url: "https://www.utimf.com/downloads/sid", note: "AMC SID library" },
+      sai: { url: "https://www.utimf.com/downloads/sid", note: "AMC scheme-document downloads (select SAI)" },
+      kim: { url: "https://www.utimf.com/downloads/sid", note: "AMC scheme-document downloads (select KIM)" },
+      expenseRatio: { url: "https://www.utimf.com/downloads/total-expense-ratio", note: "AMC Total Expense Ratio page" },
+      statutoryDisclosures: { url: "https://www.utimf.com/statutory-disclosures", note: "AMC statutory disclosures" },
+      schemePage: { url: "https://www.utimf.com/mutual-funds", note: "AMC all-funds directory (fallback)" },
+    },
+  },
+  "ICICI Prudential Mutual Fund": {
+    source: "ICICI Prudential Asset Management (icicipruamc.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      // The supplied /downloads path returns a 404; the AMC's own navigation links to /media-center/downloads.
+      expenseRatio: { url: "https://www.icicipruamc.com/about-us/financials-&-disclosures?currentTabFilter=Total+Expense+Ratio&subCatTabFilter=Total+Expense+Ratio", note: "AMC Total Expense Ratio tab" },
+      factsheet: { url: "https://www.icicipruamc.com/media-center/downloads", note: "AMC downloads repository" },
+      sid: { url: "https://www.icicipruamc.com/media-center/downloads", note: "AMC downloads repository (select SID)" },
+      kim: { url: "https://www.icicipruamc.com/media-center/downloads", note: "AMC downloads repository (select KIM)" },
+      sai: { url: "https://www.icicipruamc.com/media-center/downloads", note: "AMC downloads repository (select SAI)" },
+      statutoryDisclosures: { url: "https://www.icicipruamc.com/about-us/financials-&-disclosures", note: "AMC financials & disclosures" },
+      schemePage: { url: "https://www.icicipruamc.com/", note: "AMC home page (fallback)" },
+    },
+  },
+  "Kotak Mahindra Mutual Fund": {
+    source: "Kotak Mutual Fund (kotakmf.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      factsheet: { url: "https://www.kotakmf.com/Information/statutory-disclosure/information", note: "AMC factsheet & information page" },
+      sid: { url: "https://www.kotakmf.com/Information/forms-and-downloads", note: "Forms & downloads (select SID)" },
+      kim: { url: "https://www.kotakmf.com/Information/forms-and-downloads", note: "Forms & downloads (select KIM)" },
+      sai: { url: "https://www.kotakmf.com/Information/forms-and-downloads", note: "Forms & downloads (select SAI)" },
+      expenseRatio: { url: "https://www.kotakmf.com/Information/TER", note: "AMC Total Expense Ratio page" },
+      statutoryDisclosures: { url: "https://www.kotakmf.com/Information/statutory-disclosure", note: "AMC statutory disclosures" },
+      schemePage: { url: "https://www.kotakmf.com/mutual-funds", note: "AMC all-funds directory (fallback)" },
+    },
+  },
+  "Axis Mutual Fund": {
+    source: "Axis Mutual Fund (axismf.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      factsheet: { url: "https://www.axismf.com/downloads", note: "AMC downloads repository" },
+      sid: { url: "https://www.axismf.com/statutory-disclosures", note: "Statutory disclosures (scheme documents)" },
+      kim: { url: "https://www.axismf.com/statutory-disclosures", note: "Statutory disclosures (scheme documents)" },
+      sai: { url: "https://www.axismf.com/statutory-disclosures", note: "Statutory disclosures (scheme documents)" },
+      expenseRatio: { url: "https://www.axismf.com/total-expense-ratio", note: "AMC Total Expense Ratio page" },
+      statutoryDisclosures: { url: "https://www.axismf.com/statutory-disclosures", note: "AMC statutory disclosures" },
+      schemePage: { url: "https://www.axismf.com/mutual-funds", note: "AMC all-funds directory (fallback)" },
+    },
+  },
+  "Mirae Asset Mutual Fund": {
+    source: "Mirae Asset Mutual Fund (miraeassetmf.co.in)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      factsheet: { url: "https://www.miraeassetmf.co.in/downloads/factsheet", note: "AMC factsheet library" },
+      sid: { url: "https://www.miraeassetmf.co.in/downloads/forms", note: "Forms & documents (select SID)" },
+      kim: { url: "https://www.miraeassetmf.co.in/downloads/forms", note: "Forms & documents (select KIM)" },
+      sai: { url: "https://www.miraeassetmf.co.in/downloads/forms", note: "Forms & documents (select SAI)" },
+      expenseRatio: { url: "https://www.miraeassetmf.co.in/downloads/statutory-disclosure/total-expense-ratio", note: "AMC Total Expense Ratio page" },
+      statutoryDisclosures: { url: "https://www.miraeassetmf.co.in/downloads/statutory-disclosure/other-disclosure", note: "AMC other disclosures" },
+      schemePage: { url: "https://www.miraeassetmf.co.in/mutual-fund-scheme", note: "AMC all-schemes directory (fallback)" },
+    },
+  },
+  "Bandhan Mutual Fund": {
+    source: "Bandhan Mutual Fund (bandhanmutual.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      factsheet: { url: "https://bandhanmutual.com/downloads/factsheets", note: "AMC factsheet library" },
+      sid: { url: "https://bandhanmutual.com/downloads/other-disclosures", note: "Downloads (select SID)" },
+      kim: { url: "https://bandhanmutual.com/downloads/other-disclosures", note: "Downloads (select KIM)" },
+      sai: { url: "https://bandhanmutual.com/downloads/other-disclosures", note: "Downloads (select SAI)" },
+      expenseRatio: { url: "https://bandhanmutual.com/statutory-disclosures/total-expense-ratio", note: "AMC Total Expense Ratio page" },
+      statutoryDisclosures: { url: "https://cmsnew.bandhanmutual.com/category/statutory-disclosures/", note: "AMC statutory disclosures" },
+      schemePage: { url: "https://bandhanmutual.com/mutual-funds", note: "AMC all-funds directory (fallback)" },
     },
   },
 };
