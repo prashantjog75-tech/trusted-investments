@@ -66,7 +66,7 @@ export function HeroCarousel() {
       }}
     >
       <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gold/10 blur-2xl" />
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-elevated ring-1 ring-navy-foreground/10">
+      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.75rem] shadow-elevated ring-1 ring-navy-foreground/10 sm:aspect-[4/3]">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
