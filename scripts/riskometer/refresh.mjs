@@ -21,7 +21,7 @@ const LEVEL_RE = /(Low to Moderate|Moderately High|Very High|Moderate|High|Low)(
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const FULL = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-export const normalize = (s) => s.toLowerCase().replace(/&/g, " and ").replace(/[’'`.]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+export const normalize = (s) => s.replace(/\(\s*formerly[^)]*\)/gi, " ").toLowerCase().replace(/flexicap/g, "flexi cap").replace(/&/g, " and ").replace(/[’'`.]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
 const canonLevel = (s) => LEVELS.find((l) => l.toLowerCase() === s.toLowerCase().replace(/ risk$/, ""));
 
 function publicFunds() {
