@@ -17,7 +17,7 @@ const trailCommissionRanges = [
 export function CommissionCarouselSlide() {
   return (
     <article className="grid h-full grid-rows-[22rem_minmax(0,1fr)] bg-ivory sm:grid-cols-[0.92fr_1.08fr] sm:grid-rows-1">
-      <section className="bg-navy-gradient flex min-w-0 flex-col justify-center px-6 pt-16 pb-7 text-navy-foreground sm:px-5 sm:pt-16 sm:pb-7 lg:px-7">
+      <section className="bg-navy-gradient flex min-w-0 flex-col justify-center px-6 pt-24 pb-7 text-navy-foreground sm:px-5 sm:pt-16 sm:pb-7 lg:px-7">
         <div className="mb-7 flex min-w-0 items-center gap-3 sm:mb-5">
           <span className="grid h-10 w-10 shrink-0 place-items-center border border-gold/70 font-display text-xl font-semibold text-gold">
             P
