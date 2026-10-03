@@ -15,8 +15,10 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DataStatusRouteImport } from './routes/data-status'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as FundsRouteImport } from './routes/funds'
 import { Route as GoalsRouteImport } from './routes/goals'
+import { Route as GrievanceRouteImport } from './routes/grievance'
 import { Route as LearnRouteImport } from './routes/learn'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProcessRouteImport } from './routes/process'
@@ -61,6 +63,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeedbackRoute = FeedbackRouteImport.update({
+  id: '/feedback',
+  path: '/feedback',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FundsRoute = FundsRouteImport.update({
   id: '/funds',
   path: '/funds',
@@ -69,6 +76,11 @@ const FundsRoute = FundsRouteImport.update({
 const GoalsRoute = GoalsRouteImport.update({
   id: '/goals',
   path: '/goals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GrievanceRoute = GrievanceRouteImport.update({
+  id: '/grievance',
+  path: '/grievance',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LearnRoute = LearnRouteImport.update({
@@ -144,8 +156,10 @@ export interface FileRoutesByFullPath {
   '/data-status': typeof DataStatusRoute
   '/explore': typeof ExploreRoute
   '/faq': typeof FaqRoute
+  '/feedback': typeof FeedbackRoute
   '/funds': typeof FundsRouteWithChildren
   '/goals': typeof GoalsRoute
+  '/grievance': typeof GrievanceRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
@@ -167,7 +181,9 @@ export interface FileRoutesByTo {
   '/data-status': typeof DataStatusRoute
   '/explore': typeof ExploreRoute
   '/faq': typeof FaqRoute
+  '/feedback': typeof FeedbackRoute
   '/goals': typeof GoalsRoute
+  '/grievance': typeof GrievanceRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
@@ -190,8 +206,10 @@ export interface FileRoutesById {
   '/data-status': typeof DataStatusRoute
   '/explore': typeof ExploreRoute
   '/faq': typeof FaqRoute
+  '/feedback': typeof FeedbackRoute
   '/funds': typeof FundsRouteWithChildren
   '/goals': typeof GoalsRoute
+  '/grievance': typeof GrievanceRoute
   '/learn': typeof LearnRoute
   '/privacy': typeof PrivacyRoute
   '/process': typeof ProcessRoute
@@ -215,8 +233,10 @@ export interface FileRouteTypes {
     | '/data-status'
     | '/explore'
     | '/faq'
+    | '/feedback'
     | '/funds'
     | '/goals'
+    | '/grievance'
     | '/learn'
     | '/privacy'
     | '/process'
@@ -238,7 +258,9 @@ export interface FileRouteTypes {
     | '/data-status'
     | '/explore'
     | '/faq'
+    | '/feedback'
     | '/goals'
+    | '/grievance'
     | '/learn'
     | '/privacy'
     | '/process'
@@ -260,8 +282,10 @@ export interface FileRouteTypes {
     | '/data-status'
     | '/explore'
     | '/faq'
+    | '/feedback'
     | '/funds'
     | '/goals'
+    | '/grievance'
     | '/learn'
     | '/privacy'
     | '/process'
@@ -284,8 +308,10 @@ export interface RootRouteChildren {
   DataStatusRoute: typeof DataStatusRoute
   ExploreRoute: typeof ExploreRoute
   FaqRoute: typeof FaqRoute
+  FeedbackRoute: typeof FeedbackRoute
   FundsRoute: typeof FundsRouteWithChildren
   GoalsRoute: typeof GoalsRoute
+  GrievanceRoute: typeof GrievanceRoute
   LearnRoute: typeof LearnRoute
   PrivacyRoute: typeof PrivacyRoute
   ProcessRoute: typeof ProcessRoute
@@ -343,6 +369,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/feedback': {
+      id: '/feedback'
+      path: '/feedback'
+      fullPath: '/feedback'
+      preLoaderRoute: typeof FeedbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/funds': {
       id: '/funds'
       path: '/funds'
@@ -355,6 +388,13 @@ declare module '@tanstack/react-router' {
       path: '/goals'
       fullPath: '/goals'
       preLoaderRoute: typeof GoalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/grievance': {
+      id: '/grievance'
+      path: '/grievance'
+      fullPath: '/grievance'
+      preLoaderRoute: typeof GrievanceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/learn': {
@@ -470,8 +510,10 @@ const rootRouteChildren: RootRouteChildren = {
   DataStatusRoute: DataStatusRoute,
   ExploreRoute: ExploreRoute,
   FaqRoute: FaqRoute,
+  FeedbackRoute: FeedbackRoute,
   FundsRoute: FundsRouteWithChildren,
   GoalsRoute: GoalsRoute,
+  GrievanceRoute: GrievanceRoute,
   LearnRoute: LearnRoute,
   PrivacyRoute: PrivacyRoute,
   ProcessRoute: ProcessRoute,
