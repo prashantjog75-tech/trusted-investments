@@ -3,19 +3,31 @@ import { useEffect, useState } from "react";
 import heroFamily from "@/assets/hero-family.jpg";
 import heroFamilyPlanning from "@/assets/hero-family-planning.jpg";
 import heroLifeGoals from "@/assets/hero-life-goals.jpg";
+import { CommissionCarouselSlide } from "@/components/site/CommissionCarouselSlide";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const slides = [
   {
+    id: "family",
+    kind: "image",
     src: heroFamily,
     alt: "A multi-generational Indian family enjoying an evening together at home",
   },
   {
+    id: "transparent-commissions",
+    kind: "commission",
+    alt: "Transparent commissions and no separate distributor service fee",
+  },
+  {
+    id: "family-planning",
+    kind: "image",
     src: heroFamilyPlanning,
     alt: "An Indian family sharing a thoughtful conversation around a table",
   },
   {
+    id: "life-goals",
+    kind: "image",
     src: heroLifeGoals,
     alt: "An Indian family enjoying a peaceful moment together in their garden",
   },
@@ -54,29 +66,37 @@ export function HeroCarousel() {
       }}
     >
       <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gold/10 blur-2xl" />
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.75rem] shadow-elevated ring-1 ring-navy-foreground/10">
+      <div className="relative aspect-[3/5] w-full overflow-hidden rounded-[1.75rem] shadow-elevated ring-1 ring-navy-foreground/10 sm:aspect-[4/3]">
         {slides.map((slide, index) => (
-          <img
-            key={slide.src}
-            src={slide.src}
-            alt={slide.alt}
-            width={1600}
-            height={1200}
-            loading={index === 0 ? "eager" : "lazy"}
-            fetchPriority={index === 0 ? "high" : "auto"}
+          <div
+            key={slide.id}
             aria-hidden={index !== activeSlide}
             className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ease-out",
-              index === activeSlide ? "z-10 opacity-100" : "z-0 opacity-0",
+              "absolute inset-0 h-full w-full transition-opacity duration-700 ease-out",
+              index === activeSlide ? "z-10 opacity-100" : "pointer-events-none z-0 opacity-0",
             )}
-          />
+          >
+            {slide.kind === "image" ? (
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                width={1600}
+                height={1200}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <CommissionCarouselSlide />
+            )}
+          </div>
         ))}
 
         <div className="absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-3 bg-gradient-to-b from-navy-deep/45 to-transparent px-4 pt-4 pb-14">
           <div className="flex items-center gap-2" aria-label={`Slide ${activeSlide + 1} of ${slides.length}`}>
             {slides.map((slide, index) => (
               <button
-                key={slide.src}
+                key={slide.id}
                 type="button"
                 onClick={() => setActiveSlide(index)}
                 className={cn(
@@ -112,7 +132,13 @@ export function HeroCarousel() {
           </div>
         </div>
       </div>
-      <div className="animate-float absolute -bottom-5 left-5 z-30 rounded-2xl border border-navy-foreground/10 bg-navy-deep/90 px-5 py-4 shadow-elevated backdrop-blur md:-left-8">
+      <div
+        className={cn(
+          "animate-float absolute -bottom-5 left-5 z-30 rounded-2xl border border-navy-foreground/10 bg-navy-deep/90 px-5 py-4 shadow-elevated backdrop-blur transition-opacity duration-300 md:-left-8",
+          slides[activeSlide]?.kind === "image" ? "opacity-100" : "pointer-events-none opacity-0",
+        )}
+        aria-hidden={slides[activeSlide]?.kind !== "image"}
+      >
         <p className="text-[11px] tracking-[0.16em] text-gold uppercase">Our promise</p>
         <p className="mt-1 max-w-[16rem] font-display text-base leading-snug">
           Helping families reach their life goals, one disciplined step at a time.

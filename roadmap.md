@@ -28,3 +28,4 @@
 - [ ] Activate assessment email delivery (blocked: Web3Forms access key VITE_RISK_PROFILE_FORM_ACCESS_KEY must be created by the owner).
 - [x] Add the dedicated Transparency & Commissions page and link it from Resources.
 - [x] Add the homepage hero carousel and update India-only service coverage wording for global reach.
+- [x] Add the native responsive transparency and commissions slide to the homepage carousel.
