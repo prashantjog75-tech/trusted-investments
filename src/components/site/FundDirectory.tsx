@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AMFI_SNAPSHOT_DATE, AMFI_SNAPSHOT_SOURCE, staticSchemes } from "@/lib/fund-data/amfi-snapshot";
 import { DOCUMENT_LABELS, DOCUMENT_ORDER, resolveDocuments } from "@/lib/fund-data/official-documents";
+import { RiskOMeter } from "@/components/site/RiskOMeter";
 
 const ALL = "__all__";
 const PAGE_SIZE = 48;
@@ -180,6 +181,7 @@ function FundCard({ fund, selectedOption }: { fund: FundRecord; selectedOption: 
           </Select>
         ) : <p id={`option-${safeId(fund.id)}`} className="text-sm text-foreground">{activeOption}</p>}
       </div>
+      <RiskOMeter amc={fund.amc} fund={fund.name} />
       <FundDocuments amc={fund.amc} name={fund.name} option={activeOption} />
     </article>
   );
