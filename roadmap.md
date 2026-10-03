@@ -29,3 +29,4 @@
 - [x] Add the dedicated Transparency & Commissions page and link it from Resources.
 - [x] Add the homepage hero carousel and update India-only service coverage wording for global reach.
 - [x] Add the native responsive transparency and commissions slide to the homepage carousel.
+- [x] Restore the approved two-panel commission slide with its qualified trail commission table.

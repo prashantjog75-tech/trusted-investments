@@ -66,7 +66,14 @@ export function HeroCarousel() {
       }}
     >
       <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gold/10 blur-2xl" />
-      <div className="relative aspect-[3/5] w-full overflow-hidden rounded-[1.75rem] shadow-elevated ring-1 ring-navy-foreground/10 sm:aspect-[4/3]">
+      <div
+        className={cn(
+          "relative w-full overflow-hidden rounded-[1.75rem] shadow-elevated ring-1 ring-navy-foreground/10 transition-[height] duration-500",
+          slides[activeSlide]?.kind === "commission"
+            ? "h-[68rem] sm:h-auto sm:aspect-square lg:aspect-[4/3]"
+            : "aspect-[3/5] sm:aspect-[4/3]",
+        )}
+      >
         {slides.map((slide, index) => (
           <div
             key={slide.id}
