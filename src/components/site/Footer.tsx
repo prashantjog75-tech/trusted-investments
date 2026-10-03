@@ -11,8 +11,8 @@ export function Footer() {
             AMFI Registered Mutual Fund Distributor · {site.arn}
           </p>
           <p className="mt-5 max-w-md text-sm leading-relaxed text-navy-foreground/75">
-            Helping families across India work toward their life dreams through disciplined, goal-based
-            investing — for over 15 years.
+            Serving families across India and globally through disciplined, goal-based mutual fund investing — for
+            over 15 years.
           </p>
         </div>
 

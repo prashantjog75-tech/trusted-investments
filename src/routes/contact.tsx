@@ -16,7 +16,7 @@ export const Route = createFileRoute("/contact")({
     pageMeta({
       title: "Book a Meeting",
       description:
-        "Request a complimentary, no-obligation meeting with Prashant Jog, AMFI Registered Mutual Fund Distributor, ARN 83625. Serving families across India.",
+        "Request a complimentary, no-obligation meeting with Prashant Jog, AMFI Registered Mutual Fund Distributor, ARN 83625. Serving families across India and globally.",
       path: "/contact",
     }),
   component: ContactPage,

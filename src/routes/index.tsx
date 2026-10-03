@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, CalendarDays, Handshake, Search } from "lucide-react";
-import heroFamily from "@/assets/hero-family.jpg";
 import growth from "@/assets/growth-sapling.jpg";
 import { Button } from "@/components/ui/button";
+import { HeroCarousel } from "@/components/site/HeroCarousel";
 import { Section, SectionHeading } from "@/components/site/Section";
 import { TrustStats } from "@/components/site/TrustStats";
 import { FeatureGrid } from "@/components/site/FeatureGrid";
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
     pageMeta({
       title: "Invest with Purpose. Plan for the Life You Want",
       description:
-        "AMFI Registered Mutual Fund Distributor (ARN-83625) with 15+ years of experience helping 500+ families across India invest toward retirement, education and life goals.",
+        "AMFI Registered Mutual Fund Distributor (ARN-83625) with 15+ years of experience helping 500+ families across India and globally invest toward retirement, education and life goals.",
       path: "/",
     }),
   component: Index,
@@ -35,8 +35,8 @@ function Index() {
               Invest with Purpose. <span className="text-gold-gradient">Plan for the Life You Want.</span>
             </h1>
             <p className="animate-fade-up delay-200 mt-6 max-w-xl text-lg leading-relaxed text-navy-foreground/75">
-              For over 15 years, we have helped 500+ families across India work toward their dreams — comfortably,
-              through disciplined, goal-based mutual fund investing.
+              For over 15 years, we have helped 500+ families across India and globally work toward their dreams —
+              comfortably, through disciplined, goal-based mutual fund investing.
             </p>
             <div className="animate-fade-up delay-300 mt-9 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="gold" size="xl">
@@ -52,7 +52,7 @@ function Index() {
               {[
                 ["15+", "Years of experience"],
                 ["500+", "Families served"],
-                ["India", "Wide service"],
+                ["Global", "Client service"],
               ].map(([v, l]) => (
                 <div key={l}>
                   <dd className="font-display text-3xl font-semibold text-gold">{v}</dd>
@@ -62,22 +62,7 @@ function Index() {
             </dl>
           </div>
 
-          <div className="animate-fade-in delay-300 relative">
-            <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gold/10 blur-2xl" />
-            <img
-              src={heroFamily}
-              alt="A multi-generational Indian family enjoying an evening together at home"
-              width={1600}
-              height={1200}
-              className="aspect-[4/3] w-full rounded-[1.75rem] object-cover shadow-elevated ring-1 ring-navy-foreground/10"
-            />
-            <div className="animate-float absolute -bottom-5 left-5 rounded-2xl border border-navy-foreground/10 bg-navy-deep/90 px-5 py-4 shadow-elevated backdrop-blur md:-left-8">
-              <p className="text-[11px] tracking-[0.16em] text-gold uppercase">Our promise</p>
-              <p className="mt-1 max-w-[16rem] font-display text-base leading-snug">
-                Helping families reach their life goals, one disciplined step at a time.
-              </p>
-            </div>
-          </div>
+          <HeroCarousel />
         </div>
       </section>
 

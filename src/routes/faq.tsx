@@ -10,7 +10,7 @@ export const Route = createFileRoute("/faq")({
     ...pageMeta({
       title: "FAQ",
       description:
-        "Answers to common questions about working with an AMFI Registered Mutual Fund Distributor: fees, minimum SIP amounts, reviews, risk and India-wide service.",
+        "Answers to common questions about working with an AMFI Registered Mutual Fund Distributor: fees, minimum SIP amounts, reviews, risk and global client service.",
       path: "/faq",
     }),
     scripts: [

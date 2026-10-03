@@ -87,7 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "AMFI Registered Mutual Fund Distributor (ARN-83625) with 15+ years of experience, helping 500+ families across India invest toward their life goals.",
+          "AMFI Registered Mutual Fund Distributor (ARN-83625) with 15+ years of experience, helping 500+ families across India and globally invest toward their life goals.",
       },
       { name: "author", content: site.name },
       { property: "og:site_name", content: site.brand },
@@ -111,8 +111,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "FinancialService",
           name: site.brand,
-          description: "AMFI Registered Mutual Fund Distributor (ARN-83625) serving families across India.",
-          areaServed: "IN",
+          description: "AMFI Registered Mutual Fund Distributor (ARN-83625) serving families across India and globally.",
+          areaServed: ["India", "Worldwide"],
           identifier: site.arn,
         }),
       },

@@ -20,7 +20,7 @@ const resources = [
   { to: "/sip-calculator" as const, title: "SIP Calculator", body: "Create an assumption-based illustration for a monthly SIP and a chosen time horizon.", icon: Calculator },
   { to: "/risk-profile" as const, title: "Risk Self-Assessment", body: "Use an educational questionnaire to understand your responses to time, liquidity, and market movement.", icon: Gauge },
   { to: "/transparency" as const, title: "Transparency & Commissions", body: "Understand how mutual fund distribution commissions, service fees, and applicable scheme costs work.", icon: BadgeIndianRupee },
-  { to: "/faq" as const, title: "Frequently Asked Questions", body: "Read answers about Prashant Jog's role, reviews, risk, and India-wide service.", icon: CircleHelp },
+  { to: "/faq" as const, title: "Frequently Asked Questions", body: "Read answers about Prashant Jog's role, reviews, risk, and global client service.", icon: CircleHelp },
   { to: "/funds" as const, title: "Fund Documents", body: "Find available official sources and document states alongside each fund in the directory.", icon: FileText },
   { to: "/data-status" as const, title: "Data Information", body: "Review source, freshness, availability, and synchronization information for fund data.", icon: RefreshCw },
 ];

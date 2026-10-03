@@ -7,7 +7,7 @@ export const site = {
   arnNumber: "83625",
   yearsExperience: "15+",
   familiesServed: "500+",
-  coverage: "Across India",
+  coverage: "Across India & globally",
 
   phoneDisplay: "+91 9822223949",
   phoneHref: "tel:+919822223949",
@@ -45,6 +45,6 @@ export const mobileNav = [
 export const trustStats = [
   { value: "15+", label: "Years of experience" },
   { value: "500+", label: "Families served" },
-  { value: "Across", label: "India" },
+  { value: "Global", label: "Client service" },
   { value: "ARN", label: "83625 · AMFI Registered" },
 ] as const;
