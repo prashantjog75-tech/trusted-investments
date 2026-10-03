@@ -337,6 +337,10 @@ const amcDocuments: Record<string, AmcEntry> = {
     source: "WhiteOak Capital Mutual Fund (mf.whiteoakamc.com)",
     verifiedOn: VERIFIED_ON_2026_10_03,
     common: {
+      factsheet: { url: "https://mf.whiteoakamc.com/resources/downloads/product-documents", note: "AMC Product Documents repository (user-verified)" },
+      sid: { url: "https://mf.whiteoakamc.com/resources/downloads/product-documents", note: "AMC Product Documents repository (user-verified)" },
+      sai: { url: "https://mf.whiteoakamc.com/resources/downloads/product-documents", note: "AMC Product Documents repository (user-verified)" },
+      kim: { url: "https://mf.whiteoakamc.com/resources/downloads/product-documents", note: "AMC Product Documents repository (user-verified)" },
       expenseRatio: { url: "https://mf.whiteoakamc.com/regulatory-disclosures/total-expense-ratio", note: "AMC Total Expense Ratio page" },
       statutoryDisclosures: { url: "https://mf.whiteoakamc.com/regulatory-disclosures/scheme-portfolios", note: "AMC regulatory disclosures" },
       schemePage: { url: "https://mf.whiteoakamc.com/", note: "AMC home page (browse schemes; fallback)" },
