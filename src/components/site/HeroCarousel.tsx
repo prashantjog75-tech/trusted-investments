@@ -70,7 +70,7 @@ export function HeroCarousel() {
         className={cn(
           "relative w-full overflow-hidden rounded-[1.75rem] shadow-elevated ring-1 ring-navy-foreground/10 transition-[height] duration-500",
           slides[activeSlide]?.kind === "commission"
-            ? "h-[80rem] sm:h-auto sm:aspect-square lg:aspect-[4/3]"
+            ? "h-[80rem] sm:h-auto sm:aspect-[4/5] lg:aspect-[10/9]"
             : "aspect-[3/5] sm:aspect-[4/3]",
         )}
       >
