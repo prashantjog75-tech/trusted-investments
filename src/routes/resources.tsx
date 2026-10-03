@@ -16,6 +16,7 @@ export const Route = createFileRoute("/resources")({
 
 const resources = [
   { to: "/learn" as const, title: "Mutual Fund Basics", body: "Plain-language explanations of mutual funds, SIPs, risk, asset allocation, and compounding.", icon: BookOpen },
+  { to: "/risk-assessment" as const, title: "Risk Profile Assessment", body: "Answer 14 questions on your risk capacity, tolerance and time horizon and see your profile on a five-level meter.", icon: Gauge },
   { to: "/sip-calculator" as const, title: "SIP Calculator", body: "Create an assumption-based illustration for a monthly SIP and a chosen time horizon.", icon: Calculator },
   { to: "/risk-profile" as const, title: "Risk Self-Assessment", body: "Use an educational questionnaire to understand your responses to time, liquidity, and market movement.", icon: Gauge },
   { to: "/faq" as const, title: "Frequently Asked Questions", body: "Read answers about Prashant Jog's role, reviews, risk, and India-wide service.", icon: CircleHelp },
