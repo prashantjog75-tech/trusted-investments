@@ -37,8 +37,9 @@ export const DOCUMENT_LABELS: Record<OfficialDocumentType, string> = {
 export const DOCUMENT_ORDER: readonly OfficialDocumentType[] = ["expenseRatio", "factsheet", "sid", "sai", "kim", "statutoryDisclosures", "schemePage"];
 
 const VERIFIED_ON = "2 October 2026";
+const VERIFIED_ON_2026_10_03 = "3 October 2026";
 
-type AmcEntry = { source: string; common: Partial<Record<OfficialDocumentType, { url: string; note?: string }>> };
+type AmcEntry = { source: string; verifiedOn?: string; common: Partial<Record<OfficialDocumentType, { url: string; note?: string }>> };
 
 const DSP_DOWNLOADS = "https://www.dspim.com/downloads";
 
@@ -53,6 +54,72 @@ const amcDocuments: Record<string, AmcEntry> = {
       sai: { url: DSP_DOWNLOADS, note: "Download centre - SID/SAI section" },
       kim: { url: "https://www.dspim.com/downloads?category=Information%20Documents&sub_category=Key%20Information%20Memorandum%20-%20KIM", note: "Download centre - KIM section" },
       statutoryDisclosures: { url: "https://www.dspim.com/mandatory-disclosures", note: "AMC mandatory disclosures" },
+    },
+  },
+  "HDFC Mutual Fund": {
+    source: "HDFC Mutual Fund (hdfcfund.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      expenseRatio: { url: "https://www.hdfcfund.com/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports", note: "AMC Total Expense Ratio page" },
+      factsheet: { url: "https://www.hdfcfund.com/mutual-funds/factsheets", note: "AMC factsheet library" },
+      sid: { url: "https://www.hdfcfund.com/mutual-funds/fund-documents/sid", note: "AMC SID library" },
+      kim: { url: "https://www.hdfcfund.com/mutual-funds/fund-documents/kim", note: "AMC KIM library" },
+      sai: { url: "https://www.hdfcfund.com/statutory-disclosure", note: "AMC statutory disclosure page (SAI section)" },
+      statutoryDisclosures: { url: "https://www.hdfcfund.com/statutory-disclosure", note: "AMC statutory disclosure page" },
+    },
+  },
+  "SBI Mutual Fund": {
+    source: "SBI Mutual Fund (sbimf.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      expenseRatio: { url: "https://www.sbimf.com/total-expense-ratio", note: "AMC Total Expense Ratio page" },
+      factsheet: { url: "https://www.sbimf.com/factsheets", note: "AMC factsheet library" },
+      // SBI hosts SID and KIM together on its official offer-document page.
+      sid: { url: "https://www.sbimf.com/offer-document-sid-kim", note: "Offer documents - SID/KIM section" },
+      kim: { url: "https://www.sbimf.com/offer-document-sid-kim", note: "Offer documents - SID/KIM section" },
+      sai: { url: "https://www.sbimf.com/docs/default-source/documents/statement-of-additional-information.pdf", note: "Official SAI document" },
+      statutoryDisclosures: { url: "https://www.sbimf.com/disclosure", note: "AMC disclosure page" },
+    },
+  },
+  "Nippon India Mutual Fund": {
+    source: "Nippon India Mutual Fund (mf.nipponindiaim.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      expenseRatio: { url: "https://mf.nipponindiaim.com/Pages/Total-Expense-Ratio-of-Mutual-Fund-Schemes1116-5337.aspx", note: "AMC Total Expense Ratio page" },
+      factsheet: { url: "https://mf.nipponindiaim.com/investor-service/downloads/factsheet-portfolio-and-other-disclosures", note: "AMC factsheet & disclosure repository" },
+      sid: { url: "https://mf.nipponindiaim.com/investor-service/downloads/scheme-information-document", note: "AMC SID library" },
+      statutoryDisclosures: { url: "https://mf.nipponindiaim.com/investor-service/downloads/factsheet-portfolio-and-other-disclosures", note: "AMC factsheet & disclosure repository" },
+    },
+  },
+  "Aditya Birla Sun Life Mutual Fund": {
+    source: "Aditya Birla Sun Life Mutual Fund (mutualfund.adityabirlacapital.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      expenseRatio: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/total-expense-ratio", note: "AMC Total Expense Ratio page" },
+      factsheet: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/factsheets", note: "AMC factsheet library" },
+      // Aditya Birla Sun Life hosts SID and KIM together on its official forms page.
+      sid: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/forms", note: "Forms & downloads - SID/KIM section" },
+      kim: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/forms", note: "Forms & downloads - SID/KIM section" },
+      statutoryDisclosures: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/disclosures", note: "AMC disclosures page" },
+    },
+  },
+  "Tata Mutual Fund": {
+    source: "Tata Mutual Fund (tatamutualfund.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      expenseRatio: { url: "https://www.tatamutualfund.com/expense-ratio/total-expense-ratio", note: "AMC Total Expense Ratio page" },
+      factsheet: { url: "https://www.tatamutualfund.com/information-documents/factsheets", note: "AMC factsheet library" },
+      // Tata hosts SID and SAI together on its official information-documents page.
+      sid: { url: "https://www.tatamutualfund.com/information-documents/sai", note: "Information documents - SID/SAI section" },
+      sai: { url: "https://www.tatamutualfund.com/information-documents/sai", note: "Information documents - SID/SAI section" },
+    },
+  },
+  "UTI Mutual Fund": {
+    source: "UTI Mutual Fund (utimf.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
+    common: {
+      factsheet: { url: "https://www.utimf.com/downloads/fact-sheet", note: "AMC factsheet library" },
+      sid: { url: "https://www.utimf.com/downloads/sid", note: "AMC SID library" },
     },
   },
 };
@@ -117,8 +184,9 @@ export function resolveDocuments(amc: string, fundName: string, option: string):
   const result: Partial<Record<OfficialDocumentType, OfficialDocument>> = {};
   const amcEntry = amcDocuments[amc];
   if (amcEntry) {
+    const verifiedOn = amcEntry.verifiedOn ?? VERIFIED_ON;
     for (const [type, doc] of Object.entries(amcEntry.common) as [OfficialDocumentType, { url: string; note?: string }][]) {
-      result[type] = { type, scope: "amc", url: doc.url, note: doc.note, source: amcEntry.source, verified: true, verifiedOn: VERIFIED_ON };
+      result[type] = { type, scope: "amc", url: doc.url, note: doc.note, source: amcEntry.source, verified: true, verifiedOn };
     }
   }
   const source = amcEntry?.source ?? amc;
