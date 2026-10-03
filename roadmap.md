@@ -24,3 +24,5 @@
 - [x] Reorganize primary and mobile navigation around visitor intent.
 - [x] Add Explore and Resources hubs and Home quick-access actions.
 - [x] Group Regular Plan option variants into one fund card and report unique fund counts.
+- [x] Risk Profile Assessment (/risk-assessment) with locked result until submission.
+- [ ] Activate assessment email delivery (blocked: Web3Forms access key VITE_RISK_PROFILE_FORM_ACCESS_KEY must be created by the owner).
