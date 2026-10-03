@@ -12,8 +12,8 @@ export type SubmissionOutcome = { ok: true } | { ok: false; reason: "not_configu
 export function getSubmissionConfig() {
   const env = import.meta.env as Record<string, string | undefined>;
   return {
-    endpoint: env.VITE_RISK_PROFILE_FORM_ENDPOINT || "https://api.web3forms.com/submit",
-    accessKey: env.VITE_RISK_PROFILE_FORM_ACCESS_KEY || "",
+    endpoint: env["VITE_RISK_PROFILE_FORM_ENDPOINT"] || "https://api.web3forms.com/submit",
+    accessKey: env["VITE_RISK_PROFILE_FORM_ACCESS_KEY"] || "",
   };
 }
 

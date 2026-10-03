@@ -19,7 +19,7 @@ export function RiskAssessment() {
   const [answers, setAnswers] = useState<ProfilerAnswers>({});
   const [missing, setMissing] = useState(false);
   const [contact, setContact] = useState({ name: "", phone: "", email: "", consent: false });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<{ name?: string; phone?: string; email?: string; consent?: string }>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [result, setResult] = useState<{ r: ProfilerResult; date: string } | null>(null);
@@ -77,7 +77,7 @@ export function RiskAssessment() {
       setSubmitError("");
       const parsed = contactSchema.safeParse(contact);
       if (!parsed.success) {
-        setErrors(Object.fromEntries(parsed.error.issues.map((i) => [String(i.path[0]), i.message])));
+        setErrors(Object.fromEntries(parsed.error.issues.map((i) => [String(i.path[0]), i.message])) as typeof errors);
         return;
       }
       setErrors({});
@@ -148,6 +148,6 @@ export function RiskAssessment() {
   </div>;
 }
 
-function Field({ id, label, error, children }: { id: string; label: string; error?: string; children: React.ReactNode }) {
+function Field({ id, label, error, children }: { id: string; label: string; error?: string | undefined; children: React.ReactNode }) {
   return <div className="space-y-2"><Label htmlFor={id}>{label}</Label>{children}{error && <p role="alert" className="text-sm text-destructive">{error}</p>}</div>;
 }
