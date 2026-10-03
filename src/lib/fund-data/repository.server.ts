@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import type { Database } from "@/integrations/supabase/types";
 import { freshnessStatus, type DataStatus } from "./domain";
+import { isPublicAmc, isPublicPlan } from "./public-scope";
 import { funds as demonstrationFunds, type FundDocument, type FundRecord } from "@/lib/funds";
 
 function publicClient() {
@@ -139,7 +140,9 @@ export async function listFundRecords(): Promise<FundRecord[]> {
     .limit(120);
   if (error) throw new Error(`Unable to load fund information: ${error.message}`);
   if (!data || data.length === 0) return demonstrationFunds;
-  const schemes = await enrichSchemes(client, data);
+  const schemes = (await enrichSchemes(client, data)).filter(
+    (row) => isPublicAmc(row.fund_houses?.name) && isPublicPlan(row.plan, row.option_name),
+  );
   return schemes.map((row) => mapScheme(row, [], [], []));
 }
 
@@ -153,7 +156,8 @@ export async function getFundRecord(slug: string): Promise<FundRecord | undefine
   if (error) throw new Error(`Unable to load fund information: ${error.message}`);
   if (!scheme) return demonstrationFunds.find((item) => item.slug === slug);
   const [row] = await enrichSchemes(client, [scheme]);
-  if (!row) return undefined;
+  // Public scope: hide schemes outside the approved fund houses or Regular Plan.
+  if (!row || !isPublicAmc(row.fund_houses?.name) || !isPublicPlan(row.plan, row.option_name)) return undefined;
   const [valuesResult, holdingsResult, documentsResult] = await Promise.all([
     client.from("scheme_data_values").select("*").eq("scheme_id", row.id),
     client.from("holdings").select("*").eq("scheme_id", row.id).order("allocation_percent", { ascending: false }),
