@@ -26,6 +26,7 @@ import { Route as RiskProfileRouteImport } from './routes/risk-profile'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SipCalculatorRouteImport } from './routes/sip-calculator'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TransparencyRouteImport } from './routes/transparency'
 import { Route as FundsIndexRouteImport } from './routes/funds.index'
 import { Route as FundsFundSlugRouteImport } from './routes/funds.$fundSlug'
 import { Route as ApiPublicFundSyncRouteImport } from './routes/api/public/fund-sync'
@@ -115,6 +116,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TransparencyRoute = TransparencyRouteImport.update({
+  id: '/transparency',
+  path: '/transparency',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FundsIndexRoute = FundsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -149,6 +155,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
   '/terms': typeof TermsRoute
+  '/transparency': typeof TransparencyRoute
   '/funds/$fundSlug': typeof FundsFundSlugRoute
   '/funds/': typeof FundsIndexRoute
   '/api/public/fund-sync': typeof ApiPublicFundSyncRoute
@@ -170,6 +177,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
   '/terms': typeof TermsRoute
+  '/transparency': typeof TransparencyRoute
   '/funds/$fundSlug': typeof FundsFundSlugRoute
   '/funds': typeof FundsIndexRoute
   '/api/public/fund-sync': typeof ApiPublicFundSyncRoute
@@ -193,6 +201,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/sip-calculator': typeof SipCalculatorRoute
   '/terms': typeof TermsRoute
+  '/transparency': typeof TransparencyRoute
   '/funds/$fundSlug': typeof FundsFundSlugRoute
   '/funds/': typeof FundsIndexRoute
   '/api/public/fund-sync': typeof ApiPublicFundSyncRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sip-calculator'
     | '/terms'
+    | '/transparency'
     | '/funds/$fundSlug'
     | '/funds/'
     | '/api/public/fund-sync'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sip-calculator'
     | '/terms'
+    | '/transparency'
     | '/funds/$fundSlug'
     | '/funds'
     | '/api/public/fund-sync'
@@ -260,6 +271,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sip-calculator'
     | '/terms'
+    | '/transparency'
     | '/funds/$fundSlug'
     | '/funds/'
     | '/api/public/fund-sync'
@@ -283,6 +295,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   SipCalculatorRoute: typeof SipCalculatorRoute
   TermsRoute: typeof TermsRoute
+  TransparencyRoute: typeof TransparencyRoute
   ApiPublicFundSyncRoute: typeof ApiPublicFundSyncRoute
 }
 
@@ -407,6 +420,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/transparency': {
+      id: '/transparency'
+      path: '/transparency'
+      fullPath: '/transparency'
+      preLoaderRoute: typeof TransparencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/funds/': {
       id: '/funds/'
       path: '/'
@@ -461,6 +481,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   SipCalculatorRoute: SipCalculatorRoute,
   TermsRoute: TermsRoute,
+  TransparencyRoute: TransparencyRoute,
   ApiPublicFundSyncRoute: ApiPublicFundSyncRoute,
 }
 export const routeTree = rootRouteImport
