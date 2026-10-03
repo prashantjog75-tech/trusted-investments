@@ -72,7 +72,7 @@ export function HeroCarousel() {
           />
         ))}
 
-        <div className="absolute inset-x-0 bottom-0 z-20 flex items-end justify-between gap-3 bg-gradient-to-t from-navy-deep/55 to-transparent px-4 pt-14 pb-4">
+        <div className="absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-3 bg-gradient-to-b from-navy-deep/45 to-transparent px-4 pt-4 pb-14">
           <div className="flex items-center gap-2" aria-label={`Slide ${activeSlide + 1} of ${slides.length}`}>
             {slides.map((slide, index) => (
               <button
