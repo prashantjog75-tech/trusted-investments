@@ -58,6 +58,7 @@ const amcDocuments: Record<string, AmcEntry> = {
   },
   "HDFC Mutual Fund": {
     source: "HDFC Mutual Fund (hdfcfund.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
     common: {
       expenseRatio: { url: "https://www.hdfcfund.com/statutory-disclosure/total-expense-ratio-of-mutual-fund-schemes/reports", note: "AMC Total Expense Ratio page" },
       factsheet: { url: "https://www.hdfcfund.com/mutual-funds/factsheets", note: "AMC factsheet library" },
@@ -69,6 +70,7 @@ const amcDocuments: Record<string, AmcEntry> = {
   },
   "SBI Mutual Fund": {
     source: "SBI Mutual Fund (sbimf.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
     common: {
       expenseRatio: { url: "https://www.sbimf.com/total-expense-ratio", note: "AMC Total Expense Ratio page" },
       factsheet: { url: "https://www.sbimf.com/factsheets", note: "AMC factsheet library" },
@@ -81,6 +83,7 @@ const amcDocuments: Record<string, AmcEntry> = {
   },
   "Nippon India Mutual Fund": {
     source: "Nippon India Mutual Fund (mf.nipponindiaim.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
     common: {
       expenseRatio: { url: "https://mf.nipponindiaim.com/Pages/Total-Expense-Ratio-of-Mutual-Fund-Schemes1116-5337.aspx", note: "AMC Total Expense Ratio page" },
       factsheet: { url: "https://mf.nipponindiaim.com/investor-service/downloads/factsheet-portfolio-and-other-disclosures", note: "AMC factsheet & disclosure repository" },
@@ -90,6 +93,7 @@ const amcDocuments: Record<string, AmcEntry> = {
   },
   "Aditya Birla Sun Life Mutual Fund": {
     source: "Aditya Birla Sun Life Mutual Fund (mutualfund.adityabirlacapital.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
     common: {
       expenseRatio: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/total-expense-ratio", note: "AMC Total Expense Ratio page" },
       factsheet: { url: "https://mutualfund.adityabirlacapital.com/forms-and-downloads/factsheets", note: "AMC factsheet library" },
@@ -101,6 +105,7 @@ const amcDocuments: Record<string, AmcEntry> = {
   },
   "Tata Mutual Fund": {
     source: "Tata Mutual Fund (tatamutualfund.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
     common: {
       expenseRatio: { url: "https://www.tatamutualfund.com/expense-ratio/total-expense-ratio", note: "AMC Total Expense Ratio page" },
       factsheet: { url: "https://www.tatamutualfund.com/information-documents/factsheets", note: "AMC factsheet library" },
@@ -111,6 +116,7 @@ const amcDocuments: Record<string, AmcEntry> = {
   },
   "UTI Mutual Fund": {
     source: "UTI Mutual Fund (utimf.com)",
+    verifiedOn: VERIFIED_ON_2026_10_03,
     common: {
       factsheet: { url: "https://www.utimf.com/downloads/fact-sheet", note: "AMC factsheet library" },
       sid: { url: "https://www.utimf.com/downloads/sid", note: "AMC SID library" },
