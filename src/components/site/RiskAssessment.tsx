@@ -33,7 +33,7 @@ export function RiskAssessment() {
       <h2 ref={headingRef} tabIndex={-1} className="mt-3 text-3xl font-medium outline-none">About this assessment</h2>
       <ul className="mt-5 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
         <li>{profilerQuestions.length} short questions covering your risk capacity, risk tolerance and time horizon.</li>
-        <li>Your mobile number is required before the result is shown, so Prashant Jog can discuss it with you. Email and name are optional.</li>
+        <li>Your name, mobile number and email are required before the result is shown, so Prashant Jog can discuss it with you.</li>
         <li>This is an assessment aid only. It is not investment advice, not a guarantee, and does not recommend any mutual fund.</li>
         <li>Scoring bands are provisional website settings, not an official SEBI or AMFI methodology.</li>
       </ul>
@@ -97,11 +97,11 @@ export function RiskAssessment() {
       <h2 ref={headingRef} tabIndex={-1} className="mt-3 text-3xl font-medium outline-none">Your details to view the result</h2>
       <p className="mt-2 text-sm text-muted-foreground">All {profilerQuestions.length} questions answered. Your result appears once your details are submitted successfully.</p>
       <div className="mt-6 grid gap-5">
-        <Field id="ra-name" label="Name (optional)" error={errors.name}><Input id="ra-name" autoComplete="name" maxLength={100} value={contact.name} onChange={(e) => setContact({ ...contact, name: e.target.value })} /></Field>
+        <Field id="ra-name" label="Name (required)" error={errors.name}><Input id="ra-name" autoComplete="name" required maxLength={100} aria-invalid={!!errors.name} value={contact.name} onChange={(e) => setContact({ ...contact, name: e.target.value })} /></Field>
         <Field id="ra-phone" label="Mobile number (required)" error={errors.phone}><Input id="ra-phone" type="tel" inputMode="tel" autoComplete="tel" required maxLength={16} aria-invalid={!!errors.phone} value={contact.phone} onChange={(e) => setContact({ ...contact, phone: e.target.value })} /></Field>
-        <Field id="ra-email" label="Email (optional)" error={errors.email}><Input id="ra-email" type="email" autoComplete="email" maxLength={255} value={contact.email} onChange={(e) => setContact({ ...contact, email: e.target.value })} /></Field>
+        <Field id="ra-email" label="Email (required)" error={errors.email}><Input id="ra-email" type="email" autoComplete="email" required maxLength={255} aria-invalid={!!errors.email} value={contact.email} onChange={(e) => setContact({ ...contact, email: e.target.value })} /></Field>
         <div className="rounded-md bg-muted p-4 text-xs leading-relaxed text-muted-foreground">
-          <strong className="text-foreground">Privacy notice.</strong> Your mobile number, optional name/email and assessment answers are sent to Prashant Jog ({site.email}) only to respond to you and to manage your assessment. They are not used for unrelated marketing or sold to anyone.
+          <strong className="text-foreground">Privacy notice.</strong> Your name, mobile number, email and assessment answers are sent to Prashant Jog ({site.email}) only to respond to you and to manage your assessment. They are not used for unrelated marketing or sold to anyone.
         </div>
         <div className="flex items-start gap-3">
           <Checkbox id="ra-consent" checked={contact.consent} onCheckedChange={(v) => setContact({ ...contact, consent: v === true })} aria-invalid={!!errors.consent} />
