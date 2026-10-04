@@ -33,7 +33,7 @@ export function RequestForm({ fields, prefix, subject, kind }: { fields: FieldDe
       else if (v && f.type === "email" && !/^\S+@\S+\.\S+$/.test(v)) errs[f.id] = "Enter a valid email address.";
       else if (v.length > 2000) errs[f.id] = "Please keep this under 2000 characters.";
     }
-    if (!consent) errs.consent = "Please confirm the acknowledgement.";
+    if (!consent) errs["consent"] = "Please confirm the acknowledgement.";
     setErrors(errs);
     if (Object.keys(errs).length) return;
     setStatus("sending");
@@ -41,7 +41,7 @@ export function RequestForm({ fields, prefix, subject, kind }: { fields: FieldDe
     const payload: Record<string, string> = { "Reference number": ref, Timestamp: new Date().toISOString(), Type: kind };
     for (const f of fields) payload[f.label] = (values[f.id] ?? "").trim();
     payload["Consent"] = "Yes";
-    const out = await sendForm(`${subject} ${ref}`, payload, values.email?.trim() || undefined);
+    const out = await sendForm(`${subject} ${ref}`, payload, values["email"]?.trim() || undefined);
     if (out.ok) { setReference(ref); setStatus("idle"); window.scrollTo({ top: 0, behavior: "smooth" }); }
     else setStatus(out.reason === "not_configured" ? "not_configured" : "error");
   }
@@ -91,7 +91,7 @@ export function RequestForm({ fields, prefix, subject, kind }: { fields: FieldDe
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 h-4 w-4 accent-[var(--gold)]" aria-label="Consent acknowledgement" />
         <span>I agree that my details and responses may be used to contact me about this {kind.toLowerCase()}. <span className="text-gold">*</span></span>
       </label>
-      {errors.consent && <p className="-mt-3 text-xs text-destructive sm:col-span-2">{errors.consent}</p>}
+      {errors["consent"] && <p className="-mt-3 text-xs text-destructive sm:col-span-2">{errors["consent"]}</p>}
       {(status === "error" || status === "not_configured") && (
         <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/5 p-3 text-sm text-destructive sm:col-span-2">
           We couldn't send your {kind.toLowerCase()} right now. Your entries are kept — please try again, or contact us directly on <a className="underline" href={site.phoneHref}>{site.phoneDisplay}</a> or <a className="underline" href={whatsappLink()} target="_blank" rel="noopener noreferrer">WhatsApp</a>.
