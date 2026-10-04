@@ -10,9 +10,9 @@ export const Route = createFileRoute("/feedback")({
 });
 
 const fields: FieldDef[] = [
-  { id: "name", label: "Name" },
+  { id: "name", label: "Name", required: true },
   { id: "phone", label: "Mobile / Phone", required: true, type: "tel" },
-  { id: "email", label: "Email", type: "email" },
+  { id: "email", label: "Email", required: true, type: "email" },
   { id: "rating", label: "Overall experience rating (1–5)", required: true, type: "rating" },
   { id: "useful", label: "What did you find useful?", type: "textarea" },
   { id: "improve", label: "What could we improve?", type: "textarea" },

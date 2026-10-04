@@ -15,14 +15,17 @@ describe("risk profiler", () => {
     expect(scoreProfiler(at(4))?.score).toBe(56);
     expect(scoreProfiler({})).toBeNull();
   });
-  test("phone mandatory, email optional", () => {
-    expect(contactSchema.safeParse({ phone: "", consent: true }).success).toBe(false);
-    expect(contactSchema.safeParse({ phone: "9822223949", email: "", consent: true }).success).toBe(true);
-    expect(contactSchema.safeParse({ phone: "9822223949", consent: false }).success).toBe(false);
+  test("name, phone and email all mandatory", () => {
+    expect(contactSchema.safeParse({ name: "", phone: "9822223949", email: "a@b.com", consent: true }).success).toBe(false);
+    expect(contactSchema.safeParse({ name: "Test", phone: "", email: "a@b.com", consent: true }).success).toBe(false);
+    expect(contactSchema.safeParse({ name: "Test", phone: "9822223949", email: "", consent: true }).success).toBe(false);
+    expect(contactSchema.safeParse({ name: "Test", phone: "9822223949", email: "not-an-email", consent: true }).success).toBe(false);
+    expect(contactSchema.safeParse({ name: "Test", phone: "9822223949", email: "a@b.com", consent: true }).success).toBe(true);
+    expect(contactSchema.safeParse({ name: "Test", phone: "9822223949", email: "a@b.com", consent: false }).success).toBe(false);
   });
   test("message contains every question, answer and points", () => {
     const r = scoreProfiler(at(3))!;
-    const { text } = buildSubmissionMessage({ phone: "9822223949", consent: true }, r);
+    const { text } = buildSubmissionMessage({ name: "Test", phone: "9822223949", email: "a@b.com", consent: true }, r);
     for (const b of r.breakdown) expect(text).toContain(`${b.question}\n   Answer: ${b.answer} — ${b.points} pts`);
     expect(text).toContain("Mobile: 9822223949");
     expect(text).toContain(`TOTAL SCORE: ${r.score}`);
