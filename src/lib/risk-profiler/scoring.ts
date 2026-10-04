@@ -39,9 +39,9 @@ export function scoreProfiler(answers: ProfilerAnswers): ProfilerResult | null {
 }
 
 export const contactSchema = z.object({
-  name: z.string().trim().max(100, "Name must be under 100 characters").optional().or(z.literal("")),
+  name: z.string().trim().nonempty("Name is required").max(100, "Name must be under 100 characters"),
   phone: z.string().trim().regex(/^(\+?91[\s-]?)?[6-9]\d{9}$/, "Enter a valid 10-digit Indian mobile number"),
-  email: z.string().trim().max(255).email("Enter a valid email address").optional().or(z.literal("")),
+  email: z.string().trim().nonempty("Email is required").max(255).email("Enter a valid email address"),
   consent: z.literal(true, { errorMap: () => ({ message: "Please accept the privacy notice to continue" }) }),
 });
 export type ProfilerContact = z.infer<typeof contactSchema>;

@@ -12,7 +12,7 @@ export const Route = createFileRoute("/grievance")({
 const fields: FieldDef[] = [
   { id: "name", label: "Name", required: true },
   { id: "phone", label: "Mobile / Phone", required: true, type: "tel" },
-  { id: "email", label: "Email", type: "email" },
+  { id: "email", label: "Email", required: true, type: "email" },
   { id: "type", label: "Grievance type", required: true, type: "select", options: ["Transaction / processing", "Account statement / documents", "Service quality", "Communication / response delay", "KYC / account details", "Other"] },
   { id: "service", label: "Related service / scheme" },
   { id: "contact", label: "Preferred contact method", type: "select", options: ["Phone", "WhatsApp", "Email"] },
