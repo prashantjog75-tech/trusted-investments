@@ -71,14 +71,16 @@ function ContactPage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr]">
           <div className="card-premium p-7 hover:translate-y-0 md:p-10">
-            {submitted ? (
-              <div className="py-10 text-center">
+            {reference ? (
+              <div className="py-10 text-center" role="status">
                 <CheckCircle2 className="mx-auto h-12 w-12 text-gold" strokeWidth={1.5} />
                 <h2 className="mt-5 text-3xl font-medium">Thank you.</h2>
                 <p className="mx-auto mt-3 max-w-md text-muted-foreground">
                   We've received your request and will be in touch within one working day. In the meantime, feel free
                   to reach us on WhatsApp.
                 </p>
+                <p className="mt-3 text-muted-foreground">Your reference number</p>
+                <p className="font-display text-2xl text-foreground">{reference}</p>
                 <Button asChild variant="whatsapp" size="lg" className="mt-6">
                   <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
@@ -162,9 +164,14 @@ function ContactPage() {
                     that mutual fund investments are subject to market risks.
                   </span>
                 </label>
+                {status === "error" && (
+                  <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/5 p-3 text-sm text-destructive sm:col-span-2">
+                    We couldn't send your meeting request right now. Your entries are kept — please try again, or contact us directly on <a className="underline" href={site.phoneHref}>{site.phoneDisplay}</a> or <a className="underline" href={whatsappLink()} target="_blank" rel="noopener noreferrer">WhatsApp</a>.
+                  </p>
+                )}
                 <div className="sm:col-span-2">
-                  <Button type="submit" variant="gold" size="xl" disabled={!consent} className="w-full sm:w-auto">
-                    Request a Meeting
+                  <Button type="submit" variant="gold" size="xl" disabled={!consent || status === "sending"} className="w-full sm:w-auto">
+                    {status === "sending" ? "Sending…" : status === "error" ? "Try again" : "Request a Meeting"}
                   </Button>
                   <p className="mt-3 text-xs text-muted-foreground">
                     Complimentary and without obligation. We never share your details.
