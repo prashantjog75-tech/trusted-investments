@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { PageHero, Section } from "@/components/site/Section";
 import { makeReference, sendForm } from "@/lib/forms/web3forms";
@@ -153,10 +152,11 @@ function ContactPage() {
                   />
                 </Field>
                 <label className="flex items-start gap-3 text-sm text-muted-foreground sm:col-span-2">
-                  <Checkbox
+                  <input
+                    type="checkbox"
                     checked={consent}
-                    onCheckedChange={(v) => setConsent(v === true)}
-                    className="mt-0.5"
+                    onChange={(e) => setConsent(e.target.checked)}
+                    className="mt-1 h-4 w-4 accent-[var(--gold)]"
                     aria-label="Consent to be contacted"
                   />
                   <span>
