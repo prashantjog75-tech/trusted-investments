@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { PageHero, Section } from "@/components/site/Section";
+import { makeReference, sendForm } from "@/lib/forms/web3forms";
 import { site, whatsappLink } from "@/lib/site-config";
 import { pageMeta } from "@/lib/seo";
 
@@ -27,14 +28,37 @@ const horizonOptions = ["Under 3 years", "3 – 5 years", "5 – 10 years", "10+
 const amountOptions = ["Prefer not to say", "Under ₹5,000 / month", "₹5,000 – ₹25,000 / month", "₹25,000+ / month", "Lump sum"];
 
 function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+  const [reference, setReference] = useState<string | null>(null);
   const [consent, setConsent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: connect to your preferred email / CRM service.
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setStatus("sending");
+    const data = new FormData(e.currentTarget);
+    const ref = makeReference("MTG");
+    const payload: Record<string, string> = {
+      "Reference number": ref,
+      Timestamp: new Date().toISOString(),
+      Type: "Meeting Request",
+      Name: String(data.get("name") ?? ""),
+      Phone: String(data.get("phone") ?? ""),
+      Email: String(data.get("email") ?? ""),
+      City: String(data.get("city") ?? ""),
+      "Primary goal": String(data.get("goal") ?? ""),
+      "Investment horizon": String(data.get("horizon") ?? ""),
+      "Approximate investment amount": String(data.get("amount") ?? ""),
+      Message: String(data.get("message") ?? ""),
+      Consent: consent ? "Yes" : "No",
+    };
+    const out = await sendForm("New Meeting Request - Prashant Jog", payload, String(data.get("email") ?? "").trim() || undefined);
+    if (out.ok) {
+      setReference(ref);
+      setStatus("idle");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      setStatus("error");
+    }
   }
 
   return (
