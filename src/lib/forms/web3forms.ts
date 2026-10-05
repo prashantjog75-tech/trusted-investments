@@ -7,7 +7,7 @@ import { getSubmissionConfig } from "@/lib/risk-profiler/submission";
 
 export type FormOutcome = { ok: true } | { ok: false; reason: "not_configured" | "failed" };
 
-export function makeReference(prefix: "GRV" | "FBK", now = new Date()) {
+export function makeReference(prefix: "GRV" | "FBK" | "MTG", now = new Date()) {
   const n = Math.floor(1000 + Math.random() * 9000);
   return `PJ-${prefix}-${now.getFullYear()}-${n}`;
 }

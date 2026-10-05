@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { PageHero, Section } from "@/components/site/Section";
+import { makeReference, sendForm } from "@/lib/forms/web3forms";
 import { site, whatsappLink } from "@/lib/site-config";
 import { pageMeta } from "@/lib/seo";
 
@@ -27,14 +27,37 @@ const horizonOptions = ["Under 3 years", "3 – 5 years", "5 – 10 years", "10+
 const amountOptions = ["Prefer not to say", "Under ₹5,000 / month", "₹5,000 – ₹25,000 / month", "₹25,000+ / month", "Lump sum"];
 
 function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
+  const [reference, setReference] = useState<string | null>(null);
   const [consent, setConsent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // TODO: connect to your preferred email / CRM service.
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setStatus("sending");
+    const data = new FormData(e.currentTarget);
+    const ref = makeReference("MTG");
+    const payload: Record<string, string> = {
+      "Reference number": ref,
+      Timestamp: new Date().toISOString(),
+      Type: "Meeting Request",
+      Name: String(data.get("name") ?? ""),
+      Phone: String(data.get("phone") ?? ""),
+      Email: String(data.get("email") ?? ""),
+      City: String(data.get("city") ?? ""),
+      "Primary goal": String(data.get("goal") ?? ""),
+      "Investment horizon": String(data.get("horizon") ?? ""),
+      "Approximate investment amount": String(data.get("amount") ?? ""),
+      Message: String(data.get("message") ?? ""),
+      Consent: consent ? "Yes" : "No",
+    };
+    const out = await sendForm("New Meeting Request - Prashant Jog", payload, String(data.get("email") ?? "").trim() || undefined);
+    if (out.ok) {
+      setReference(ref);
+      setStatus("idle");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      setStatus("error");
+    }
   }
 
   return (
@@ -47,14 +70,16 @@ function ContactPage() {
       <Section>
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr]">
           <div className="card-premium p-7 hover:translate-y-0 md:p-10">
-            {submitted ? (
-              <div className="py-10 text-center">
+            {reference ? (
+              <div className="py-10 text-center" role="status">
                 <CheckCircle2 className="mx-auto h-12 w-12 text-gold" strokeWidth={1.5} />
                 <h2 className="mt-5 text-3xl font-medium">Thank you.</h2>
                 <p className="mx-auto mt-3 max-w-md text-muted-foreground">
                   We've received your request and will be in touch within one working day. In the meantime, feel free
                   to reach us on WhatsApp.
                 </p>
+                <p className="mt-3 text-muted-foreground">Your reference number</p>
+                <p className="font-display text-2xl text-foreground">{reference}</p>
                 <Button asChild variant="whatsapp" size="lg" className="mt-6">
                   <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
@@ -127,10 +152,11 @@ function ContactPage() {
                   />
                 </Field>
                 <label className="flex items-start gap-3 text-sm text-muted-foreground sm:col-span-2">
-                  <Checkbox
+                  <input
+                    type="checkbox"
                     checked={consent}
-                    onCheckedChange={(v) => setConsent(v === true)}
-                    className="mt-0.5"
+                    onChange={(e) => setConsent(e.target.checked)}
+                    className="mt-1 h-4 w-4 accent-[var(--gold)]"
                     aria-label="Consent to be contacted"
                   />
                   <span>
@@ -138,9 +164,14 @@ function ContactPage() {
                     that mutual fund investments are subject to market risks.
                   </span>
                 </label>
+                {status === "error" && (
+                  <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/5 p-3 text-sm text-destructive sm:col-span-2">
+                    We couldn't send your meeting request right now. Your entries are kept — please try again, or contact us directly on <a className="underline" href={site.phoneHref}>{site.phoneDisplay}</a> or <a className="underline" href={whatsappLink()} target="_blank" rel="noopener noreferrer">WhatsApp</a>.
+                  </p>
+                )}
                 <div className="sm:col-span-2">
-                  <Button type="submit" variant="gold" size="xl" disabled={!consent} className="w-full sm:w-auto">
-                    Request a Meeting
+                  <Button type="submit" variant="gold" size="xl" disabled={!consent || status === "sending"} className="w-full sm:w-auto">
+                    {status === "sending" ? "Sending…" : status === "error" ? "Try again" : "Request a Meeting"}
                   </Button>
                   <p className="mt-3 text-xs text-muted-foreground">
                     Complimentary and without obligation. We never share your details.
