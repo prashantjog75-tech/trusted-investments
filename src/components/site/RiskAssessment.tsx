@@ -85,7 +85,7 @@ export function RiskAssessment() {
       if (!r) { setIndex(0); go("questions"); return; }
       setSubmitting(true);
       const { date, text } = buildSubmissionMessage(parsed.data, r);
-      const outcome = await submitAssessment({ name: parsed.data.name ?? "", phone: parsed.data.phone, email: parsed.data.email ?? "", message: text, answers: r.breakdown });
+      const outcome = await submitAssessment({ name: parsed.data.name ?? "", phone: parsed.data.phone, email: parsed.data.email ?? "", message: text });
       setSubmitting(false);
       if (outcome.ok) { setResult({ r, date }); go("result"); }
       else setSubmitError(outcome.reason === "not_configured"

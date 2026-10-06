@@ -17,7 +17,7 @@ export function getSubmissionConfig() {
   };
 }
 
-export async function submitAssessment(payload: { name: string; phone: string; email: string; message: string; answers: unknown }): Promise<SubmissionOutcome> {
+export async function submitAssessment(payload: { name: string; phone: string; email: string; message: string }): Promise<SubmissionOutcome> {
   const { endpoint, accessKey } = getSubmissionConfig();
   if (!accessKey) return { ok: false, reason: "not_configured" };
   try {
@@ -33,7 +33,6 @@ export async function submitAssessment(payload: { name: string; phone: string; e
         phone: payload.phone,
         ...(payload.email ? { email: payload.email, replyto: payload.email } : {}),
         message: payload.message,
-        answers_json: JSON.stringify(payload.answers),
         botcheck: "",
       }),
     });
