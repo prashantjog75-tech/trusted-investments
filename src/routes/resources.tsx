@@ -24,7 +24,7 @@ const resources = [
   { to: "/funds" as const, title: "Fund Documents", body: "Find available official sources and document states alongside each fund in the directory.", icon: FileText },
   { to: "/data-status" as const, title: "Data Information", body: "Review source, freshness, availability, and synchronization information for fund data.", icon: RefreshCw },
   { to: "/grievance" as const, title: "Grievance Redressal", body: "Raise a complaint or concern and receive a reference number for follow-up.", icon: CircleHelp },
-  { href: "https://www.dspim.com/invest/", title: "DSP KYC — Register / Modify KYC", body: "Start or update your KYC on DSP Mutual Fund's official website. DSP's flow guides you to its KYC partner for document verification.", icon: FileText },
+  { href: "https://www.dspim.com/invest#goto=kyc", title: "DSP KYC — Register / Modify KYC", body: "Start or update your KYC on DSP Mutual Fund's official website. DSP's flow guides you to its KYC partner for document verification.", icon: FileText },
   { to: "/feedback" as const, title: "Feedback", body: "Rate your experience and tell us what was useful or could be improved.", icon: BookOpen },
 ];
 
