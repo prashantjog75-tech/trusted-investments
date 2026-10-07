@@ -315,154 +315,154 @@ export const RISKOMETER_ENTRIES: readonly RiskometerEntry[] = /* DATA-START */[
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Aggressive Hybrid Fund (Formerly Known as Principal Hybrid Equity Fund)",
   "level": "High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Arbitrage Fund(Formerly Known as Prinicpal Arbitrage Fund)",
   "level": "Low",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Business Cycle Fund",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Conservative Hybrid Fund (Formerly Known as Sundaram Debt Oriented Hybrid Fund)",
-  "level": "Moderate",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "level": "Moderately High",
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Consumption Fund (Formerly Known as Sundaram Rural and Consumption Fund)",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Corporate Bond Fund",
   "level": "Moderate",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Dividend Yield Fund (Formerly Known as Principal Dividend Yield Fund)",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram ELSS Tax Saver Fund",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Equity Savings Fund (Formerly Known as Principal Equity Savings Fund)",
   "level": "Moderate",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Flexicap Fund",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Focused Fund (Formerly Known as Principal Focused Multicap Fund)",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Large Cap Fund ( Formerly Know as Sundaram Blue Chip Fund)",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Liquid Fund (Formerly Known as Principal Cash Management Fund)",
   "level": "Low to Moderate",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Mid Cap Fund",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Money Market Fund",
   "level": "Low to Moderate",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Multi Asset Allocation Fund",
   "level": "High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Multi Cap Fund (Formerly Known as Principal Multi Cap Growth Fund)",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Multi-Factor Fund",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Overnight Fund",
   "level": "Low",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Services Fund",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Small Cap Fund",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  },
  {
   "amc": "Sundaram Mutual Fund",
   "fund": "Sundaram Value Fund",
   "level": "Very High",
-  "asOf": "2026-01-31",
-  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Jan_26.pdf"
+  "asOf": "2026-02-28",
+  "sourceUrl": "https://www.sundarammutual.com/pdf2/2026/Risk_Meter/Change_in_Risk_O_Meter_Feb_26.pdf"
  }
 ]/* DATA-END */;
