@@ -47,7 +47,7 @@ function readExisting() {
 function candidateUrls(src, now = new Date()) {
   if (!src.urlTemplate) return [src.url];
   const urls = [];
-  for (let back = 1; back <= 3; back += 1) {
+  for (let back = 1; back <= 12; back += 1) {
     const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - back, 1));
     const y = d.getUTCFullYear(), m = d.getUTCMonth();
     urls.push(src.urlTemplate.replace("{Mon}", MONTHS[m]).replace("{MM}", String(m + 1).padStart(2, "0")).replace("{YYYY}", String(y)).replace("{YY}", String(y).slice(2)));
