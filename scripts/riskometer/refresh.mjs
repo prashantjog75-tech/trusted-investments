@@ -146,6 +146,7 @@ async function main() {
   const summary = [
     `## Riskometer refresh`, `Verified schemes in dataset: ${entries.length}`, `Changed this run: ${report.updated}`, ``,
     `### Sources`, ...report.sources.map((s) => `- ${s.id}: ${s.status}${s.asOf ? ` (as of ${s.asOf}, ${s.matched}/${s.parsed} matched)` : ""}${s.reason ? ` - ${s.reason}` : ""}${s.errors ? ` - ${s.errors.join("; ")}` : ""}`),
+    ``, `### Broken source links removed - ${report.broken.length}`, ...report.broken.map((u) => `- ${u}`),
     ``, `### Unmatched rows (not stored; need manual verification) - ${report.unmatched.length}`, ...report.unmatched.map((u) => `- ${u.amc}: ${u.scheme} (${u.level})`),
   ].join("\n");
   console.log(summary);
