@@ -1,5 +1,5 @@
 {
-  "_comment": "Official riskometer disclosure sources only. AMFI first; AMC disclosures as fallback. URL templates: {Mon}=Jan..Dec, {MM}=01..12, {YY}=26, {YYYY}=2026 for the most recent month-end (the script also tries the month before). levelColumn = which risk-level column (0-based) in a table row is the scheme's current level. Never add third-party portals.",
+  "_comment": "Official riskometer disclosure sources only. AMFI first; AMC disclosures as fallback. URL templates: {Mon}=Jan..Dec, {MM}=01..12, {YY}=26, {YYYY}=2026 for the most recent month-end (the script tries up to 12 prior months; only URLs returning a PDF with HTTP 200 and no redirect are stored, and stored links are re-checked every run). levelColumn = which risk-level column (0-based) in a table row is the scheme's current level. Never add third-party portals.",
   "sources": [
     {
       "id": "amfi-risk-o-meter",
